@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天猫国际管理</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        html,body{
+            height:100%;
+            font-family:STFangsong;
+            font-size:18px;
+        }
+        @media screen and (min-width:500px){
+            .sidebar{width:0;}
+            .content{width:100%;}
+            .fill{display: none}
+            .box{
+                padding-top: 0;
+            }
+            .box .actual{
+                width:90%;
+                margin:0 auto;
+            }
+            .basic_information .information{
+                width:45%;
+            }
+        }
+        @media screen and (min-width:750px){
+            .sidebar{width:50px;}
+            .content{width:700px;}
+            .fill{display: none}
+            .box{
+                padding-left: 0;
+            }
+        }
+        @media screen and (min-width:850px){
+            .sidebar{width:50px;}
+            .content{
+                width:800px;
+                margin:0 auto;
+            }
+            .fill{display: none}
+            .box{
+                padding-top: 0;
+            }
+            .box .actual{
+                width:90%;
+                margin:0 auto;
+            }
+            .basic_information .information{
+                width:40%;
+            }
+        }
+        @media screen and (min-width:950px){
+            .sidebar{width:50px;}
+            .content{width:900px;}
+            .fill{display: none}
+            .box{
+                padding-left: 0;
+            }
+            .box .actual{
+                width:90%;
+                margin:0 auto;
+            }
+            .basic_information .information{
+                width:40%;
+            }
+        }
+        @media screen and (min-width:1000px){
+            .sidebar{width:18%}
+            .content{width:82%;}
+            .fill{display: block}
+            .box{
+                padding-left:0;
+            }
+            .box .title,.actual{
+                margin-left: 50px;
+            }
+            .box .actual{
+                width:90%;
+            }
+            .basic_information .information{
+                width:34%;
+            }
+        }
+        @media screen and (min-width:1200px){
+            .sidebar{width:17%}
+            .content{width:83%;}
+            .box .actual{
+                width:90%;
+            }
+            .basic_information .information{
+                width:24%;
+            }
+        }
+        .container{
+            width:100%;
+            height:100%;
+            background-color: #ececec;
+            position:relative;
+        }
+        .br{
+            clear: left;
+        }
+        .user{
+            position:fixed;
+            width:50px;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            top:20px;
+            right:20px;
+            z-index:50;
+            font-size:50px;
+            color:rebeccapurple;
+            box-shadow: 2px 2px 3px black;
+        }
+        .user .opt{
+            display: none;
+            position: absolute;
+            width:110px;
+            padding:5px;
+            height:auto;
+            font-size:16px;
+            box-shadow:1px 1px 3px black;
+            top:50px;
+            right:0;
+        }
+        .user .opt .list{
+            margin:5px 0;
+            height:40px;
+            line-height: 40px;
+            border-bottom: 1px solid black;
+        }
+        .user:hover .opt{
+            display: block;
+        }
+        .sidebar{
+            position:relative;
+            left:0;
+            top:0;
+            /*固定宽度,根据媒体变化相应样式*/
+            height:100%;
+            background-color: #0099ff;
+            box-shadow:1px 1px 5px 1px black;
+            opacity: 1;
+            transition:all 0.7s;
+            float: left;
+        }
+        .content{
+            position:relative;
+            height:100%;
+            float: left;
+            overflow: auto;
+        }
+        .container .hide{
+            left:-100%;
+            opacity: 0;
+        }
+        .fill{
+            position:absolute;
+            left:7px;
+            top:3px;
+            width:40px;
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            z-index: 9999;
+            box-shadow: 2px 2px 5px 1px #000;
+            font-size:26px;
+            background-color:#0088ff;
+            cursor:pointer;
+        }
+        .row{margin:0;padding:0}
+        .top{
+            width:100%;
+            height:270px;
+            border:1px solid black;
+        }
+        .box{
+            position:absolute;
+            width:100%;
+            padding-bottom:50px;
+            background-color: #1b6d85;
+        }
+        .box .title{
+            height:50px;
+            font-size:24px;
+            line-height:50px;
+        }
+        .box .actual{width:90%;}
+        .staff_table{width:100%;}
+        .staff_table .search_box{
+            width:100%;
+            height:60px;
+        }
+        .staff_table .head{
+            background-color: #2e6da4;
+        }
+        /*员工列表处*/
+        .staff_table .row{
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            /*padding:5px;*/
+        }
+        .staff_table .row .chunk{
+            float: left;
+            width:auto;
+            box-shadow: 1px 1px 2px black;
+            white-space: nowrap;/*内容超宽后禁止换行显示*/
+            overflow: hidden;/*超出部分隐藏*/
+            text-overflow:ellipsis;/*文字超出部分以省略号显示*/
+        }
+        .staff_table .row .staff_id{width:5%;}
+        .staff_table .row .department_name{width:15%;}
+        .staff_table .row .name{width:10%;}
+        .staff_table .row .level{width:5%;}
+        .staff_table .row .sex{width:5%;}
+        .staff_table .row .phone{width:10%;}
+        .staff_table .row .entry_time{width:15%;}
+        .staff_table .row .reserve{width:25%;}
+        .staff_table .row .operation{width:10%;}
+        .departments{
+            width:100%;
+            height:80px;
+            background-color: #1b6d85;
+        }
+
+        .departments .chunk{
+            height:60px;
+            line-height: 60px;
+            text-align: center;
+            font-size:20px;
+            margin:10px 0;
+            box-shadow: 1px 2px 3px black;
+            float:left;
+        }
+        .departments .option{
+            width:120px;
+        }
+        .departments .select{
+            width:280px;
+            position:relative;
+            background-color: #1b6d85;
+        }
+        .departments .select .icon{
+            position:absolute;
+            width:50px;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            font-size:36px;
+            right:0;
+            top:5px;
+            cursor:pointer;
+        }
+        .departments .select .icon:hover{
+            color:orangered;
+        }
+        .departments .select .__box{
+            position:absolute;
+            width:100%;
+            height:360px;
+            left:0;
+            top:60px;
+            margin:0;
+            z-index: 99;
+            background-color: #1b6d85;
+            overflow: hidden;
+            transition:all 0.6s;
+            /*过渡效果,保证其不生硬*/
+        }
+        .departments .select .box_hide{
+            height:0;
+        }
+        .departments .select .option_box{
+            width:100%;
+            height:auto;
+        }
+        .departments .select .option_box .options{
+            padding:0 2%;
+            width:96%;
+            height:60px;
+            margin:0;
+            cursor: pointer;
+        }
+        .departments .select .option_box .options:hover{
+            background-color: #1b6d85;
+            color:red;
+        }
+        .basic_information{
+            width:100%;
+            box-shadow: 1px 1px 2px black;
+        }
+        .basic_information .information{
+            width:24%;
+            height:90px;
+            background-color: #eeeeee;
+            margin:5px 1%;
+            margin-left: 0;
+            float:left;
+        }
+        .basic_information .information .label .name{
+            display: block;
+            width: 100%;
+            height:45px;
+            line-height: 45px;
+            border:0;
+        }
+        .basic_information .information .label .input{
+            display: block;
+            width: 100%;
+            height:45px;
+            line-height: 45px;
+            border:0;
+        }
+        .basic_information .sex{
+            width:250px;
+            float: left;
+            height:45px;
+            line-height: 45px;
+            background-color: #eeeeee;
+            margin: 5px 0;
+        }
+        .basic_information .sex .label{
+            display: block;
+            width:100%;
+            height:100%;
+        }
+        .basic_information .sex .label .name{
+            display: block;
+            float: left;
+            width:70px;
+        }
+        .basic_information .sex .label .input{
+            display: block;
+            width:170px;
+            height:39px;
+            float: left;
+            margin:2px 0;
+            border:1px solid #f7e1b5;
+        }
+        .basic_information .reserve{
+            width:65%;
+            height:170px;
+        }
+        .basic_information .reserve .label .input{
+            height:125px;
+            resize: none;
+        }
+        .basic_information .information .label{
+            display: block;
+            width:100%;
+            height:90px;
+        }
+        .func_list{
+            width:100%;
+            height:150px;
+            overflow: auto;
+            background-color: #fff;
+        }
+        .func_list .name{
+            width:100%;
+            height:50px;
+            line-height: 50px;
+            background-color: #eee;
+        }
+        .func_list .func{
+            position:relative;
+            width:180px;
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #2e6da4;
+            border-radius: 1px;
+            float: left;
+            margin:5px;
+            cursor:pointer;
+        }
+        .func_list .func:hover{
+            box-shadow: 2px 2px 3px black;
+        }
+        .func .icon{
+            position: absolute;
+            width: 40px;
+            height:40px;
+            line-height: 40px;
+            font-size:24px;
+            text-align: center;
+            top:0;
+            right:5px;
+        }
+        .selected_func_list{
+            width:100%;
+            height:40px;
+            line-height: 40px;
+            padding:5px 0;
+            overflow: auto;
+        }
+        .selected_func_list .func{
+            width:160px;
+            float: left;
+            margin:0 5px;
+            text-align: center;
+            box-shadow: 1px 2px 3px black;
+        }
+        .selected_func_list .chunk{
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            font-size:20px;
+            margin:5px;
+            box-shadow: 1px 2px 3px black;
+            float:left;
+        }
+        .err{
+            border:2px solid red;
+            box-shadow: 2px 2px 5px red;
+        }
+        .btn_box{
+            width:100%;
+            height:50px;
+            padding:10px 0;
+        }
+        .btn_box .btn{
+            width:170px;
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            font-size:20px;
+            border-radius:2px;
+            box-shadow: 2px 2px 5px black;
+            cursor:pointer;
+            margin:5px auto;
+        }
+        .selected_func_list .option{
+            width:120px;
+            margin:0;
+        }
+        @media screen and (min-width:500px){
+            .basic_information .information{
+                width:49%;
+            }
+            .basic_information .reserve{
+                width:90%;
+            }
+        }
+        @media screen and (min-width:750px){
+        }
+        @media screen and (min-width:850px){
+            .basic_information .information{
+                width:40%;
+            }
+            .basic_information .reserve{
+                width:70%;
+            }
+        }
+        @media screen and (min-width:950px){
+            .basic_information .information{
+                width:40%;
+            }
+            .basic_information .reserve{
+                width:65%;
+            }
+        }
+        @media screen and (min-width:1000px){
+            .basic_information .information{
+                width:34%;
+            }
+            .basic_information .reserve{
+                width:65%;
+            }
+        }
+        @media screen and (min-width:1200px){
+            .basic_information .information{
+                width:30%;
+            }
+            .basic_information .reserve{
+                width:60%;
+            }
+        }
+
+        /*员工详情*/
+        .staff_detail{
+
+        }
+        .staff_detail .btn_box{
+            width:40%;
+        }
+        .staff_detail .department_name{
+            width:60%;
+            height:40px;
+            padding:5px 0;
+            line-height: 40px;
+            font-weight: 700;
+            margin:5px 0;
+            box-shadow: 1px 1px 3px black;
+        }
+        .staff_detail .department .left{float:left}
+        .staff_detail .department .right{float:right}
+        .staff_detail .staff{
+            width:100%;
+            height:520px;
+        }
+        .staff_detail .staff .chunk{
+            width:270px;
+            height:350px;
+            float: left;
+            padding:5px;
+        }
+        .staff_detail .staff .chunk500{width:450px;height:390px}
+        .staff_detail .staff .avatar{
+            position:relative;
+            width:260px;
+            height:260px;
+            line-height: 260px;
+            text-align: center;
+            margin:5px;
+            border-radius:50%;
+            background-color: #eeeeee;
+            overflow: hidden;
+        }
+        .staff_detail .staff .avatar .progress{
+            position:absolute;
+            width:100%;
+            left:0;
+            top:0;
+            background-color: rgba(255,155,100,0.4);
+        }
+        .staff_detail .staff .avatar .edit{
+            position:absolute;
+            width:100%;
+            height:100%;
+            border-radius:50%;
+            background-color: rgba(0,0,0,0.3);
+            color:#ffffff;
+            font-size:50px;
+            z-index: 5;
+            left:0;
+            top:0;
+        }
+        .staff_detail .staff .avatar .file_input{
+            position:absolute;
+            width:100%;
+            height:100%;
+            border-radius:50%;
+            background-color: rgba(0,0,0,0.5);
+            color:#ffffff;
+            opacity: 0;
+            z-index: 6;
+            left:0;
+            top:0;
+        }
+        .staff_detail .staff .avatar .img{
+            position:absolute;
+            width:100%;
+            height:100%;
+            border-radius:50%;
+            left:0;
+            top:0;
+        }
+        .staff_detail .staff .name{
+            position: relative;
+            width:100%;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            font-size:24px;
+            font-weight:600;
+            background-color: #eeeeee;
+        }
+        .staff_detail .staff .chunk .tip{
+            position:absolute;
+            width:60px;
+            height:35px;
+            line-height: 35px;
+            text-align: center;
+            background-color: #f7e1b5;
+            cursor:pointer;
+        }
+        .staff_detail .staff .chunk .row{
+            width:100%;
+            height:40px;
+            line-height: 40px;
+            margin:5px 0;
+            padding:5px;
+            font-size:20px;
+            background-color: #eeeeee;
+        }
+        .staff_detail .staff .chunk .row .row_name{
+            display: block;
+            width:120px;
+            text-align: center;
+            float: left;
+        }
+        .staff_detail .staff .chunk .row .row_content{
+            display: block;
+            width:250px;
+            height:40px;
+            float: left;
+        }
+        .staff_detail .staff .control{
+            position:relative;
+            width:100%;
+            height:50px;
+            top:5px;
+        }
+        .staff_detail .staff .control .btn{
+            width:180px;
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            margin:5px 10px;
+            border-radius: 2px;
+            background-color: #f7e1b5;
+            font-weight:700;
+            cursor: pointer;
+        }
+        .staff_detail .funcs {
+            width:100%;
+        }
+        .staff_detail .funcs ._funcs{
+            height:120px;
+        }
+        .staff_detail .funcs ._title{
+            font-size:24px;
+            padding:5px 0;
+            border-bottom: 1px solid black;
+        }
+        .staff_detail .funcs ._funcs .func{
+            float: left;
+            width:150px;
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            margin:5px 10px;
+            border-radius:5px;
+            background-color: #00f300;
+        }
+        /*员工详情样式*/
+
+
+        /*分类列表样式*/
+        .category_table{
+            width:1200px;
+            height:auto;
+            margin-bottom: 10px;
+            padding:5px;
+            box-shadow: 1px 1px 5px blueviolet;
+            background-color: #eeeeee;
+        }
+        .category_table .path{
+            width:100%;
+            height:60px;
+            float: left;
+        }
+        .category_table .path ._path{
+            float: left;
+        }
+        .category_table .path ._path .ca{
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            padding:5px 10px;
+            margin:5px;
+            float: left;
+        }
+        .category_table .path .up{
+            width:40px;
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            margin:5px 10px;
+            font-size:36px;
+            float: right;
+            cursor:pointer;
+            background-color: #aaa;
+            border-radius: 2px;
+        }
+        .category_table .path .up:hover{ color:red;}
+        .category_table .row{
+            display: flex;
+            width:100%;
+            height:60px;
+            line-height: 60px;
+        }
+        .category_table .row .chunk{
+            display: flex;
+            text-align: center;
+            margin:-1px;
+            border:1px solid #ddd;
+        }
+        .category_table .row .id{width:50px;}
+        .category_table .row .name{width:150px;}
+        .category_table .row .level{width:100px;}
+        .category_table .row .unit{width:100px;}
+        .category_table .row .keywords{width:200px;}
+        .category_table .row .status{display:flex;width:100px;justify-content:center;}
+        .category_table .row .settings{width:200px;}
+        .category_table .row .operation{
+            display: flex;
+            width:200px;
+            justify-content:center;
+        }
+        .category_table .row .btn{
+            width:88px;
+            height:40px;
+            line-height: 40px;
+            margin:10px 5px;
+            float: left;
+            border:1px solid #aaa;
+            border-radius: 3px;
+            cursor: pointer;
+            background-color: #f7e1b5;
+        }
+        .category_table .row .status .select{
+            position: relative;
+            width:60px;
+            height:30px;
+            margin:15px 0;
+            border-radius: 15px;
+            background-color: #aaa;
+            cursor:pointer;
+            box-shadow: 2px 1px 5px #aaa;
+        }
+        .category_table .row .status .select .area{
+            position: absolute;
+            width:34px;
+            height:34px;
+            margin:-2px;
+            border-radius: 50%;
+            background-color: #3284bf;
+            top:0;
+        }
+        .category_table .row .status .selected{background-color: #38a5af;}
+        .category_table .row .status .selected .area{
+            right:0;
+        }
+        .category_table .row .operation .btn{width:68px;}
+        .category_table .row .delect{
+            background-color: #ff4c1a;
+            color:white;
+            border-color:#ff4c1a;
+        }
+        .category_table .row .not_node_category{
+            background:#aaa;
+            border-color:#aaa;
+            cursor:not-allowed
+        }
+        /*分类列表样式*/
+
+
+        /*添加分类样式*/
+        .add_form{
+            width:100%;
+            height:auto;
+            padding:10px 0;
+            background-color: #eeeeee;
+        }
+        .add_form .row{
+            display: flex;
+            height:44px;
+            line-height: 44px;
+            padding:20px 0;
+        }
+        .add_form .row .label{
+            width:240px;
+            height:44px;
+            line-height: 44px;
+            text-align: right;
+        }
+        .add_form .row .input_box{
+            display: flex;
+            width:320px;
+            height:44px;
+            line-height: 44px;
+            margin-left:15px;
+        }
+        .add_form .row .name{
+            width:700px;
+        }
+        .add_form .row .input_box .input{
+            display: flex;
+            width:100%;
+            height:100%;
+            display: block;
+            border:1px solid #aaa;
+            border-radius:3px;
+        }
+        .add_form .row .input_box .btn{
+            width:100px;
+            height:44px;
+            line-height: 44px;
+            text-align: center;
+            border-radius:3px;
+            float: left;
+            margin-right:30px;
+            background-color: #3d6af7;
+            color:white;
+            cursor: pointer;
+        }
+        .add_form .row .input_box .reset{
+            background-color: #aaa;
+        }
+        .add_form .row .input_box .keywords{
+            width:150px;
+        }
+        .add_form .row .input_box .select{
+            position: relative;
+            width:60px;
+            height:30px;
+            margin:5px 0;
+            border-radius: 15px;
+            background-color: #aaa;
+            cursor:pointer;
+            margin-left:5px;
+            box-shadow: 2px 1px 5px #aaa;
+        }
+        .add_form .row .input_box .select .area{
+            position: absolute;
+            width:34px;
+            height:34px;
+            margin:-2px;
+            border-radius: 50%;
+            background-color: #3284bf;
+            top:0;
+        }
+        .add_form .row .input_box .selected{background-color: #38a5af;}
+        .add_form .row .input_box .selected .area{
+            right:0;
+        }
+        .add_form .row .parent_id{width:600px;}
+        .add_form .row .parent_id .input{
+            width:260px;
+        }
+        /*添加分类样式*/
+    </style>
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.min.css">
+    <script src="../../static/js/vue.js"></script>
+    <script src="../../static/js/vue-router.js"></script>
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/pop.js"></script>
+    <script src="../../model/regs.js"></script>
+    <script src="../static/js/socket.io.js"></script>
+</head>
+<body>
+    <!--创建容器,包裹两个部分-->
+    <!--两容器划分,1.功能列表2.展示列表-->
+    <div class="container" id="app">
+        <div class="user">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <div class="opt">
+                <div class="list">
+                    <a href="/platform/logout">退出登录</a>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <!--侧边栏,使用栅格系统?-->
+            <div class="top">
+                <h1 v-text="title">{{title}}</h1>
+            </div>
+            <div class="list">
+                <div class="title">员工管理</div>
+                <ul>
+                    <li><router-link to="/staffs">员工列表</router-link></li>
+                    <li><router-link to="/add_staff">添加员工</router-link></li>
+                </ul>
+            </div>
+            <div class="list">
+                <div class="title">部门管理</div>
+                <ul>
+                    <li><router-link to="/staffs">部门</router-link></li>
+                    <li><router-link to="/add_staff">部门添加</router-link></li>
+                </ul>
+            </div>
+            <div class="list">
+                <div class="title">商家支持</div>
+                <ul>
+                    <li><router-link to="/staffs">分类管理</router-link></li>
+                    <li><router-link to="/staffs">商家审核</router-link></li>
+                    <li><router-link to="/add_staff">订单处理</router-link></li>
+                </ul>
+            </div>
+            <div class="list">
+                <div class="title">分类管理</div>
+                <ul>
+                    <li><router-link to="/category_list">分类列表</router-link></li>
+                    <li><router-link to="/category_add">新增分类</router-link></li>
+                    <li><router-link to="/category_attribute">分类属性</router-link></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="fill">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+            <router-view></router-view>
+            <!--内容展现块,响应式宽度-->
+        </div>
+
+    </div>
+    <!--员工列表-->
+    <template id="staff_list">
+        <div class="box">
+            <div class="title"><h2 v-text="title"></h2></div>
+            <div class="actual">
+                <div class="staff_table">
+                    <div class="search_box">搜索框</div>
+                    <div class="head row">
+                        <div class="chunk staff_id">编号</div>
+                        <div class="chunk department_name">部门</div>
+                        <div class="chunk name">姓名</div>
+                        <div class="chunk level">等级</div>
+                        <div class="chunk sex">性别</div>
+                        <div class="chunk phone">手机</div>
+                        <div class="chunk entry_time">加入时间</div>
+                        <div class="chunk reserve">备注</div>
+                        <div class="chunk operation">操作</div>
+                    </div>
+                    <div class="row" v-for="item in staffs">
+                        <div class="chunk staff_id" v-text="item.staff_id">编号</div>
+                        <div class="chunk department_name" v-text="item.department_name">部门</div>
+                        <div class="chunk name" v-text="item.staff_name">姓名</div>
+                        <div class="chunk level" v-text="item.authority_level">等级</div>
+                        <div class="chunk level" v-text="item.sex=='1'?'男':'女'">性别</div>
+                        <div class="chunk phone" v-text="item.phone">手机</div>
+                        <div class="chunk entry_time" v-text="item.entry_time">加入时间</div>
+                        <div class="chunk reserve" v-text="item.reserve">备注</div>
+                        <div class="chunk operation">
+                            <div class="details">
+                                <router-link :to="'staff_detail'+item.staff_id">详情</router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!--添加员工页面-->
+    <template id="staff_add">
+        <div class="box">
+            <div class="title"><h2 v-text="title"></h2></div>
+            <div class="actual">
+                <div class="departments">
+                    <div class="option chunk">所属部门:</div>
+                    <div class="select chunk">
+                        <div @click="showorhide">
+                            <span v-text="department.department_name"></span>
+                            <div class="icon">
+                                <i class="fa fa-chevron-circle-down" aria-hidden="true" v-show="!showselect"></i>
+                                <i class="fa fa-arrow-circle-up" aria-hidden="true" v-show="showselect"></i>
+                            </div>
+                        </div>
+                        <div :class="{
+                            __box:true,
+                            chunk:true,
+                            box_hide:!showselect
+                        }">
+                        <div class="option_box">
+                            <div class="options chunk" v-for="item in departments" v-text="item.department_name" @click="select_department(item)"></div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="selected_func_list">
+                    <div class="option chunk">已选功能:</div>
+                    <div class="func" v-for="func in funcs" v-if="func.selected" @click="select(func.func_id)" v-text="func.func_name"></div>
+                </div>
+                <div class="basic_information">
+                    <div :class="{
+                        information:true,
+                        name:true,
+                        err:staff_name.flag
+                    }">
+                        <label for="staff_name" class="label">
+                            <span class="name">员工姓名</span>
+                            <input type="text" class="input" name="staff_name" id="staff_name" v-model="staff_name.value" @blur="check('s',staff_name)">
+                        </label>
+                    </div>
+
+                    <div :class="{
+                        sex:true,
+                        err:sex.flag,
+                        br:true
+                    }">
+                        <label for="sex" class="label">
+                            <span class="name">员工性别</span>
+                            <select name="sex" id="sex" class="input" v-model="sex.value">
+                                <option value ="0">女</option>
+                                <option value ="1">男</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div :class="{
+                        information:true,
+                        phone:true,
+                        br:true,
+                        err:phone.flag
+                        }">
+                        <label for="phone" class="label">
+                            <span class="name">员工手机号&账号</span>
+                            <input type="text" class="input" name="phone" id="phone" v-model="phone.value" @blur="check('phone',phone)">
+                        </label>
+                    </div>
+                    <div :class="{
+                        information:true,
+                        password:true,
+                        err:password.flag
+                        }">
+                        <label for="password" class="label">
+                            <span class="name">密码</span>
+                            <input type="text" class="input" name="password" id="password" v-model="password.value" @blur="check('password',password)">
+                        </label>
+                    </div>
+                    <div :class="{
+                        information:true,
+                        authority_level:true,
+                        br:true,
+                        err:authority_level.flag
+                        }">
+                        <label for="authority_level" class="label">
+                            <span class="name">权限等级</span>
+                            <input type="text" class="input" name="authority_level" id="authority_level" @blur="check('authority_level',authority_level)" v-model="authority_level.value">
+                        </label>
+                    </div>
+                    <div :class="{
+                        information:true,
+                        reserve:true,
+                        br:true,
+                        err:reserve.flag
+                        }">
+                        <label for="reserve" class="label">
+                            <span class="name">备注</span>
+                            <textarea cols="30" rows="10" class="input" name="reserve" id="reserve" v-model="reserve.value" @blur="check('reserve',reserve)"></textarea>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="func_list br">
+                    <div class="name">可选功能</div>
+                    <div class="func" v-for="func in funcs" @click="select(func.func_id)">
+                        <div class="chunk" v-text="func.func_name"></div>
+                        <div class="icon">
+                            <i class="fa fa-check" aria-hidden="true" v-show="func.selected"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn_box">
+                    <div class="btn" @click="add_staff()">添加员工</div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!--员工的详情页面-->
+    <template id="staff_detail">
+        <div class="box">
+            <div class="title"><h2><span v-text="title"></span>:这是员工<span v-text="staff_id"></span>的详情页</h2></div>
+            <div class="actual">
+                <div class="staff_detail">
+                    <!--员工基本信息-->
+                    <div class="staff">
+                        <div class="department_name"><h2 v-text="staff.department_name">天猫总部</h2></div>
+                        <div class="chunk">
+                            <div class="tip" v-if="avater_update" @click="update_avatar()">更新</div>
+                            <div class="cancel" v-if="avater_update">取消</div>
+                            <div class="avatar">
+                                <img :src="'/picture/staff/avatar/'+staff.avatar" v-show="!avater_update" alt="" class="img" >
+                                <img src="" v-show="avater_update" id="image" class="img" >
+                                <div class="progress" :style="{height:avatar_progress+'%'}"></div>
+                                <div class="edit" v-if="edit_pattern">编辑</div>
+                                <input type="file" v-show="edit_pattern" class="file_input" @change="change_avatar()" id="avatar">
+                            </div>
+                            <input type="text" class="name" v-if="edit_pattern" v-model="staff.staff_name">
+                            <div class="name" v-if="!edit_pattern" v-text="staff.staff_name">员工名称</div>
+                        </div>
+                        <div class="chunk chunk500">
+                            <div class="row staff_account">
+                                <span class="row_name">员工账号:</span>
+                                <input type="text" class="row_content" v-if="edit_pattern&&staff.staff_password!=='******'" v-model="staff.phone">
+                                <span class="row_content" v-if="!edit_pattern||staff.staff_password=='******'" v-text="staff.phone">17374627185</span>
+                            </div>
+                            <div class="row staff_password">
+                                <span class="row_name">员工密码:</span>
+                                <input type="text" class="row_content" v-if="edit_pattern&&staff.staff_password!=='******'" v-model="staff.staff_password">
+                                <span class="row_content" v-if="!edit_pattern||staff.staff_password=='******'" v-text="staff.staff_password">12345678</span>
+                            </div>
+                            <div class="row phone">
+                                <span class="row_name">员工号码:</span>
+                                <input type="number" class="row_content" v-if="edit_pattern" v-model="staff.phone">
+                                <span class="row_content" v-if="!edit_pattern" v-text="staff.phone">男</span>
+                            </div>
+                            <div class="row authority_level">
+                                <span class="row_name">员工等级:</span>
+                                <input type="number" class="row_content" v-if="edit_pattern" v-model="staff.authority_level">
+                                <span class="row_content" v-if="!edit_pattern" v-text="staff.authority_level">99</span>
+                            </div>
+                            <div class="row sex">
+                                <span class="row_name">员工性别:</span>
+                                <select name="sex" v-if="edit_pattern" class="row_content" v-model="staff.sex">
+                                    <option value="0">女</option>
+                                    <option value="1">男</option>
+                                </select>
+                                <span class="row_content" v-if="!edit_pattern" v-text="staff.sex==1?'男':'女'">男</span>
+                            </div>
+                            <div class="row entry_time">
+                                <span class="row_name">入职时间:</span>
+                                <span class="row_content" v-text="staff.entry_time">2019/11/8</span>
+                            </div>
+                            <div class="row reserve">
+                                <span class="row_name">员工备注:</span>
+                                <input type="text" class="row_content" v-if="edit_pattern" v-model="staff.reserve">
+                                <span class="row_content" v-if="!edit_pattern" v-text="staff.reserve">一大段文字</span>
+                            </div>
+                        </div>
+                        <div class="control br">
+                            <div class="btn" v-if="!edit_pattern" @click="edit()">编辑</div>
+                            <div class="btn" v-if="edit_pattern" @click="save()">保存</div>
+                        </div>
+                    </div>
+                    <!--员工所属部门-->
+                    <div class="funcs">
+                        <div class="_title">该员工的所有功能</div>
+                        <div class="_funcs">
+                            <div class="func" v-for="func in staff.funcs" v-text="func.func_name"></div>
+                        </div>
+                    </div>
+                    <!--员工所拥有的方法-->
+                </div>
+            </div>
+        </div>
+    </template>
+    <!--员工详情懒加载,获取员工数据.同时获取该员工的功能列表.-->
+    <template id="shop_list">
+        <div class="box">
+            <div class="title"><h2><span v-text="title"></span></h2></div>
+            <div class="actual"><!--真实内容-->
+
+            </div>
+        </div>
+    </template>
+
+    <!--商家审核-->
+    <template id="shop_audit">
+        <div class="box">
+            <div class="title"><h2><span v-text="title"></span></h2></div>
+            <div class="actual"><!--真实内容-->
+
+            </div>
+        </div>
+    </template>
+
+    <!--分类列表-->
+    <template id="category_list">
+        <div class="box">
+            <div class="title"><h2><span v-text="title"></span></h2></div>
+            <div class="actual"><!--真实内容-->
+                <div class="category_table">
+                    <div class="path">
+                        <div class="_path">
+                            <div class="ca">当前位置:</div>
+                            <div class="ca" v-text="path.one.name" @click="show_category(path.one.category)">数码产品</div>
+                            <div class="ca icon" v-if="path.two.flag">=></div>
+                            <div class="ca" v-if="path.two.flag" v-text="path.two.name" @click="show_category(path.two.category)">手机</div>
+                        </div>
+                        <div class="up" v-show="path.one.name !== '一级分类'" @click="up_path()"><i class="fa fa-level-up" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="category row table_head">
+                        <div class="chunk id">编号</div>
+                        <div class="chunk name">分类名称</div>
+                        <div class="chunk level">分类级别</div>
+                        <div class="chunk unit">商品单位</div>
+                        <div class="chunk keywords">关键字</div>
+                        <div class="chunk status">导航栏</div>
+                        <div class="chunk status">是否显示</div>
+                        <div class="chunk settings">设置</div>
+                        <div class="chunk operation">操作</div>
+                    </div>
+                    <div class="category row" v-for="(category,i) in categorys_list" :key="i">
+                        <div class="chunk id" v-text="category.id">1</div>
+                        <input type="text" class="check name" v-show="category.edit_pattern" v-model="category.name">
+                        <div class="chunk name" v-show="!category.edit_pattern" v-text="category.name"></div>
+                        <div class="chunk level" v-text="level">一级</div>
+                        <input type="text" class="chunk unit" v-show="category.edit_pattern" v-model="category.product_unit">
+                        <div class="chunk unit" v-show="!category.edit_pattern" v-text="category.product_unit">商品单位</div>
+                        <input type="text" class="chunk keywords" v-show="category.edit_pattern" v-model="category.keywords">
+                        <div class="chunk keywords" v-show="!category.edit_pattern" v-text="category.keywords">关键字</div>
+                        <div class="chunk status" @click="change_show(category)">
+                            <div :class="{
+                                select:true,
+                                selected:category.show_status == 0
+                            }">
+                            <div class="area"></div>
+                            </div>
+                        </div >
+                        <div class="chunk status" @click="change_nav(category)">
+                            <div :class="{
+                                select:true,
+                                selected:category.nav_status == 0
+                            }">
+                                <div class="area"></div>
+                            </div>
+                        </div>
+                        <div class="chunk settings">
+                            <div :class="{
+                                btn:true,
+                                not_node_category:isEmpty(category.node_category)
+                            }" @click="_change(category)">查看下级</div>
+                            <div class="btn">转移商品</div>
+                        </div>
+                        <div class="chunk operation">
+                            <div class="btn" @click="edit_pattern(category,i)" v-text="!category.edit_pattern?'编辑':'保存'">编辑</div>
+                            <div :class="{
+                                btn:true,
+                                delect:true,
+                                not_node_category:!isEmpty(category.node_category)
+                            }" @click="delect(category,i)">删除</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--新增分类-->
+    <template id="category_add">
+        <div class="box">
+            <div class="title"><h2><span v-text="title"></span></h2></div>
+            <div class="actual"><!--真实内容-->
+                <div class="add_form">
+                    <div class="row">
+                        <label for="category_name" class="label tips">
+                            <span class="tips">分类名称:</span>
+                        </label>
+                        <div class="input_box name">
+                            <input type="text" name="category_name" id="category_name" class="input" v-model="category_name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="" class="label tips">
+                            <span class="tips">上级分类:</span>
+                        </label>
+                        <div class="input_box parent_id">
+                            <select name="one_category"  class="input" v-model="one_category" @change="select_category(0)">
+                                <option value="0">无上级分类</option>
+                                <option v-for="category in categorys" :value="category.id" v-text="category.name" ></option>
+                            </select>
+                            <select name="one_category"  class="input" v-if="flag" v-model="two_category" @change="select_category(1)">
+                                <option v-for="category in categorys[one_category].node_category" :value="category.id" v-text="category.name"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="" class="label tips">
+                            <span class="tips">是否显示:</span>
+                        </label>
+                        <div class="input_box">
+                            <div :class="{
+                                select:true,
+                                selected:status.show
+                            }" @click="status.show = !status.show">
+                                <div class="area"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="" class="label tips">
+                            <span class="tips">是否显示在导航栏:</span>
+                        </label>
+                        <div class="input_box">
+                            <div :class="{
+                                select:true,
+                                selected:status.nav
+                            }" @click="status.nav = !status.nav">
+                                <div class="area"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="" class="label tips">
+                            <span class="tips">关键词:</span>
+                        </label>
+                        <div class="input_box">
+                            <input type="text" class="input keywords" v-model="keywords">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="" class="label tips">
+                            <span class="tips">商品单位:</span>
+                        </label>
+                        <div class="input_box">
+                            <input type="text" class="input" v-model="unit">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="" class="label tips">
+                            <span class="tips">分类描述:</span>
+                        </label>
+                        <div class="input_box">
+                            <input type="text" class="input" v-model="description">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="label"></div>
+                        <div class="input_box">
+                            <div class="btn" @click="add()">提交</div>
+                            <div class="btn reset">重置</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--分类属性表,用于显示某个分类的属性和规格-->
+        <template id="category_attribute">
+        <div class="box">
+            <div class="title"><h2><span class="tips">分类属性表</span></h2></div>
+            <div class="actual">
+
+            </div>
+        </div>
+    </template>
+
+    <script>
+        console.log($reg);
+        var socket;
+        socket=io.connect('/');
+        var staffs = Vue.component('staffs',{
+            template:"#staff_list",
+            data:function(){
+                return {
+                    title:"员工列表",
+                    page_num:1,
+                    limit:20,
+                    staffs:[]
+                }
+            },
+            created(){
+                var that=this;
+                $.get('/platform/staffs',function(result){
+                    console.log(result);
+                    if(result.code===200){
+                        that.staffs=result.staffs;
+                    }else{
+                        if(result.code==302){
+                            //登录失败
+                            pop({
+                                text:"登录过期,请重新登录",
+                                btn:"<a href='/platform'>立即跳转</a>",
+                            },function(){
+                                //跳转页面
+                                location.href="/platform/login";
+                            });
+                        }else if(result.code==401){
+                            console.log(result);
+                            pop({
+                                text:"你没有权限访问此页面",
+                            });
+                            that.$router.push({ path: '/' })
+                        }
+                    }
+
+                })
+            }
+        });//员工列表
+        var add_staff = Vue.component('add_staff',{
+            template:"#staff_add",
+            data:function(){
+                return {
+                    title:"添加员工",
+                    authority:false,
+                    showselect:false,//显示所有部门列表
+                    sex:{
+                        value:'',
+                        flag:false
+                    },
+                    password:{
+                       flag:false,
+                       value:'12345678'
+                    },//密码
+                    staff_name:{
+                        flag:false,
+                        value:''
+                    },//员工名称
+                    phone:{
+                        flag:false,
+                        value:''
+                    },//员工手机号
+                    authority_level:{
+                        flag:false,
+                        value:''
+                    },//权限等级
+                    reserve:{
+                        flag:false,
+                        value:''
+                    },//评论
+                    department:{
+                        department_id:null,
+                        department_name:"未选择部门"
+                    },
+                    departments:[],
+                    funcs:[],
+                    selectList:{
+                        //根据部门id查看对应的方法
+                        //保存被选中的状态,方法id
+                    }
+                }
+            },
+            methods:{
+                showorhide(){
+                    this.showselect=!this.showselect;
+                },
+                select_department(department){
+                    //在选择部门时获取对应部门下的所有方法
+                    this.showselect=false;
+                    if(this.selectList[department.department_id]){
+                        //如果此存在则表示当前部门的方法已经获取到了,无需继续获取
+                        this.department=department;
+                        this.funcs = this.selectList[department.department_id];
+                    }else{
+                        //获取某个部门下的所有功能
+                        //接口名称,可选则查询
+                        var that = this;
+                        $.get('/platform/funcs?department_id='+department.department_id,function(result){
+                            //console.log(result);
+                            that.department=department;
+                            if(result.code==200){
+                                //赋值
+                                //console.log(that.select[department.department_id]);
+                                //console.log(result.data);
+                                //that.funcs[department.department_id]={};
+                                that.createList(department,result.data);
+                                that.funcs = that.selectList[department.department_id];
+                            }
+                        })
+                    }
+                },//选择部门
+                createList(department,funcs){
+                    //生成某个部门的方法
+                    //使用for循环判断每一项的数值
+                    this.selectList[department.department_id]=[];//创建列表
+                    //将导入的部门加入至列表中
+                    for(var i in funcs){
+                        //循环功能
+                        var func = {
+                            func_id:funcs[i].func_id,
+                            func_name:funcs[i].func_name,
+                            reserve:funcs[i].reserve,
+                            selected:false,//是否被选中
+                        };//生成功能对象
+                        console.log(funcs[i].default_add);
+                        if(funcs[i].default_add==0){
+                            func.selected=true
+                        }
+                        this.selectList[department.department_id].push(func);
+                    }
+                },//生成列表
+                selected_func(){
+                    //被选中的功能
+                    var list = [];
+                    for(var i in this.selectList[this.department.department_id]){
+                        if(this.selectList[this.department.department_id][i].selected){
+                            list.push(this.selectList[this.department.department_id][i]);
+                        }
+                    }
+                    return list;
+                },//筛选被选中的功能
+                select(func_id){
+                    var department_id = this.department.department_id;
+                    for(var i in this.funcs){
+                        if(this.funcs.func_id = func_id){
+                            this.funcs.selected = !this.funcs.selected;
+                            break;
+                        }
+                    }
+                    for(var i in this.selectList[department_id]){
+                        for(var j in this.selectList[department_id][i]){
+                            if(this.selectList[department_id][i].func_id===func_id){
+                                //console.log(this.selectList[department_id][i]);
+                                this.selectList[department_id][i].selected=!this.selectList[department_id][i].selected
+                                return
+                            }
+                        }
+                    }
+
+                },//方法更改是否被选中
+                check(field,value){
+                    value.flag = !$reg.test(field,value.value);
+                    return !value.flag;
+                },
+                add_staff(){
+                    console.log("开始添加员工");
+                    //判断数据是否合法
+                    //是否选中了部门
+                    if(!this.department.department_id){
+                      return pop({
+                          text:"请选择将该员工加入至什么部门"
+                      })
+                    }
+                    console.log(this.funcs.length);
+                    var funcs=[];
+                    for(var i in this.funcs){
+                        if(this.funcs[i].selected){
+                            funcs.push(this.funcs[i]);
+                        }
+                    }//获取已选择
+                    if(funcs.length<1){
+                        return pop({text:"请至少为该员工选择一项功能"})
+                    }
+                    if(!this.check('password',this.password)){
+                        return pop({text:"密码格式错误"})
+                    }
+                    if(!this.check('phone',this.phone)){
+                        return pop({text:"手机格式错误"})
+                    }
+                    if(!this.check('staff_name',this.staff_name)){
+                        return pop({text:"名称格式错误"})
+                    }
+                    if(!this.check('reserve',this.reserve)){
+                        return pop({text:"备注格式错误"})
+                    }
+                    if(!this.check('authority_level',this.authority_level)){
+                        return pop({text:"用户等级格式错误"})
+                    }
+                    if(this.password.flag||this.staff_name.flag||this.reserve.flag||this.phone.flag||this.authority_level.flag){
+                        //合法验证
+                        console.log(this.password);
+                        return pop({
+                            text:"请完善相应的数据"
+                        })
+                    }
+                    //生成post请求体
+                    var post_body={
+                        phone:this.phone.value,
+                        password:this.password.value,
+                        staff_name:this.staff_name.value,
+                        authority_level:this.authority_level.value,
+                        reserve:this.reserve.value,
+                        department_id:this.department.department_id,
+                        sex:this.sex.value,
+                        funcs:funcs,
+                    };
+                    console.log(post_body);
+                    $.post('/platform/addstaff',post_body,function(result){
+                        console.log(result);
+                        if(result.code==200){
+                            pop({
+                                text:"添加员工成功"
+                            });
+                        }else{
+                            pop({text:result.descript});
+                        }
+                    })
+
+                }
+            },
+            beforeCreate(){
+                //ajax请求,判断是否有此权限
+                var  that = this;
+                $.get('/platform/check_func?func_id=2',function(result){
+                    if(result.code==200){
+                        //有此功能
+                        console.log(that.authority);
+                        that.authority=true;
+                        //所有操作必须在其验证完成后操作
+                        $.get('/platform/departments',function(result){
+                            //console.log(result);
+                            if(result.code==200){
+                                //有此功能
+                                that.departments=result.data
+                            }
+                        })
+                    }else{
+                        if(result.code==302){
+                            //登录失败
+                            pop({
+                                text:"登录过期,请重新登录",
+                                btn:"<a href='/platform'>立即跳转</a>",
+                            },function(){
+                                //跳转页面
+                                location.href="/platform/login";
+                            });
+                        }else if(result.code==401){
+                            pop({
+                                text:"你没有权限访问此页面",
+                            });
+                            that.$router.push({ path: '/' })
+                        }
+                    }
+                })
+            },
+            created(){
+            },
+
+
+        });//添加员工
+        var staff_detail = Vue.component('staff_detail',{
+            template:"#staff_detail",
+            data:function(){
+                return {
+                    title:"标题",
+                    staff_id:this.$route.params.staff_id,
+                    edit_pattern:false,//是否为编辑模式
+                    edit_flag:false,//是否可以编辑紧要信息
+                    avater_update:false,
+                    avatar_progress:0,
+                    staff:{
+                        staff_id:'',
+                        staff_name:"",
+                        staff_password:"",
+                        department:"",//员工部门因是部门对象,包含部门的数据
+                        entry_time:"",
+                        funcs:[],
+                        phone:"",
+                        reserve:"",
+                        sex:"",
+                    },
+                    bf_staff:{}
+                }
+            },
+            methods:{
+              edit(){
+                  this.edit_pattern = !this.edit_pattern;
+                  for(var key in this.staff){
+                      this.bf_staff[key] = this.staff[key];
+                  }
+                  //发送
+              },
+              change_avatar(){
+                  this.avater_update = true;
+                  var reads= new FileReader();
+                  var that = this;
+                  var f=document.getElementById('avatar').files[0];
+                  reads.readAsDataURL(f);
+                  that.flag=true;
+                  reads.onload=function (e) {
+                      var img = document.getElementById('image');
+                      img.src=this.result;
+                  };
+              },
+              update_avatar(){
+                  var file = document.getElementById("avatar");
+                  var that = this;
+                  this.avater_update = false;
+                  if(file.files[0]===undefined) {
+                      alert('你没选文件');
+                  }
+                  if (!/image\/\w+/.test(file.files[0].type)) {
+                      //图片文件的type值为image/png或image/jpg
+                      alert("文件必须为图片！");
+                      return false;
+                  }
+                  var obj = {
+                      staff_id:this.staff.staff_id,
+                      func:"connect"
+                  };
+                  socket.send(JSON.stringify(obj));
+                  var formData = new FormData();
+                  formData.append("image",file.files[0]);
+                  //添加员工id
+                  formData.append("staff_id",this.staff.staff_id);
+                  socket.on('progress',function(msg){
+                      that.avatar_progress = msg;
+                      console.log(msg);
+                      if(msg>=100){
+                          that.avatar_progress=0;
+                      }
+                  });
+                  $.ajax({
+                      url:"/platform/update_avatar",
+                      data:formData,
+                      type:"post",
+                      cache: false,
+                      processData: false,
+                      contentType: false,
+                      success:function(result){
+                          console.log("成功");
+                          console.log(result)
+                      },
+                      fail:function(err){
+                          console.log("成功");
+                          console.log(err)
+                      }
+                  });
+              },
+              save(){
+                  //判断有改变的值,将其改变.或者直接将其全部发送过去,根据id直接跟新所有信息
+                  //生成数据
+                  //员工不应可以直接修改自己的部门,应当放至于部门人员管理中
+                  var change = false;
+                  for(var key in this.staff){
+                      if(this.staff[key]!==this.bf_staff[key]){
+                          change=true;
+                      }
+                  }
+                  if(!change){
+                      this.edit_pattern = false;
+                      return console.log("无需修改");
+                  }//如果没有修改数据及时中止
+                  var staff = this.staff;
+                  var new_staff = {
+                      staff_id:staff.staff_id,
+                      staff_name:staff.staff_name,
+                      staff_account:staff.staff_account,
+                      staff_password:staff.staff_password,
+                      authority_level:staff.authority_level,
+                      phone:staff.phone,
+                      reserve:staff.reserve,
+                      sex:staff.sex
+                  };
+                  var that = this;
+                  $.post('/platform/change_staff',new_staff,function(result){
+                      console.log(result);
+                      if(result.code===200){
+                          pop({text:"修改员工基本信息成功"},function(){
+                              that.edit_pattern = false;
+                          })
+                      }else{
+                        if(result.code===302){
+                            pop({text:result.descript},function(){
+                                //跳转至登陆页面
+                            })
+                        }else{
+                            pop({text:result.message})
+                        }
+                      }
+                  })
+              }
+            },
+            created(){
+                //在加载时查看是否有员工id
+                //如果没有则在提示后返回主页
+                var staff_id = this.staff_id;
+                console.log(staff_id);
+                if(!$reg.test('id',staff_id)){
+                    pop({
+                        text:"错误"
+                    });
+                    return this.$router.push({ path: '/' })
+                }
+                //验证是否可以访问此页面
+                //获取员工资料
+                var that = this;
+                $.get('/platform/staff_detail?staff_id='+staff_id,function(result){
+                    console.log(result);
+                    if(result.code===200){
+                        pop({text:"获取成功"});
+                        that.staff=result.data;
+                    }else{
+                        if(result.code===302){
+                            //重定向
+                            return pop({
+                                text:"登录过期,请重新登录",
+                                btn:"<a href='/platform'>立即跳转</a>",
+                            },function(){
+                                //跳转页面
+                                location.href="/platform/login";
+                            });
+                        }
+                        pop({
+                                text:result.descript
+                            })
+                    }
+                })
+            }
+
+
+
+        });//员工详情
+        var shop_list = Vue.component('shop_list',{
+            template:"#shop_list",
+            data:function(){
+            return{
+                title:"商家列表"
+            }
+            },
+            methods:{
+
+            }
+        });//商家列表,可以查看商家
+        var shop_audit = Vue.component('shop_audit',{
+            template:"#shop_audit",
+            data:function(){
+            return{
+                title:"审核列表"
+            }
+            },
+            methods:{
+
+            }
+        });//商家审核列表
+        var category_list = Vue.component('category_list',{
+            template:"#category_list",
+            data:function(){
+            return{
+                title:"分类列表",
+                category_name:'一级分类',
+                level:'一级',
+                category_id:0,
+                edit_flag:true,
+                //路径
+                path:{
+                  one:{
+                      flag:true,
+                      name:"一级分类",
+                      category:{}
+                  },//一级分类
+                  two:{
+                      flag:false,
+                      name:"",
+                      category:{}
+                  },//二级分类
+                  three:{
+                      flag:false,
+                      name:"",
+                      category:{}
+                  }
+                 },
+                categorys_list:[],
+                categorys:{}
+            }
+            },
+            methods:{
+                isEmpty(obj){
+                    var flag = true;//空的
+                    for(var i in obj){flag = false;}//非空
+                    return flag
+                },
+                _change(category){
+                    this.category_name = category.name;
+                    this.category_id = category.id;//父级
+                    if(!category.node_category){return alert("失败");}
+                    if(this.isEmpty(category.node_category)){return}
+                    //将数据存储
+                    this.show_category(category.node_category);//传入子集
+                },
+                //主分类
+                change_show(category){
+                    console.log(category);
+                    if(category.edit_pattern){
+                        if(category.show_status==1){
+                            category.show_status=0;
+                        }else{
+                            category.show_status=1;
+                        }
+                    }
+                },
+                change_nav(category){
+                    if(category.edit_pattern){
+                        if(category.nav_status==1){
+                            category.nav_status=0;
+                        }else{
+                            category.nav_status=1;
+                        }
+                    }
+                },
+                show_category(category){
+                    this.categorys_list = [];
+                    var flag = true;
+                    for(var i in category){
+                        if(flag){
+                            if(category[i].parent_id === 0){
+                                this.level = "一级";
+                            }else{
+                                if (this.categorys[category[i].parent_id]){
+                                    this.level = "二级";
+                                }else{
+                                    this.level = "三级";
+                                }
+                            }
+                            flag = false;
+                        }
+                        category[i].edit_pattern = false;
+                        this.categorys_list.push(category[i])
+                    }
+                    if(this.categorys_list[0]){
+                        var cate = this.categorys_list[0];
+                        //获取列表
+                        var categorys = this.categorys;
+                        if(categorys[cate.id]){
+                            //level one
+                            this.path.one.name = "一级分类";
+                            this.path.one.category = categorys;
+                            this.path.two.flag = false;
+                            this.path.two.name = "";
+                            this.path.two.category = {};
+                            this.path.three.flag = false;
+                            this.path.three.name = "";
+                            this.path.three.category = {};
+                            return
+                        }else{
+                            for(var i in categorys){
+                                if(categorys[i].node_category[cate.id]){
+                                    //level two
+                                    this.path.one.name = categorys[i].name;
+                                    this.path.one.category = categorys;
+                                    this.path.two.flag = false;
+                                    this.path.two.name = "";
+                                    this.path.two.category = {};
+                                    this.path.three.flag = false;
+                                    this.path.three.name = "";
+                                    this.path.three.category = {};
+                                    return
+                                }else{
+                                    for(var j in categorys[i].node_category){
+                                        if(categorys[i].node_category[j].node_category[cate.id]){
+                                            //level three
+                                            this.path.one.name = categorys[i].name;
+                                            this.path.one.category = categorys;
+                                            this.path.two.flag = true;
+                                            this.path.two.name = categorys[i].node_category[j].name;
+                                            this.path.two.category = categorys[i].node_category;
+                                            this.path.three.flag = false;
+                                            this.path.three.name = "";
+                                            this.path.three.category =  {};
+                                            return
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                edit_pattern(category,i){
+                    if(this.edit_flag){
+                        this.edit_flag = false;
+                        category.edit_pattern = true;
+                        this.categorys_list[i] = category;
+                        var category_name = category.name;
+                        category.name = "";
+                        category.name = category_name;
+                        //生成跟新后的数据
+                        console.log(category);
+                    }else{
+                        if(category.edit_pattern ){
+                            //保存当前项
+                            category.edit_pattern = false;
+                            this.edit_flag = true;
+                            var category_name = category.name;
+                            category.name = "";
+                            category.name = category_name;
+                            $.post("/platform_goods/update_category",category,function(result){
+                                console.log(result);
+                                if(result.code === 200){
+                                    pop({text:"成功"})
+                                }
+                            })
+                        }else{
+                            pop({text:"不能同时编辑多项"})
+                        }
+                    }
+
+                },
+                up_path(){
+                    //回到上级
+                    var _path = this.path;
+                    if(_path.two.flag){
+                        this.show_category(_path.two.category)
+                    }else{
+                        this.show_category(_path.one.category)
+                    }
+                },
+                delect(category,i){
+                    if(!this.isEmpty(category.node_category)){return pop({text:"无法直接删除含有有子分类的分类"})}
+                    //是否需要判断?
+                    //传入当前的类别id
+                    var category_id = category.id;
+                    var that = this;
+                    $.get('/platform_goods/delect_category?id='+category_id,function(result){
+                        if(result.code === 200){
+                            pop({text:"成功删除"});
+                            that.categorys_list.splice(i,1);
+                            that.regetcategorys()
+                        }else{
+                            console.log(result);
+                            pop({text:result.descript})
+                        }
+                    })
+                },
+                regetcategorys(){
+                    var that = this;
+                    $.get('/platform_goods/categorys',function(result){
+                        console.log(result);
+                        if(result.code===200){
+                            that.categorys = result.data;
+                            that.show_category(result.data);
+                        }
+                    })
+                }
+            },
+            created(){
+                var that = this;
+                $.get('/platform_goods/categorys',function(result){
+                    console.log(result);
+                    if(result.code===200){
+                        that.categorys = result.data;
+                        that.show_category(result.data);
+                    }
+                })
+            },
+        });//分类列表,集成了分类的查询,修改,以及删除
+        var category_add = Vue.component('category_add',{
+            template:"#category_add",
+            data:function(){
+                return {
+                    title:"添加分类",
+                    parent_id:0,
+                    flag:false,
+                    one_category:0,//一级分类
+                    two_category:0,//二级分类
+                    one_level:true,
+                    category_name:"",
+                    keywords:"",
+                    description:"",
+                    unit:"",
+                    status:{
+                      nav:false,
+                      show:false,
+                    },
+                    categorys:{}
+                }
+            },
+            methods:{
+                isEmpty(obj){
+                    var flag = true;//空的
+                    for(var i in obj){flag = false;}//非空
+                    return flag
+                },
+                select_category(level){
+                    if(level === 0){
+                        //1级分类选择
+                        this.parent_id = this.one_category;
+                        if(this.parent_id == 0){
+                            this.flag = false;
+                        }else{
+                            this.flag = true;
+                            for(var i in this.categorys[this.parent_id].node_category){
+                                break;
+                            }
+                        }
+                    }else if(level === 1){
+
+                        this.parent_id = this.two_category;
+                    }
+                },
+                add(){
+                    //生成json对象
+                    var obj = {
+                        name:this.category_name,
+                        parent_id:this.parent_id,
+                        keywords:this.keywords,
+                        description:this.description,
+                        unit:this.unit
+                    };
+                    obj.name = this.category_name;
+                    if(!obj.name){return pop({text:"必须输入分类名称"})}
+                    obj.nav_status = this.status.nav ? 0 :1;
+                    obj.show_status = this.status.show ? 0 :1;
+                    $.post("/platform_goods/category_add",obj,function(result){
+                        console.log(result);
+                        if(result.code === 200){
+                            pop({text:"添加完成"})
+                        }else{
+                            if(result.code === 302){
+                                pop({text:"登录失效,请重新登录"})
+                            }else{
+                                pop({text:result.descript})
+                            }
+                        }
+                    })
+                }
+            },
+            created(){
+                var that = this;
+                $.get('/platform_goods/categorys',function(result){
+                    if(result.code===200){that.categorys = result.data;}
+                })
+            },
+        });//添加分类
+        var category_attribute = Vue.component('category_attribute',{});//分类属性
+        const routes = [
+            { path: '/staffs', component: staffs },
+            { path: '/add_staff', component: add_staff },
+            { path: '/staff_detail:staff_id',name:"staff_detail",component: staff_detail },
+            { path: '/shop_list',name:"shop_list",component: shop_list },
+            { path: '/shop_audit',name:"shop_audit",component: shop_audit },
+            { path: '/category_list',name:"category_list",component: category_list },
+            { path: '/category_add',name:"category_add",component: category_add }
+        ];
+        const router = new VueRouter({
+            routes // (缩写) 相当于 routes: routes
+        });//路由实例化
+        var  app = new Vue({
+            el:"#app",
+            router,
+            data:{
+                title:"天猫商城管理"
+            }
+        });
+    </script>
+</body>
+</html>
