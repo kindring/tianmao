@@ -29,46 +29,71 @@ function check_func(json){
     return promise;
 }
 function categorys(req,res){
-    //直接调用数据库拿取所有数据
-    db.platform_goods.categorys(function(err,result){
-        if(err){return res.json({
+    //直接调用数据库拿取所有数据,可以指定参数之只获取某类下面的子集,也可以不指定返回全部数据
+    var parent_id = req.query.parent_id;
+    if(!parent_id){
+        //未指定父级时返回全部数据
+        db.platform_goods.categorys(function(err,result){
+            if(err){return res.json({
                 code:500,
                 message:err.message,
                 descript:"错误,未知,请调试"
             })}
-        //分类列表
-        let categorys = {};
-        for(let i in result){
-            if(result[i].parent_id===0){
-                categorys[result[i].id] = result[i];
-                categorys[result[i].id].node_category = {};//二级
-            }else{
-                //二级分类添加
-                if(categorys[result[i].parent_id]){
-                    categorys[result[i].parent_id].node_category[result[i].id] = result[i];
-                    categorys[result[i].parent_id].node_category[result[i].id].node_category = {};//三级
+            //分类列表
+            let categorys = {};
+            for(let i in result){
+                if(result[i].parent_id===0){
+                    categorys[result[i].id] = result[i];
+                    categorys[result[i].id].node_category = {};//二级
                 }else{
-                    //三级分类
-                    for(let j in categorys){
-                        //循环获取1级分类下边的二级分类
-                        if(categorys[j].node_category[result[i].parent_id]){
-                            //匹配到则表明有二级分类
-                            categorys[j].node_category[result[i].parent_id].node_category[result[i].id] = result[i];
-                            break;
+                    //二级分类添加
+                    if(categorys[result[i].parent_id]){
+                        categorys[result[i].parent_id].node_category[result[i].id] = result[i];
+                        categorys[result[i].parent_id].node_category[result[i].id].node_category = {};//三级
+                    }else{
+                        //三级分类
+                        for(let j in categorys){
+                            //循环获取1级分类下边的二级分类
+                            if(categorys[j].node_category[result[i].parent_id]){
+                                //匹配到则表明有二级分类
+                                categorys[j].node_category[result[i].parent_id].node_category[result[i].id] = result[i];
+                                break;
+                            }
                         }
                     }
-                }
 
+                }
             }
-        }
-        res.json({
-            code:200,
-            data:categorys,
-            message:'ok',
-            descript:"成功"
+            res.json({
+                code:200,
+                data:categorys,
+                message:'ok',
+                descript:"成功"
+            })
         })
+    }else{
+        //指定了父级时返回子集数据
+        //判断数据合法性
+        if(!reg.test("id",parent_id)){return res.json({code:403,message:"data type error",descript:"数据格式错误"})}
+        db.platform_goods.p_categorys(parent_id,function(err,result){
+            if(err){return res.json({code:err.code||500,message:err.message||"服务器错误",descript:err.descript||"服务器错误"})}
+            res.json({code:200,data:result,message:"ok",descript:"ok"})
+        })
+    }
+
+}//获取所有的分类,按格式返回
+
+function category_num(req,res){
+    //需要权限?命名
+    //获取逻辑,判断是否有父级id,如果没有则显示一级分类,有的话则显示该分类下边的所有匹配的功能
+    var category_id = req.query.parent_id||0;
+    console.log(category_id);
+    if(!reg.test('id',category_id)){return res.json({code:403,message:"数据格式错误",descript:"数据格式错误"})}
+    db.platform_goods.category_num(category_id,function(err,result){
+        if(err){return res.json({code:err.code||500,message:err.message||"服务器错误",descript:err.descript||"服务器错误"})}
+        res.json({code:200,data:result})
     })
-}
+}//分类下边的数量
 
 function category_add(req,res){
     let category = req.body;
@@ -85,7 +110,7 @@ function category_add(req,res){
             res.json({code:200,message:"成功",descript:"ok",data:result});
         })
     })
-}
+}//添加分类
 
 function update_category(req,res){
     let category = req.body;
@@ -96,16 +121,35 @@ function update_category(req,res){
         console.log(data);
         res.json({code:200,message:"ok",descript:"ok"})
     })
-}
+}//更新指定分类数据
+
+function add_attr(req,res){
+    //判断数据是否合法
+    if(!req.body){return res.json({code:403,message:"must have data",descript:"必须含有数据"})}
+    if(!req.body.name||!req.body.category_id||!req.body.select_type||!req.body.input_type||!req.body.input_list||!req.body.hand_add_status||!req.body.type||!req.body.required){
+        console.log("添加分类所输入的数据----");
+        console.log(req.body);
+        return res.json({code:403,message:"data is bug",descript:"数据不完整"})
+    }
+    let body = req.body;
+    //判断是否有功能
+    check_func({
+        staff_id:req.session.staff,
+        func_id:11
+    }).then((flag)=>{
+        if(!flag){return res.json({code:403,message:"fail not this func",descript:"失败,没有此功能"})}
+        // 有权限,判断数据是否合法
+        // 判断数据是否存在
+        db.platform_goods.add_attr(body,function(err,result){
+            if(err){return res.json({code:err.code||500,message:err.message||"server is error",descript:err.descript||"服务器错误"})}
+            res.json({code:200,data:result,message:"ok",descript:"ok"})
+        });
+    })
+}//添加属性规格
 
 function delect_category(req,res){
     //首先判断是否有此功能
     var id = req.query['id'];
-    console.log('req.query++++++');
-    console.log(req.query);
-    console.log(req.query.id);
-    console.log(req.query['category_id']);
-    console.log(id);
     if(!id){return res.json({code:402,message:"删除分类必须要有分类id",descript:"删除分类必须要有分类id"})}
     check_func({staff_id:req.session.staff,func_id:10}).then((flag)=>{
         if(!flag){return res.json({code:403,message:"无权限访问",descript:"无权限使用该功能"})}
@@ -116,7 +160,23 @@ function delect_category(req,res){
         })
     })
 }//删除分类的方法
+
+function attr(req,res){
+    //判断是否有对应参数
+    if(!req.query.category_id){return res.json({code:403,message:"fail",descript:"失败,该接口因传入分类id即category_id"})}
+    db.platform_goods.attr(req.query.category_id,function(err,result){
+        if(err){return res.json({code:403,message:err.message,descript:"fail"})}
+        res.json({code:200,data:result,message:"ok",descript:"ok"})
+    });
+}//获取指定分类下边的规格与参数信息
+
+
+
 module.exports.categorys = categorys;
 module.exports.category_add = category_add;
 module.exports.update_category = update_category;
 module.exports.delect_category = delect_category;
+module.exports.category_num = category_num;
+
+module.exports.add_attr = add_attr;
+module.exports.attr = attr;

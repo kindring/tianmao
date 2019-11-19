@@ -105,6 +105,36 @@
         .br{
             clear: left;
         }
+        .no_select{
+            cursor:not-allowed}/*禁止选择*/
+        .switch-component{
+            position:relative;
+            width:60px;
+            height:30px;
+            background-color: #dadada;
+            border-radius:30px;
+            border:none;
+            outline:none;
+            -webkit-appearance:none;/*不知道这个玩意干嘛的*/
+            transition:all .2s ease;
+        }/*switch模式的多选框或者单选的按钮*/
+        .switch-component::after{
+            content:'';
+            position:absolute;
+            top:0;
+            left:0;
+            width:50%;
+            height:100%;
+            background-color: #fff;
+            border-radius: 50%;
+            transition:all .2s ease;
+        }
+        .switch-component:checked{
+            background-color: #86c0fa;
+        }
+        .switch-component:checked::after{
+            left:50%;
+        }
         .user{
             position:fixed;
             width:50px;
@@ -761,6 +791,7 @@
             height:auto;
             padding:10px 0;
             background-color: #eeeeee;
+            border-radius: 5px;
         }
         .add_form .row{
             display: flex;
@@ -781,6 +812,19 @@
             line-height: 44px;
             margin-left:15px;
         }
+        .add_form .check_row{
+            height:84px;
+        }
+        .add_form .check_row .input_box{
+            height:84px;
+        }
+        .add_form .row .input_box .check_box{
+            width:210px;
+            height:100px;
+            padding:0 20px;
+            margin-right:20px;
+        }
+        /*check_box的样式*/
         .add_form .row .name{
             width:700px;
         }
@@ -838,7 +882,143 @@
         .add_form .row .parent_id .input{
             width:260px;
         }
+        .add_form .row .input_box .resetting{
+            background-color: #aaaaaa;
+            color:black;
+        }
         /*添加分类样式*/
+
+
+        .category_attribute_table{
+            width:1000px;
+            background-color: #e9e9e9;
+        }
+        .category_attribute_table .category_select{
+            display: flex;
+            width:100%;
+            height:50px;
+            line-height: 50px;
+            padding:2px 0;
+        }
+        .category_select .chunk{
+            width:210px;
+            height:50px;
+            text-align: right;
+            margin-right:15px;
+        }
+        .category_select .chunk select{
+            display: block;
+            width:100%;
+            height:100%;
+            border:1px solid #ddd;
+            font-size:18px;
+            position:relative;
+            background-color: #e9e9e9;
+
+        }
+        .category_attribute_table .row{
+            display: flex;
+            width:100%;
+            height:50px;
+        }
+        .category_attribute_table .table_head{
+            margin-top:5px;
+        }
+        .category_attribute_table .row .chunk{
+            display: flex;
+            position:relative;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            border:1px solid #aaa;
+            margin:-1px;
+            justify-content: center;
+        }
+        .category_attribute_table .row .id{width:100px}
+        .category_attribute_table .row .name{width:200px}
+        .category_attribute_table .row .number{width:150px}
+        .category_attribute_table .row .settings{width:250px}
+        .category_attribute_table .row .operation{width:100px}
+        .category_attribute_table .row .chunk .btn{
+            padding:5px 10px;
+            height:30px;
+            line-height: 30px;
+            margin:5px;
+            /*background-color: #ddd;*/
+            border-radius: 5px;
+            cursor: pointer;
+            border:1px solid #aaa;
+        }
+        .category_attribute_table .row .chunk .btn:hover{
+            background-color: #ddd;
+        }
+
+        .attr{
+            width:100%;
+            background-color: #efefef;
+        }
+        .attr .path{
+            height:40px;
+            line-height:40px;
+            font-size:20px;
+        }
+        .attr .chunk{
+            padding:10px 0;
+            height:auto;
+        }
+        .attr .chunk ._title{
+            height:40px;
+            line-height: 40px;
+            font-size:18px;
+        }
+        .attr .chunk .list{
+            display: flex;
+            width:100%;
+            height:85px;
+            border:1px solid #aaa;
+        }
+        .attr .chunk .list .wrap{
+            width:50px;
+            height:85px;
+            text-align: center;
+            border: 1px solid #aaa;
+            border-top:0;
+            border-bottom:0;
+        }
+        .attr .chunk .list .wrap .name{
+            height:34px;
+            line-height:34px;
+            border-bottom: 1px solid #aaa;
+            overflow:hidden;
+        }
+        .attr .chunk .list .wrap .contents{
+            display: flex;
+            height:50px;
+            line-height:50px;
+            overflow: hidden;
+        }
+        .attr .chunk .list .attr_name{width:100px;}/*100*//*100*/
+        .attr .chunk .list .input_list{width:300px;}/*300*/
+        .attr .chunk .list .select{width:150px;}/*450*/
+
+        .attr .chunk .list .options{
+            width:200px;
+        }/*450*/
+        .attr .chunk .list .options .btn{
+            width:90px;
+            height:40px;
+            line-height: 40px;
+            margin:5px;
+            background-color: #3d6af7;
+            color:#efeaef;
+            border-radius: 5px;
+            cursor:pointer;
+        }
+        .attr .chunk .list .options .delect{
+            background-color: #ff4c1a;
+            color:white;
+            border-color:#ff4c1a;
+        }
     </style>
     <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.min.css">
     <script src="../../static/js/vue.js"></script>
@@ -893,6 +1073,7 @@
                     <li><router-link to="/category_list">分类列表</router-link></li>
                     <li><router-link to="/category_add">新增分类</router-link></li>
                     <li><router-link to="/category_attribute">分类属性</router-link></li>
+                    <li><router-link to="/attribute_add">添加属性</router-link></li>
                 </ul>
             </div>
         </div>
@@ -1319,15 +1500,276 @@
     </template>
 
     <!--分类属性表,用于显示某个分类的属性和规格-->
-        <template id="category_attribute">
+    <template id="category_attribute">
         <div class="box">
             <div class="title"><h2><span class="tips">分类属性表</span></h2></div>
             <div class="actual">
-
+                <div class="category_attribute_table">
+                    <div class="category_select">
+                        <div class="chunk">当前类目:</div>
+                        <div class="chunk">
+                            <select name="" id="one" v-model="one_level" @change="one_change()">
+                                <option value="0">所有一级类目</option>
+                                <option v-for="item in one_list" :value="item.id" v-text="item.name"></option>
+                            </select>
+                        </div>
+                        <div class="chunk">
+                            <select name="" id="two" v-model="two_level" @change="two_change()">
+                                <option value="0">未选择具体二级类目</option>
+                                <option v-for="item in two_list" :value="item.id" v-text="item.name">数码产品</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table_head row">
+                        <div class="chunk id">编号</div>
+                        <div class="chunk name">类名</div>
+                        <div class="chunk number">规格数量</div>
+                        <div class="chunk number">参数数量</div>
+                        <div class="chunk settings">设置</div>
+                        <div class="chunk operation">操作</div>
+                    </div>
+                    <div class="row" v-for="item in show_list">
+                        <div class="chunk id" v-text="item.id">1</div>
+                        <div class="chunk name" v-text="item.name">数码产品</div>
+                        <div class="chunk number" v-text="item.specifications">12</div>
+                        <div class="chunk number" v-text="item.parameter">5</div>
+                        <div class="chunk settings">
+                            <div class="btn" @click="get_more_select(item)">参数列表</div>
+                            <div class="btn">规格列表</div>
+                        </div>
+                        <div class="chunk operation">
+                            <div class="btn">编辑</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </template>
 
+    <!--添加分类的属性或者规格-->
+    <template id="attribute_add">
+        <div class="box">
+            <div class="title"><h2><span class="tips" v-text="title">分类属性表</span></h2></div>
+            <div class="actual">
+            <div class="add_form">
+                <div class="row">
+                    <label for="attribute_name" class="label tips">
+                        <span class="tips">属性名称:</span>
+                    </label>
+                    <div class="input_box name">
+                        <input type="text" name="attribute_name" id="attribute_name" class="input" v-model="name" placeholder="属性的名称,中文或者英文">
+                    </div>
+                </div>
+                <!--属性名称-->
+                <div class="row">
+                    <label for="" class="label tips">
+                        <span class="tips">上级分类:</span>
+                    </label>
+                    <div class="input_box parent_id">
+                        <select name="one_category"  class="input" v-model="one_level" @change="select_one()">
+                            <option value="0">未选择主分类</option>
+                            <option v-for="category in one_list" :value="category.id" v-text="category.name"></option>
+                        </select>
+                        <select name="two_category"  class="input" v-model="two_level" @change="select_two()">
+                            <option value="0">未选择二级分类</option>
+                            <option v-for="category in two_list" :value="category.id" v-text="category.name">未选择分类</option>
+                        </select>
+                        <select name="three_category" v-model="three_level" class="input">
+                            <option value="0">未选择子分类</option>
+                            <option v-for="category in three_list" :value="category.id" v-text="category.name">未选择分类</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="attr_type" class="label tips">
+                        <span class="tips">属性的类型:</span>
+                    </label>
+                    <div class="input_box parent_id">
+                        <select name="attr_type" id="attr_type" v-model="type" class="input">
+                            <option value="0">规格</option>
+                            <option value="1">参数</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row check_row">
+                    <label for="select_type" class="label tips">
+                        <span class="tips">属性选择类型:</span>
+                    </label>
+                    <div class="input_box">
+                        <div class="check_box">
+                            <div class="tips">唯一</div>
+                            <input type="radio" name="select_type" value="0" v-model="select_type" class="switch-component">
+                        </div>
+                        <div class="check_box">
+                            <div class="tips">单选</div>
+                            <input type="radio" name="select_type" value="1" v-model="select_type" class="switch-component">
+                        </div>
+                    </div>
+                </div>
+                <div class="row check_row">
+                    <label for="" class="label tips">
+                        <span class="tips">属性录入方式:</span>
+                    </label>
+                    <div class="input_box">
+                        <div class="check_box">
+                            <div class="tips">手工录入</div>
+                            <input type="radio" name="mode" value="0" v-model="input_type" class="switch-component">
+                        </div>
+                        <div class="check_box">
+                            <div class="tips">列表中选取</div>
+                            <input type="radio" name="mode" value="1" v-model="input_type"  class="switch-component">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="" class="label tips">
+                        <span class="tips">属性列表,使用逗号隔开:</span>
+                    </label>
+                    <div class="input_box name">
+                        <input type="text" name="values" v-model="input_list" placeholder="使用逗号隔开可选的列表" class="input">
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="" class="label tips">
+                        <span class="tips">是否支持用户新增:</span>
+                    </label>
+                    <div class="input_box">
+                        <input type="checkbox" name="hand_add" v-model="hand_add_status" class="switch-component">
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="" class="label tips">
+                        <span class="tips">是否必须填写:</span>
+                    </label>
+                    <div class="input_box">
+                        <input type="checkbox" name="require" v-model="require" class="switch-component">
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="" class="label tips">
+                        <span class="tips"></span>
+                    </label>
+                    <div class="input_box">
+                        <div class="btn" @click="add_attr()">添加</div>
+                        <div class="btn resetting">重置</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </template>
+
+    <!--某个分类的属性或者规格-->
+    <template id="attribute">
+        <div class="box">
+            <div class="title"><h2><span class="tips" v-text="title">分类属性</span></h2></div>
+            <div class="actual">
+                <div class="attr">
+                    <div class="path">当前路径为 <span v-text="path"></span></div>
+                    <div class="chunk">
+                        <div class="_title">规格:</div>
+                        <div class="list" v-for="item in spe">
+                            <div class="wrap">
+                                <div class="name">编号</div>
+                                <div class="contents" v-text="item.id"></div>
+                            </div>
+                            <div class="wrap attr_name">
+                                <div class="name">名称</div>
+                                <div class="contents" v-text="item.name"></div>
+                            </div>
+                            <div class="wrap select">
+                                <div class="name">属性选择类型</div>
+                                <div class="contents">
+                                    <span v-text="item.select_type=='0'?'唯一':'单选'"></span>
+                                </div>
+                            </div>
+                            <div class="wrap select">
+                                <div class="name">属性录入方式</div>
+                                <div class="contents">
+                                    <span v-text="item.input_type=='0'?'手动添加':'列表中选择'"></span>
+                                </div>
+                            </div>
+                            <div class="wrap select">
+                                <div class="name">支持手动新增</div>
+                                <div class="contents">
+                                    <span v-text="item.hand_add_status=='0'?'不支持':'支持'"></span>
+                                </div>
+                            </div>
+                            <div class="wrap attr_name">
+                                <div class="name">必填</div>
+                                <div class="contents">
+                                    <span v-text="item.required=='0'?'否':'是'"></span>
+                                </div>
+                            </div>
+                            <div class="wrap input_list">
+                                <div class="name">属性列表</div>
+                                <div class="contents" v-text="item.input_list"></div>
+                            </div>
+                            <div class="wrap options">
+                                <div class="name">操作</div>
+                                <div class="contents">
+                                    <div class="btn">编辑</div>
+                                    <div class="btn delect">删除</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+                    <div class="chunk">
+                        <div class="_title">参数:</div>
+                        <div class="list" v-for="item in parameter">
+                            <div class="wrap">
+                                <div class="name">编号</div>
+                                <div class="contents" v-text="item.id"></div>
+                            </div>
+                            <div class="wrap attr_name">
+                                <div class="name">名称</div>
+                                <div class="contents" v-text="item.name"></div>
+                            </div>
+                            <div class="wrap select">
+                                <div class="name">属性选择类型</div>
+                                <div class="contents">
+                                    <span v-text="item.select_type=='0'?'唯一':'单选'"></span>
+                                </div>
+                            </div>
+                            <div class="wrap select">
+                                <div class="name">属性录入方式</div>
+                                <div class="contents">
+                                    <span v-text="item.input_type=='0'?'手动添加':'列表中选择'"></span>
+                                </div>
+                            </div>
+                            <div class="wrap select">
+                                <div class="name">支持手动新增</div>
+                                <div class="contents">
+                                    <span v-text="item.hand_add_status=='0'?'不支持':'支持'"></span>
+                                </div>
+                            </div>
+                            <div class="wrap attr_name">
+                                <div class="name">必填</div>
+                                <div class="contents">
+                                    <span v-text="item.required=='0'?'否':'是'"></span>
+                                </div>
+                            </div>
+                            <div class="wrap input_list">
+                                <div class="name">属性列表</div>
+                                <div class="contents" v-text="item.input_list"></div>
+                            </div>
+                            <div class="wrap options">
+                                <div class="name">操作</div>
+                                <div class="contents">
+                                    <div class="btn">编辑</div>
+                                    <div class="btn delect">删除</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </template>
     <script>
         console.log($reg);
         var socket;
@@ -2084,15 +2526,284 @@
                 })
             },
         });//添加分类
-        var category_attribute = Vue.component('category_attribute',{});//分类属性
+        var category_attribute = Vue.component('category_attribute',{
+            template: "#category_attribute",
+            data:function(){
+                return {
+                    title:"分类属性管理页面",
+                    one_level:0,//一级分类所指示的id
+                    two_level:0,//二级分类所指向的id
+                    parent_id:0,//父级id,在此
+                    one_list:[],
+                    two_list:[],//二级可选分类
+                    three_list:{},//三级分类列表
+                    show_list:[],//下方列表显示的数据
+                }
+            },
+            methods:{
+                one_change(){
+                    console.log("当前选择的一级分类为"+this.one_level);
+                    //清空二级分类
+                    this.two_level = 0;
+                    //根据当前选择的id拉取数据
+                    var that = this;
+                    if(this.one_level==0){
+                        that.two_list = [];
+                        that.show_list = that.one_list;
+                        return
+                    }
+                    //生成一级路径
+                    $.get('/platform_goods/category_num?parent_id='+this.one_level,function(result){
+                        console.log(result);
+                        if(result.code===200){
+                            that.two_list = result.data;
+                            that.show_list = result.data;
+                        }
+                    })
+                },
+                two_change(){
+                    console.log("当前选择的二级分类为"+this.two_level);
+                    //判断当前的id
+                    if(this.two_level == 0){
+                        this.show_list = this.two_list;
+                        return;
+                    }
+                    var that = this;
+                    //判断此次选择的二级分类是否有相同的数据
+                    if(this.three_list[this.two_level]){
+                        return that.show_list = this.three_list[this.two_level];
+                    }
+                    $.get('/platform_goods/category_num?parent_id='+this.two_level,function(result){
+                        console.log(result);
+                        if(result.code===200){
+                            that.three_list[that.two_level] = result.data;
+                            that.show_list = result.data;
+                        }
+                    })
+                },
+                get_more_select(category){
+                    //获取分类信息
+                    //路由跳转
+                    if(category.parent_id == 0){
+                        return pop({text:"一级分类无法查询"})
+                    }
+                    //获取一级路径,获取二级路径
+                    var path = "";
+                    var one = {};
+                    for(var i in this.one_list){
+                        if(this.one_list[i].id == this.one_level){
+                            one = this.one_list[i];
+                            break;
+                        }
+                    }
+                    //使用for循环获得一级路径
+                    path += one.name;
+                    if(this.two_level!=0){
+                        //在有二级分类事使用for循环来获取数据
+                        for(var i in this.two_list){
+                            if(this.two_list[i].id = this.two_level){
+                                path=path+">>>"+this.two_list[i].name
+                                break;
+                            }
+                        }
+                    }
+                    path=path+">>> "+category.name;
+                    this.$router.push({
+                        name:"attribute",
+                        params:{
+                            category:category,
+                            path:path
+                        }
+                    })
+                }
+            },
+            created(){
+                //在此处获取1级分类列表
+                var that = this;
+                $.get('/platform_goods/category_num?parent_id=0',function(result){
+                    console.log(result);
+                    if(result.code===200){
+                        that.one_list = result.data;
+                        that.show_list = result.data;
+                    }
+                })
+            }
+        });//分类属性
+        var attribute_add = Vue.component('attribute_add',{
+            template:"#attribute_add",
+            data:function(){
+                return {
+                    title:"添加属性",
+                    name:"",//名称
+                    type:0,//类型,规格或者参数
+                    one_level:0,
+                    two_level:0,
+                    three_level:0,
+                    one_list:[],
+                    two_list:[],
+                    three_list:[],
+                    two_obj:{},//使用对象的形式来存储获取到的二级分类
+                    three_obj:{},//同上级
+                    select_type:0,//属性选择类型,0唯一,1单选,2多选
+                    input_type:0,//属性录入方式
+                    input_list:"",//属性列表
+                    hand_add_status:true,//是否支持手动添加
+                    require:true,//是否必须选择
+                }
+            },
+            methods:{
+                select_one(){
+                    console.log(this.one_level);
+                    if(this.one_level==0){this.two_level=0;this.three_level=0; return;};
+                    //恢复为默认分类
+                    //判断是否存在于二级分类中
+                    this.two_level = 0;
+                    if(this.two_obj[this.one_level]){
+
+                        this.two_list = this.two_obj[this.one_level]
+                    }else{
+                        var that = this;
+                        var parent_id = this.one_level;
+                        $.get('/platform_goods/categorys?parent_id='+this.one_level,function(result){
+                            if(result.code===200){
+                                that.two_list=result.data;
+                                that.two_obj[parent_id]=result.data;
+                            }else{
+                                pop({text:result.descript})
+                            }
+                        })
+                    }
+                },//选择二级分类
+                select_two(){
+                    if(this.two_level==0){this.three_level=0; return;};
+                    //恢复为默认分类
+                    //判断是否存在于二级分类中
+                    this.three_level = 0;
+                    if(this.three_obj[this.two_level]){
+                        this.three_list = this.three_obj[this.two_level]
+                    }else{
+                        var that = this;
+                        var parent_id = this.two_level;
+                        $.get('/platform_goods/categorys?parent_id='+parent_id,function(result){
+                            if(result.code===200){
+                                that.three_list=result.data;
+                                that.three_obj[parent_id]=result.data;
+                            }else{
+                                pop({text:result.descript})
+                            }
+                        })
+                    }
+                },//选择三级分类
+                add_attr(){
+                    //判断数据是否合法,只需判断名称即可
+                    // 判断名称是否合法
+                    if(!$reg.test("name",this.name)){return pop({text:"名称格式不对"})}
+                    //判断是否选择了二级或者是三级分类
+                    var category_id=0;
+                    if(this.two_level!=0){
+                        if(this.three_level!=0){
+                            //有三级则使用三级,没有则用二级分类
+                            category_id = this.three_level;
+                        }else{
+                            category_id = this.two_level;
+                        }
+                    }else{
+                        return pop({text:"至少选择至二级分类"})
+                    }//获取分类id
+                    if(category_id==0){return pop({text:"无法使用此分类"});}//异常处理
+                    //判断属性列表有多少个值
+                    var input_list = this.input_list;
+                    var list = input_list.split(',');
+                    if(list[0]==""){return pop("属性录入因使用,进行分割");}//
+                    //生成数据体
+                    var attr_obj = {
+                        category_id:category_id,
+                        name:this.name,
+                        select_type:this.select_type,
+                        input_type:this.input_type,
+                        input_list:this.input_list,
+                        type:this.type
+                    };
+                    //attr_obj.type=this.type?"0":"1";
+                    attr_obj.required=this.require?"0":"1";
+                    attr_obj.hand_add_status=this.hand_add_status?"0":"1";
+                    console.log(attr_obj);
+                    $.post('platform_goods/category_add_attr',attr_obj,function(result){
+                        console.log(result);
+                        if(result.code===200){
+                            pop({text:"添加成功"})
+                        }else{
+                            pop({text:result.descript})
+                        }
+                    })
+                },
+            },
+            created(){
+                var that = this;
+                $.get('/platform_goods/categorys?parent_id=0',function(result){
+                    console.log(result);
+                    if(result.code===200){
+                        that.one_list = result.data;
+                        that.show_list = result.data;
+                    }
+                })
+            }//创建时获取一级分类
+        });//添加规格参数;
+
+        var attribute = Vue.component('attribute',{
+            template:"#attribute",
+            data:function(){
+                return {
+                    title:"属性",
+                    category:{},
+                    path:"",
+                    spe:[],//规格
+                    parameter:[],//参数
+                }
+            },
+            methods:{
+                enter_edit_pattern(item){
+                    //进入编辑模式
+                }
+            },
+            created(){
+                //console.log(this.$route.params.obj);
+                if(!this.$route.params.category){return this.$router.push({ path: '/' })}
+                //成功拿到数据
+                // 保存
+                this.category = this.$route.params.category;
+                this.path = this.$route.params.path;
+                var that = this;
+                $.get('platform_goods/attr?category_id='+this.category.category_id,function(result){
+                    console.log(result);
+                    //
+                    if(result.code === 200){
+                        for(var i in result.data){
+                            var data = result.data[i];
+                            data.edit_pattern = false;
+                            if(data.type == 0){
+                                that.spe.push(data);
+                            }else{
+                                that.parameter.push(data);
+                            }
+                        }
+                    }
+                })
+            }
+        });
+
+
         const routes = [
-            { path: '/staffs', component: staffs },
-            { path: '/add_staff', component: add_staff },
-            { path: '/staff_detail:staff_id',name:"staff_detail",component: staff_detail },
-            { path: '/shop_list',name:"shop_list",component: shop_list },
-            { path: '/shop_audit',name:"shop_audit",component: shop_audit },
-            { path: '/category_list',name:"category_list",component: category_list },
-            { path: '/category_add',name:"category_add",component: category_add }
+            { path: '/staffs', component: staffs },//员工列表
+            { path: '/add_staff', component: add_staff },//添加员工
+            { path: '/staff_detail:staff_id',name:"staff_detail",component: staff_detail },//员工详情
+            { path: '/shop_list',name:"shop_list",component: shop_list },//商品列表,未完成
+            { path: '/shop_audit',name:"shop_audit",component: shop_audit },//商品审核,未完成
+            { path: '/category_list',name:"category_list",component: category_list },//分类列表,ok
+            { path: '/category_add',name:"category_add",component: category_add },//添加分类,ok
+            { path: '/category_attribute',name:"category_attribute",component: category_attribute },//分类属性列表,ok
+            { path: '/attribute_add',name:"attribute_add",component: attribute_add },//属性添加,ok
+            { path: '/attribute',name:"attribute",component: attribute }//分类属性
         ];
         const router = new VueRouter({
             routes // (缩写) 相当于 routes: routes
