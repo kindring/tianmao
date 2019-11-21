@@ -1,0 +1,6 @@
+{
+  "address":"127.0.0.1",
+  "port":"80",
+  "static_path":"/static",
+  "view_path":"/views"
+}
