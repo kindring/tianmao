@@ -662,6 +662,7 @@
             padding:5px 0;
             border-bottom: 1px solid black;
         }
+
         .staff_detail .funcs ._funcs .func{
             float: left;
             width:150px;
@@ -967,9 +968,33 @@
             height:auto;
         }
         .attr .chunk ._title{
+            display: flex;
             height:40px;
             line-height: 40px;
             font-size:18px;
+        }
+        .attr .chunk ._title .btn{
+            width:100px;
+            height:35px;
+            line-height: 35px;
+            text-align: center;
+            margin:2.5px 5px;
+            border-radius: 5px;
+            background-color: #3d6af7;
+        }
+        .attr .chunk ._title .icon{
+            width:40px;
+            height:40px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 5px;
+            margin-left:10px;
+            font-size:30px;
+            color: #ffc814;
+            cursor:pointer;
+        }
+        .attr .chunk ._title .icon:hover{
+            color:red;
         }
         .attr .chunk .list{
             display: flex;
@@ -996,7 +1021,10 @@
             height:50px;
             line-height:50px;
             overflow: hidden;
+            width:100%;
+            border:0;
         }
+        .attr .chunk .list .wrap .contents .input{margin:10px 0;}
         .attr .chunk .list .attr_name{width:100px;}/*100*//*100*/
         .attr .chunk .list .input_list{width:300px;}/*300*/
         .attr .chunk .list .select{width:150px;}/*450*/
@@ -1337,6 +1365,7 @@
         </div>
     </template>
 
+    <!--分类管理.完成,包含分类增删改查,分类属性的增删改查-->
     <!--分类列表-->
     <template id="category_list">
         <div class="box">
@@ -1597,12 +1626,8 @@
                     </label>
                     <div class="input_box">
                         <div class="check_box">
-                            <div class="tips">唯一</div>
-                            <input type="radio" name="select_type" value="0" v-model="select_type" class="switch-component">
-                        </div>
-                        <div class="check_box">
-                            <div class="tips">单选</div>
-                            <input type="radio" name="select_type" value="1" v-model="select_type" class="switch-component">
+                            <div class="tips" v-text="select_type?'唯一':'单选'">唯一</div>
+                            <input type="checkbox" name="select_type" value="0" v-model="select_type" class="switch-component">
                         </div>
                     </div>
                 </div>
@@ -1612,12 +1637,8 @@
                     </label>
                     <div class="input_box">
                         <div class="check_box">
-                            <div class="tips">手工录入</div>
-                            <input type="radio" name="mode" value="0" v-model="input_type" class="switch-component">
-                        </div>
-                        <div class="check_box">
-                            <div class="tips">列表中选取</div>
-                            <input type="radio" name="mode" value="1" v-model="input_type"  class="switch-component">
+                            <div class="tips" v-text="input_type?'手工录入':'列表中选取'">手工录入</div>
+                            <input type="checkbox" name="mode" value="0" v-model="input_type" class="switch-component">
                         </div>
                     </div>
                 </div>
@@ -1668,48 +1689,57 @@
                 <div class="attr">
                     <div class="path">当前路径为 <span v-text="path"></span></div>
                     <div class="chunk">
-                        <div class="_title">规格:</div>
+                        <div class="_title"><div class="btn">规格:</div><div class="icon" @click="add(0)"><i class="fa fa-plus-square" aria-hidden="true"></i></div></div>
                         <div class="list" v-for="item in spe">
                             <div class="wrap">
                                 <div class="name">编号</div>
-                                <div class="contents" v-text="item.id"></div>
+                                <div class="contents" v-text="item.id">
+
+                                </div>
                             </div>
                             <div class="wrap attr_name">
                                 <div class="name">名称</div>
-                                <div class="contents" v-text="item.name"></div>
+                                <input type="text" v-if="item.edit_pattern" v-model="item.name" class="contents">
+                                <div class="contents" v-if="!item.edit_pattern" v-text="item.name"></div>
                             </div>
                             <div class="wrap select">
                                 <div class="name">属性选择类型</div>
                                 <div class="contents">
-                                    <span v-text="item.select_type=='0'?'唯一':'单选'"></span>
+                                    <input type="checkbox" name="select_type" v-if="item.edit_pattern" v-model="item.select_type" class="switch-component input">
+                                    <span  v-text="item.select_type=='0'?'唯一':'单选'"></span>
                                 </div>
                             </div>
                             <div class="wrap select">
                                 <div class="name">属性录入方式</div>
                                 <div class="contents">
+                                    <input type="checkbox" name="input_type" v-if="item.edit_pattern" v-model="item.input_type" class="switch-component input">
                                     <span v-text="item.input_type=='0'?'手动添加':'列表中选择'"></span>
                                 </div>
                             </div>
                             <div class="wrap select">
                                 <div class="name">支持手动新增</div>
                                 <div class="contents">
+                                    <input type="checkbox" name="hand_add_status" v-if="item.edit_pattern" v-model="item.hand_add_status" class="switch-component input">
                                     <span v-text="item.hand_add_status=='0'?'不支持':'支持'"></span>
                                 </div>
                             </div>
                             <div class="wrap attr_name">
                                 <div class="name">必填</div>
                                 <div class="contents">
+                                    <input type="checkbox" name="required" v-if="item.edit_pattern" v-model="item.required" class="switch-component input">
                                     <span v-text="item.required=='0'?'否':'是'"></span>
                                 </div>
                             </div>
                             <div class="wrap input_list">
                                 <div class="name">属性列表</div>
-                                <div class="contents" v-text="item.input_list"></div>
+                                <input type="text" v-if="item.edit_pattern" v-model="item.input_list" class="contents">
+                                <div class="contents" v-if="!item.edit_pattern" v-text="item.input_list"></div>
                             </div>
                             <div class="wrap options">
                                 <div class="name">操作</div>
                                 <div class="contents">
-                                    <div class="btn">编辑</div>
+                                    <div class="btn" @click="enter_edit_pattern(item)" v-if="!item.edit_pattern">编辑</div>
+                                    <div class="btn" @click="save_attr(item)" v-if="item.edit_pattern">保存</div>
                                     <div class="btn delect">删除</div>
                                 </div>
                             </div>
@@ -1717,48 +1747,57 @@
                     </div>
                     </br>
                     <div class="chunk">
-                        <div class="_title">参数:</div>
+                        <div class="_title"><div class="btn">参数:</div> <div class="icon" @click="add(1)"><i class="fa fa-plus-square" aria-hidden="true"></i></div></div>
                         <div class="list" v-for="item in parameter">
                             <div class="wrap">
                                 <div class="name">编号</div>
-                                <div class="contents" v-text="item.id"></div>
+                                <div class="contents" v-text="item.id">
+
+                                </div>
                             </div>
                             <div class="wrap attr_name">
                                 <div class="name">名称</div>
-                                <div class="contents" v-text="item.name"></div>
+                                <input type="text" v-if="item.edit_pattern" v-model="item.name" class="contents">
+                                <div class="contents" v-if="!item.edit_pattern" v-text="item.name"></div>
                             </div>
                             <div class="wrap select">
                                 <div class="name">属性选择类型</div>
                                 <div class="contents">
-                                    <span v-text="item.select_type=='0'?'唯一':'单选'"></span>
+                                    <input type="checkbox" name="select_type" v-if="item.edit_pattern" v-model="item.select_type" class="switch-component input">
+                                    <span  v-text="item.select_type=='0'?'唯一':'单选'"></span>
                                 </div>
                             </div>
                             <div class="wrap select">
                                 <div class="name">属性录入方式</div>
                                 <div class="contents">
+                                    <input type="checkbox" name="input_type" v-if="item.edit_pattern" v-model="item.input_type" class="switch-component input">
                                     <span v-text="item.input_type=='0'?'手动添加':'列表中选择'"></span>
                                 </div>
                             </div>
                             <div class="wrap select">
                                 <div class="name">支持手动新增</div>
                                 <div class="contents">
+                                    <input type="checkbox" name="hand_add_status" v-if="item.edit_pattern" v-model="item.hand_add_status" class="switch-component input">
                                     <span v-text="item.hand_add_status=='0'?'不支持':'支持'"></span>
                                 </div>
                             </div>
                             <div class="wrap attr_name">
                                 <div class="name">必填</div>
                                 <div class="contents">
+                                    <input type="checkbox" name="required" v-if="item.edit_pattern" v-model="item.required" class="switch-component input">
                                     <span v-text="item.required=='0'?'否':'是'"></span>
                                 </div>
                             </div>
                             <div class="wrap input_list">
                                 <div class="name">属性列表</div>
-                                <div class="contents" v-text="item.input_list"></div>
+                                <input type="text" v-if="item.edit_pattern" v-model="item.input_list" class="contents">
+                                <div class="contents" v-if="!item.edit_pattern" v-text="item.input_list"></div>
                             </div>
                             <div class="wrap options">
                                 <div class="name">操作</div>
                                 <div class="contents">
-                                    <div class="btn">编辑</div>
+                                    <div class="btn" @click="enter_edit_pattern(item)" v-if="!item.edit_pattern">编辑</div>
+                                    <div class="btn" @click="save_attr(item)" v-if="item.edit_pattern">保存</div>
                                     <div class="btn delect">删除</div>
                                 </div>
                             </div>
@@ -1774,6 +1813,11 @@
         console.log($reg);
         var socket;
         socket=io.connect('/');
+        function isEmpty(obj){
+                var flag = true;//空的
+                for(var i in obj){flag = false;break}//非空
+                return flag
+        }//判断对象是否为空,如果是空则返回true,否则返回false
         var staffs = Vue.component('staffs',{
             template:"#staff_list",
             data:function(){
@@ -2590,11 +2634,23 @@
                     //获取一级路径,获取二级路径
                     var path = "";
                     var one = {};
+                    var one_id = this.one_level;
+                    var two_id = 0;
+                    var three_id = 0;
                     for(var i in this.one_list){
+                        if(category.parent_id == this.one_list[i].id){
+                            //属于二级分类
+                            two_id = category.id;
+                        }
                         if(this.one_list[i].id == this.one_level){
                             one = this.one_list[i];
                             break;
                         }
+                    }
+                    if(two_id == 0){
+                        //证明此分类属于三级分类
+                        two_id = this.two_level;
+                        three_id = category.id;//获取三级分类
                     }
                     //使用for循环获得一级路径
                     path += one.name;
@@ -2612,6 +2668,9 @@
                         name:"attribute",
                         params:{
                             category:category,
+                            one_id:one_id,
+                            two_id:two_id,
+                            three:three_id,
                             path:path
                         }
                     })
@@ -2628,7 +2687,7 @@
                     }
                 })
             }
-        });//分类属性
+        });//分类属性,属性查
         var attribute_add = Vue.component('attribute_add',{
             template:"#attribute_add",
             data:function(){
@@ -2739,6 +2798,7 @@
                 },
             },
             created(){
+                // 判断是否有参数,如果有参数则直接跳转至相应位置
                 var that = this;
                 $.get('/platform_goods/categorys?parent_id=0',function(result){
                     console.log(result);
@@ -2746,24 +2806,100 @@
                         that.one_list = result.data;
                         that.show_list = result.data;
                     }
-                })
-            }//创建时获取一级分类
-        });//添加规格参数;
+                });
+                if(this.$route.params.one_id){
+                    console.log('this.$route.params.one_id');
+                    console.log(this.$route.params.two_id);
+                    this.one_level = this.$route.params.one_id;
+                    this.select_one();
+                    this.two_level = this.$route.params.two_id;
+                    this.select_two();
+                }
+                if(this.$route.params.three_id){
+                    //如果是三级分类则获取二级分类下边的子分类
+                    this.three_level = this.$route.params.three_id;
+                }
+                if(this.$route.params.type){
+                    this.type = this.$route.params.type;
+                }
 
+            }//创建时获取一级分类
+        });//添加规格参数;属性增
         var attribute = Vue.component('attribute',{
             template:"#attribute",
             data:function(){
                 return {
                     title:"属性",
+                    one_id:0,
+                    two_id:0,
+                    three_id:0,
                     category:{},
                     path:"",
+                    bf:{},//用于备份当前的数据
+                    editpattern:true,//是否允许进入编辑模式
                     spe:[],//规格
                     parameter:[],//参数
                 }
             },
             methods:{
                 enter_edit_pattern(item){
-                    //进入编辑模式
+                    //进入编辑模式,将数据转化成flag模式
+                    if(this.editpattern){
+                        // 使用深拷贝备份数据
+                        for(var key in item){
+                            this.bf[key] = item[key];
+                        }
+                        item.edit_pattern=true;
+                        var name = item.name;//备份某项数据
+                        item.name="";//修改值,触发v-if事件
+                        item.name=name;//恢复值
+                        this.editpattern = false;//进入编辑模式
+                    }else{
+                        pop({text:"拒绝同时编辑两项"})
+                    }
+                },
+                save_attr(item){
+                    // 判断是否有被改变的值
+                    this.editpattern = true;//退出模式
+                    item.edit_pattern = false;
+                    var name = item.name;
+                    item.name="";
+                    item.name=name;
+                    var obj = {};
+                    console.log(this.bf);
+                    console.log(item);
+                    if(this.bf.name!=item.name){obj.name=item.name};
+                    if(this.bf.input_list!=item.input_list){obj.input_list=item.input_list}
+                    if(this.bf.required!=item.required){obj.required=item.required?'0':'1'}
+                    if(this.bf.hand_add_status!=item.hand_add_status){obj.hand_add_status=item.hand_add_status?'0':'1'}
+                    if(this.bf.input_type!=item.input_type){obj.input_type=item.input_type?'0':'1'}
+                    if(this.bf.select_type!=item.select_type){obj.select_type=item.select_type?'0':'1'}
+                    //生成了不同的样式之后判断obj是否为空
+                    if(isEmpty(obj)){return false}//console.log("没有被修改的值,无需改变")};
+                    //有改变需要进行修改
+                    obj.id = item.id;//修改后的值
+                    $.post("platform_goods/attribute_change",obj,function(result){
+                        console.log(result);
+                        if(result.code===200){
+                            pop({text:"修改成功"})
+                        }
+                    })
+                },
+                add(type){
+                    //获取当前的一级id,二级id,以及三级id
+                    // 跳转至add页面,顺带传入参数
+                    var one_id = this.one_id;
+                    var two_id = this.two_id;
+                    var three_id = this.three_id;
+                    this.$router.push({
+                        name:"attribute_add",
+                        params:{
+                            one_id:one_id,
+                            two_id:two_id,
+                            three_id:three_id,
+                            type:type
+                        }
+                    })
                 }
             },
             created(){
@@ -2773,6 +2909,9 @@
                 // 保存
                 this.category = this.$route.params.category;
                 this.path = this.$route.params.path;
+                this.one_id = this.$route.params.one_id;
+                this.two_id = this.$route.params.two_id;
+                this.three_id = this.$route.params.three_id;
                 var that = this;
                 $.get('platform_goods/attr?category_id='+this.category.category_id,function(result){
                     console.log(result);
@@ -2790,7 +2929,7 @@
                     }
                 })
             }
-        });
+        });//属性的详情,以及编辑页面,属性改,
 
 
         const routes = [

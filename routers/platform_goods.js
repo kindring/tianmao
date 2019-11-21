@@ -34,6 +34,11 @@ router.post('/category_add_attr',(req,res)=>{
     bbl.add_attr(req,res);
 });
 
+router.post('/attribute_change',(req,res)=>{
+    if(!req.session.staff){return res.send({code:302,message:"login is out",descript:"登录失效"})}
+    bbl.attribute_change(req,res);
+});
+
 
 
 module.exports = router;

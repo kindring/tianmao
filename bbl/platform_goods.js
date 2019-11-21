@@ -170,7 +170,23 @@ function attr(req,res){
     });
 }//获取指定分类下边的规格与参数信息
 
+function attribute_change(req,res){
+    //判断权限
+    let body = req.body;
+    if(!body){return res.json({code:403,message:"must exist query body",descript:"必须包含数据"})}
+    if(!body.id){return res.json({code:403,message:"must exist attribute id",descript:"必须包含属性id"})}
+    //开始更新
+    check_func({staff_id:req.session.staff,func_id:10}).then((flag)=>{
+        if(!flag){return res.json({code:403,message:"无权限访问",descript:"无权限使用该功能"})}
+        db.platform_goods.attribute_change(body,function(err,result){
+            if(err){console.log(err);return res.json({code:500,message:err.message,descript:"失败"})}
+            res.json({code:200,message:"ok",descript:"ok",data:result});
+            console.log("属性修改成功ok");
+            console.log(result)
+        })
+    })
 
+}//属性修改,
 
 module.exports.categorys = categorys;
 module.exports.category_add = category_add;
@@ -180,3 +196,4 @@ module.exports.category_num = category_num;
 
 module.exports.add_attr = add_attr;
 module.exports.attr = attr;
+module.exports.attribute_change = attribute_change;
