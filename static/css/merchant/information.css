@@ -1,0 +1,267 @@
+	.file{
+	    width: 200px;
+	    height: 25px;
+	    line-height: 25px;
+	    position:relative;
+    }
+    .file input{
+	    width: 75px;
+	    height: 25px;
+	    opacity:0;
+	    filter:alpha(opacity=0);
+	    position:absolute;
+	    left:0;
+	    top:0;
+	    float: left;
+	    margin-left: 20px;
+    }
+    .file span{
+    	padding-right: 5px;
+    	padding-bottom: 2px;
+    	padding-top: 2px;
+    	background-color: green;
+    	margin-left: 20px;
+    }
+    .file button{
+    	width: 75px;
+    	height: 25px;
+    	position:absolute;
+    	margin-left: 20px;
+    	float: right;
+    }
+    .center-in-center{
+    	box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    	display: none; 
+    	width: 200px;   
+        height: 200px;   
+        background-color: white;   
+        position: absolute;   
+        top: 50%;   
+        left: 50%;   
+        -webkit-transform: translate(-50%, -50%);   
+        -moz-transform: translate(-50%, -50%);   
+        -ms-transform: translate(-50%, -50%);   
+        -o-transform: translate(-50%, -50%);   
+        transform: translate(-50%, -50%);   
+    }   
+    #show-change{
+    	float: right;
+    	font-size: 12px;
+    	background-color: yellow;
+    	border:0;
+    	margin-top: 10px;
+    }
+    #hide-change{
+    	width: 20px;
+    	height: 20px;
+    	float: right;
+    	margin-right: 2px;
+    }
+    #hide-change button{
+    	border:0;
+    	background-color: white;
+    }
+
+/*信息总样式*/
+    .information-zong{
+    	width: 1000px;
+    	height: 500px;
+    	/*background-color: red;*/
+    }
+    .zong-warning{
+    	margin-left: 100px;
+    	width: 320px;
+    	height: 30px;
+    	font-size: 12px;
+        background-color: white;
+        line-height: 30px;
+        border:1px solid #eee;
+    }
+    .information-title{
+    	margin: 10px 10px;
+    }
+    .information{
+    	width: 410px;
+    	height: 30px;
+    	line-height: 30px;
+    	/*background-color: red;*/
+    }
+    .information-name{
+    	width: 80px;
+    	height: 30px;
+    	margin:10px 30px;
+    	float: left;
+    }
+    .information-data{
+    	width: 180px;
+    	height: 30px;
+    	margin:10px 10px;
+    	float: left;
+    }
+    .information-name-verify{
+    	display: none;
+    	width: 60px;
+    	height: 30px;
+    	float: left;
+    	font-size: 12px;
+    	margin: 10px 0px;
+    }
+    .information-name-verify1{
+    	display: none;
+    	width: 60px;
+    	height: 30px;
+    	float: left;
+    	font-size: 12px;
+    	margin: 10px 0px;
+    }
+    .information-sign{
+    	margin:10px 35px;
+    	float: left;
+    }
+    .information-photo{
+    	float: left;
+    	width: 120px;
+    	height: 120px;
+    	margin:10px 10px;
+    }
+    .information-lujing{
+    	width: 200px;
+    	height: 30px;
+    	float: left;
+    }
+    .information-intro{
+    	margin:10px 35px;
+    	float: left;
+    }
+    .information-intro-verify{
+    	display: none;
+    	width: 60px;
+    	height: 30px;
+    	float: left;
+    	font-size: 12px;
+    	margin: 10px 0px;
+    }
+    .information-intro-verify1{
+    	display: none;
+    	width: 60px;
+    	height: 30px;
+    	float: left;
+    	font-size: 12px;
+    	margin: 10px 0px;
+    }
+    .information-landlord-verify{
+    	display: none;
+    	width: 60px;
+    	height: 30px;
+    	float: left;
+    	font-size: 12px;
+    	margin: 10px 0px;
+    }
+    .information-landlord-verify1{
+    	display: none;
+    	width: 60px;
+    	height: 30px;
+    	float: left;
+    	font-size: 12px;
+    	margin: 10px 0px;
+    }
+    .information-intro-data{
+    	/*margin:;*/
+    	margin:10px 10px;
+    	float: left;
+    }
+/*店铺信息下拉框*/
+    .store-name-zong{
+        width: 160px;
+        height: 40px;
+        background-color: white;
+        padding: 10px 20px;
+    }
+    .store-name{
+    	width: 40px;
+    	height: 20px;
+    	float: left;
+    }
+    .store-identity-verify{
+    	width: 20px;
+    	height: 20px;
+    	margin-top: 4px;
+    	margin-left: 10px;
+    	float: left;
+    }
+    #store-identity-verify-i1{
+    	display: none;color: red;
+    }
+    #store-identity-verify-i2{
+    	display: none;
+    }
+    .store-information-show-k{
+    	width: 160px;
+    	height: 230px;
+    	margin-top: -10px;
+    	position: absolute;
+    	background-color: white;
+    	box-shadow: 0 2px 4px 0 rgba(0,0,0,.2)
+    }
+    .head-portrait{
+    	width: 160px;
+        height: 50px;
+        padding: 10px 20px;
+    }
+    .business-level-zong{
+    	width: 160px;
+    	height: 30px;
+    	padding: 20px 20px;
+    }
+    .business-level-title{
+    	width: 60px;
+    	height: 20px;
+    	font-size: 12px;
+    	color: #666;
+    	float: left;
+    }
+    .business-level-data{
+    	text-align: center;
+    	width: 60px;
+    	height: 20px;
+    	font-size: 12px;
+    	float: left;
+    }
+    .merchant-credit-score-zong{
+    	width: 160px;
+    	height: 30px;
+    	padding: 20px 20px;
+    }
+    .merchant-credit-score-title{
+    	width: 60px;
+    	height: 20px;
+    	font-size: 12px;
+    	color: #666;
+    	float: left;
+    }
+    .merchant-credit-score-data{
+    	text-align: center;
+    	width: 60px;
+    	height: 20px;
+    	font-size: 12px;
+    	float: left;
+    }
+    .registration-time-zong{
+    	width: 160px;
+    	height: 30px;
+    	padding: 20px 20px;
+    }
+    .registration-time-title{
+    	width: 60px;
+    	height: 20px;
+    	font-size: 12px;
+    	color: #666;
+    	float: left;
+    }
+    .registration-time-data{
+    	text-align: center;
+    	width: 60px;
+    	height: 20px;
+    	font-size: 12px;
+    	float: left;
+    }

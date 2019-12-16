@@ -153,3 +153,25 @@ function autoCenter(el){
     //var width=parent.offsetWidth();
     console.log(parent);
 }
+
+function __equal_array(array1,array2){
+    var flag = true;
+    if(array1.length!==array2.length){return false}
+    //如果是数组的话长度不一致则永远不相等
+    for(var i in array1){
+        var item = array1[i];
+        var item2 = array2[i];
+        if(!item2){return false}
+        if(typeof(item)==="object"){
+            if(!__equal_array(item,item2)){
+                //如果这个函数返回了false则也返回false
+                return false;
+            }
+        }
+        // 不是对象的话则判断两者是否相等
+        if(item!==item2){
+            return false;
+        }
+    }
+    return true;
+}//判断是否相等

@@ -1,0 +1,934 @@
+
+
+/*导航栏*/
+.alink {
+    color: red;
+}
+
+.navigation {
+    width: 100%;
+    height: 32px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.navgt {
+    margin: 0 auto;
+    width: 1280px;
+    height: 100%;
+    position: relative;
+}
+
+.leftnav {
+    display: inline-block;
+    position: relative;
+}
+
+.rightnav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    white-space: nowrap;
+}
+
+.welcome {
+    white-space: nowrap;
+    float: left;
+    line-height: 32px;
+    color: #999999;
+    font-size: 12px;
+}
+
+.register {
+    float: left;
+    line-height: 32px;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+/*天猫图片&&网站用处类型*/
+.photo-user-type {
+    width: 100%;
+    height: 75px;
+    background-color: white;
+    margin: 0 10px 0;
+}
+
+.photo-user-type-son {
+    margin: 0 auto;
+    width: 1080px;
+    height: 100%;
+    position: relative;
+}
+
+.photo-div {
+    width: 140px;
+    height: 75px;
+    float: left;
+}
+
+.user-type-div {
+    width: 120px;
+    height: 75px;
+    float: left;
+    font-size: 24px;
+    line-height: 75px;
+}
+
+/*提醒商家需要注意的事项*/
+.matters-need-attention {
+    height: 50px;
+    margin: 18px auto;
+    width: 1080px;
+}
+
+.matters-need-attention-son {
+    height: 100%;
+    position: relative;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .32);
+    background: #fff;
+    border-color: #0085d7;
+    border-radius: 5px;
+    border-style: solid;
+    background-color: white;
+    border-width: 1px;
+}
+
+.matters-need-attention-font {
+    padding: 12px;
+    width: 1080px;
+    font-size: 13px;
+    position: absolute;
+    display: block; /*内联对象需加*/
+    word-break: keep-all; /* 不换行 */
+    white-space: nowrap; /* 不换行 */
+    overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+
+/*信息导航*/
+#information-navigation {
+    width: 100%;
+}
+
+/*元素高度大于192.8的属性*/
+.element-height-big {
+    /*background-color: white;*/
+    position: fixed;
+    top: 0;
+}
+
+/*当前类目*/
+.current-category {
+    height: 70px;
+    margin: 18px auto;
+    width: 1080px;
+}
+
+.current-category-son {
+    height: 100%;
+    box-shadow: 0 -2px 4px 0 rgba(229, 229, 229, .5);
+    background: #fff;
+    background-color: white;
+    font-size: 12px;
+}
+
+.current-category-son span {
+    padding: 25px;
+    width: 330px;
+    height: 40px;
+    float: left;
+    display: block; /*内联对象需加*/
+    word-break: keep-all; /* 不换行 */
+    white-space: nowrap; /* 不换行 */
+    overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+
+.current-category-son a {
+    margin: 15px;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    float: left;
+    border-style: solid;
+    background-color: #e4f0fd;
+    border-color: #0085d7;
+    border-width: 1px;
+    border-radius: 3px;
+    transition: all 0.5s; /* 过度属性 */
+    text-decoration: none;
+}
+
+.current-category-son a:hover {
+    background-color: #0085d7;
+    color: white;
+}
+
+/*基础信息*/
+/*.information-zong-card{*/
+/*width: 100%;*/
+/*height: 300px;*/
+/*overflow: auto;overflow-x: hidden;*/
+/*position: relative*/
+/*}*/
+.nav-a-add {
+    background-color: #f2f3f7;
+    color: #0085d7;
+}
+
+.nav-a-add1 {
+    background-color: #f2f3f7;
+    color: #0085d7;
+}
+
+/*信息总*/
+/*共用属性*/
+/*提示*/
+.boby_title_hint {
+    width: 900px;
+    height: 20px;
+    font-size: 12px;
+    color: red;
+    margin: 0px 0px 0px 120px;
+    display: none;
+}
+
+.information_title_share {
+    width: 1080px;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    color: #333;
+    padding: 18px;
+    line-height: 12px;
+    height: 48px;
+    margin-bottom: 24px;
+}
+
+.sales_message_prc_cod_zong_share {
+    padding: 0 80px;
+    width: 1080px;
+    height: 35px;
+    margin: 12px 0;
+}
+
+.sales_message_name_share {
+    padding: 8px 0px;
+    width: 70px;
+    height: 35px;
+    float: left;
+    font-size: 12px;
+}
+
+.sales_message_name_share span {
+    color: red;
+}
+
+.sales_message_data_share {
+    padding: 0px;
+    width: 600px;
+    height: 35px;
+    float: left;
+}
+
+.sales_message_data_share input {
+    width: 300px;
+    height: 35px;
+}
+
+/*基础信息*/
+.basic_information {
+    width: 1080px;
+    height: 400px;
+    box-shadow: 0 -2px 4px 0 rgba(229, 229, 229, .5);
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+/*宝贝标题*/
+.boby_title_zong {
+    padding: 0 80px;
+    width: 1080px;
+    height: 35px;
+    margin-bottom: 15px;
+}
+
+.boby_title_name {
+    padding: 8px 0px;
+    width: 70px;
+    height: 35px;
+    float: left;
+    font-size: 12px;
+}
+
+.boby_title_name span {
+    color: red;
+}
+
+.boby_title_data {
+    padding: 0px;
+    width: 700px;
+    height: 35px;
+    float: left;
+}
+
+.boby_title_data input {
+    width: 700px;
+    height: 35px;
+}
+
+/*类目属性*/
+.category_attributes_zong {
+    padding: 0 88px;
+    width: 1080px;
+    height: 140px;
+}
+
+.category_attributes_title {
+    width: 1080px;
+    height: 35px;
+    /*float: left;*/
+    font-size: 12px;
+}
+
+.category_attributes_title span {
+    margin-left: 15px;
+    font-size: 12px;
+    color: #949494;
+    line-height: 16px;
+    overflow: hidden;
+}
+
+/*类目属性数据*/
+.category_attributes_data {
+    width: 800px;
+    border: 1px solid #eee;
+    margin: 0 0 0 60px;
+}
+
+.category_attributes_data_son {
+    display: flex;
+    margin: 24px 40px;
+    width: 310px;
+    height: 35px;
+    float: left;
+}
+
+.category_attributes_data_title {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    float: left;
+    text-align: center;
+}
+
+.category_attributes_data_sl {
+    position: relative;
+    width: 240px;
+    height: 35px;
+    float: left;
+    border-radius: 2px;
+    border: 1px solid #a0a0a0;;
+}
+
+.category_attributes_data_sl .input {
+    display: block;
+    width: 185px;
+    height: 35px;
+    border-right: 0;
+}
+
+.category_attributes_data_sl .fill {
+    display: block;
+    width: 100%;
+    height: 35px;
+}
+
+.category_attributes_data_sl .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 34px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 36px;
+    color: #a0a0a0;
+    border: 1px solid #aaa;
+    cursor: pointer;
+}
+
+.category_attributes_data_sl .icon:hover {
+    color: rebeccapurple;
+}
+
+.category_attributes_data_sl .icon i {
+    width: 100%;
+    height: 100%;
+    line-height: 35px;
+}
+
+.category_attributes_data_sl .select_list {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    width: 100%;
+    max-height: 176px;
+    height: auto;
+    overflow: auto;
+    background-color: white;
+    z-index: 999;
+    border: 1px solid #2b73e6;
+    border-top: 0;
+    border-radius: 2px;
+}
+
+.category_attributes_data_sl .select_list::-webkit-scrollbar-track {
+    /*滚条的样式,即一大长条的样式*/
+    /*background-color: red;*/
+}
+
+/*这两貌似没什么需求*/
+.category_attributes_data_sl .select_list::-webkit-scrollbar-track-piece {
+    /*滚条的样式,即一大长条的样式*/
+    /*background-color: yellow;*/
+}
+
+.category_attributes_data_sl .select_list::-webkit-scrollbar-thumb {
+    /*滚动条内部可拖动块的样式*/
+    background: #bea988;
+    width: 3px;
+    border-radius: 3px;
+}
+
+.category_attributes_data_sl .select_list::-webkit-scrollbar-button {
+    /*滚动条上下按钮样式*/
+    display: none;
+    background-color: #00f300;
+}
+
+.category_attributes_data_sl .select_list::-webkit-scrollbar {
+    /*滚动条的样式*/
+    width: 5px;
+    height: 3px;
+    /*background-color: #aaa;*/
+    border-radius: 2px;
+}
+
+.category_attributes_data_sl .hide {
+    display: none;
+}
+
+.category_attributes_data_sl .select_list .selects {
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+}
+
+.category_attributes_data_sl .select_list .selects:hover {
+    background-color: #2e81ff;
+}
+
+/*销售信息*/
+.sales_message {
+    width: 1080px;
+    padding: 10px 0;
+    box-shadow: 0 -2px 4px 0 rgba(229, 229, 229, .5);
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.spelist {
+    width: 1080px;
+    padding: 0 80px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.spelist .input_box {
+    display: flex;
+}
+
+.spelist .input_box .input {
+    display: block;
+    width: calc(45% - 2px);
+    height: 40px;
+    line-height: 40px;
+    margin: 0 1%;
+    border: 1px solid #777777;
+    border-radius: 5px;
+}
+
+.spelist .selectList {
+    display: flex;
+    width: calc(100% - 20px);
+    height: auto;
+    padding: 10px 20px;
+    clear: both;
+}
+
+.spelist .selectList .spe {
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 5px 10px;
+    border-radius: 3px;
+    font-size: 18px;
+    border: 1px solid #aaa;
+    cursor: pointer;
+}
+
+.spelist .selectList .spe:hover {
+    background-color: whitesmoke;
+}
+
+.sales_message .btn_box {
+    width: 1080px;
+    padding: 0 80px;
+    height: auto;
+    margin: 5px auto;
+}
+
+.sales_message .btn_box .add {
+    width: 170px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+}
+
+.sku_table {
+    width: 1080px;
+    padding: 20px 80px;
+}
+
+.sku_table .table_row {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+}
+
+.sku_table .table_row .table_col {
+    display: block;
+    width: 178px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #aaa;
+}
+
+.sku_table .table_row .table_col .input {
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+
+/*图文描述*/
+.graphic_description {
+    width: 1080px;
+    height: 400px;
+    box-shadow: 0 -2px 4px 0 rgba(229, 229, 229, .5);
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.computer_boby {
+    padding: 0 40px;
+    width: 1080px;
+    height: 35px;
+    margin-bottom: 15px;
+}
+
+.computer_boby_name {
+    padding: 8px 0px;
+    width: 1080px;
+    height: 45px;
+    float: left;
+    font-size: 12px;
+}
+
+.computer_boby_name span {
+    color: red;
+}
+
+.computer_boby_name .view {
+    margin-left: 15px;
+    color: #949494;
+    line-height: 16px;
+    overflow: hidden;
+}
+
+.shop_covers {
+    width: 100%;
+    height: 210px;
+    margin-left:-20px;
+}
+
+.shop_covers .covers{
+    float:left;
+    width:200px;
+    height:200px;
+    line-height: 200px;
+    position:relative;
+    margin:5px;
+    border-radius: 15px;
+    border:1px solid #aaa;
+    overflow:hidden;
+}
+.shop_covers .covers .file{
+    position:absolute;
+    display:block;
+    width:100%;
+    height:100%;
+    z-index:999;
+    opacity: 0;
+}
+.shop_covers .covers .tips{
+    position:absolute;
+    display:block;
+    width:100%;
+    height:100%;
+    text-align: center;
+    font-size:20px;
+    z-index:998;
+    background-color: rgba(0,0,0,0.5);
+    color:#e3e3e3;
+    transition:all .7s;
+    opacity: 0;
+}
+.shop_covers .covers .cover_show{
+    opacity: 1;
+}
+.shop_covers .covers:hover .tips{opacity: 1;}
+.shop_covers .covers .cover{
+    position:absolute;
+    display:block;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    z-index:997;
+}
+.shop_covers .covers .cover img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    margin:auto;
+}
+/*电脑端宝贝*/
+#computer_boby_data {
+    /*padding: 8px 0px;*/
+    width: 1080px;
+    height: 300px;
+    float: left;
+    font-size: 12px;
+}
+
+/*支付信息*/
+.payment_information {
+    width: 1080px;
+    height: 200px;
+    box-shadow: 0 -2px 4px 0 rgba(229, 229, 229, .5);
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.payment_method {
+    padding: 0 80px;
+    width: 1080px;
+    height: 35px;
+    margin-bottom: 15px;
+}
+
+.payment_method_name {
+    /*padding: 8px 0px;*/
+    width: 70px;
+    height: 35px;
+    float: left;
+    font-size: 12px;
+    line-height: 35px;
+}
+
+.payment_method_name span {
+    color: red;
+}
+
+.payment_method_data {
+    /*padding: 8px 0px;*/
+    width: 600px;
+    height: 35px;
+    float: left;
+    font-size: 12px;
+
+}
+
+.payment_method_data_i {
+    width: 17px;
+    height: 17px;
+    float: left;
+}
+
+.payment_method_data_i input {
+    margin-top: 10px;
+    width: 17px;
+    height: 17px;
+    /*color: white;*/
+}
+
+.payment_method_data_w {
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+    float: left;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+/*物流信息*/
+.logistics_information {
+    width: 1080px;
+    height: 200px;
+    box-shadow: 0 -2px 4px 0 rgba(229, 229, 229, .5);
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.retrieving_means {
+    padding: 0 80px;
+    width: 1080px;
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.retrieving_means_name {
+    width: 1080px;
+    height: 35px;
+    font-size: 12px;
+    line-height: 35px;
+}
+
+.retrieving_means_name span {
+    color: red;
+}
+
+.retrieving_means_name view {
+    margin-left: 15px;
+    color: #949494;
+    overflow: hidden;
+}
+
+.retrieving_means_data {
+    width: 1080px;
+    height: 50px;
+    font-size: 12px;
+}
+
+.retrieving_means_data_son {
+    padding: 0 70px;
+    width: 900px;
+    height: 50px;
+}
+
+.retrieving_means_k {
+    width: 810px;
+    height: 50px;
+    border: 1px solid #eee;
+}
+
+.template_of_freight {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    float: left;
+}
+
+.template_of_freight span {
+    color: red;
+}
+
+.template_ipt {
+    width: 400px;
+    height: 50px;
+    float: left;
+}
+
+.template_ipt select {
+    width: 400px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.new_template {
+    width: 150px;
+    height: 50px;
+    float: left;
+}
+
+.new_template_a {
+    margin: 10px 0 0 8px;
+    width: 130px;
+    height: 30px;
+    line-height: 25px;
+    text-align: center;
+    border: 1px solid #c4c6cf;
+    border-radius: 5px;
+    /*border*/
+    background-color: white;
+}
+
+.new_template_a:hover {
+    color: #333;
+    background-color: #f2f3f7;
+    border-color: #a0a2ad;
+    text-decoration: none;
+}
+
+.new_template_a a {
+    width: 130px;
+    height: 30px;
+    padding: 8px 34px;
+    text-decoration: none;
+    color: #333;
+}
+
+/*售后服务*/
+.after_sales_service {
+    width: 1080px;
+    /*height: 200px;*/
+    box-shadow: 0 -2px 4px 0 rgba(229, 229, 229, .5);
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.service_zong {
+    padding: 0 85px;
+    width: 1080px;
+    height: 50px;
+    line-height: 50px;
+    /*margin-bottom: 15px;*/
+    font-size: 12px;
+}
+
+.service_zong view {
+    margin-left: 15px;
+}
+
+.date_issued {
+    padding: 0 75px;
+    width: 1080px;
+    height: 50px;
+    line-height: 50px;
+    /*margin-bottom: 15px;*/
+    font-size: 12px;
+}
+
+.date_issued span {
+    color: red;
+}
+
+.date_issued view {
+    margin-left: 15px;
+    color: #949494;
+    overflow: hidden;
+}
+
+.date_issued_data {
+    padding: 0 150px;
+    width: 1080px;
+    height: 50px;
+    /*margin-bottom: 15px;*/
+    font-size: 12px;
+
+}
+
+/*最下面的div*/
+.footer {
+    position: fixed;
+    /*left: 0px;*/
+    bottom: 0px;
+    width: 100%;
+    height: 70px;
+    border-top: 2px solid #0085d7;
+    background-color: white;
+    z-index: 99;
+}
+
+.footer-son {
+    margin: 15px auto;
+    height: 40px;
+    width: 140px;
+}
+
+.bottom-button {
+    border: 0;
+    width: 140px;
+    height: 40px;
+    padding: 0 20px;
+    border-style: solid;
+    background-color: #e4f0fd;
+    border-color: #0085d7;
+    border-width: 1px;
+    border-radius: 3px;
+    text-align: center;
+    transition: all 0.5s; /* 过度属性 */
+    /*transition: all .4s cubic-bezier(.23,1,.32,1);*/ /* 图片过度? */
+}
+
+.bottom-button:hover {
+    background-color: #0085d7;
+    color: white;
+}
+
+.float {
+    float: left;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+img {
+    position: relative;
+}
+
+.result {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#file_input {
+    /*display: none;  */
+}
+
+.delete {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    text-align: center;
+    line-height: 200px;
+    z-index: 10;
+    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #777;
+    opacity: 0;
+    transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+}
+
+.delete:hover {
+    cursor: pointer;
+    opacity: 1;
+}
