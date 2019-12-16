@@ -18,6 +18,10 @@ let regs = [
     {
         reg:/^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/,
         fields:['phone','staff_account']
+    },
+    {
+        reg:/[a-zA-z]+:\/\/[^\s]*/g,
+        fields:['http','url']
     }
 ];
 function add_field(reg,field){
@@ -50,7 +54,7 @@ function test(field,value){
     console.log(getreg(field).test(value));
     return getreg(field).test(value)
 }
-console.log(getreg('password').test('abcderEf1222457'));
+console.log(test('id',0))
 try{
     if(window){
         window.$reg={
