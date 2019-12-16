@@ -28,6 +28,11 @@ router.get('/attr',(req,res)=>{/*无需权限*/
     bbl.attr(req,res);
 });//获取分类下的所有规格与参数
 
+router.get('/del_attr',(req,res)=>{
+    if(!req.session.staff){return res.json({code:302,message:"登录失效",descript:"未授权,请获取授权"})}
+    bbl.del_attr(req,res);
+});//删除规格或者属性
+
 //为某个属性添加分类
 router.post('/category_add_attr',(req,res)=>{
     if(!req.session.staff){return res.send({code:302,message:"login is out",descript:"登录失效"})}
