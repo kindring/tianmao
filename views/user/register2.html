@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>账户注册</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="/static/imgs/tm2.ico"  />
+	<link rel="stylesheet" type="text/css" href="/static/css/user/commonality.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/user/register2.css">
+	<script src="/static/js/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<!-- 第一导航栏 -->
+    <div class="navigation">
+    	<!-- 居中导航栏 -->
+    	<div class="navgt">
+    		<!-- 左导航 -->
+    		<div class="leftnav">
+    			<!-- 欢迎 -->
+	    		<div class="welcome">喵 ,&nbsp&nbsp欢迎来天猫</div>
+	    		<!-- 登录 -->
+	    		<div class="register">
+	    		    <a class="alink" href="#">请登录</a>
+	    		</div>
+	    		<!-- 注册 -->
+	    		<div class="register">
+	    		    <a class="alink" href="#">免费注册</a>
+	    		</div>
+    		</div>
+            <!-- 右导航 -->
+    		<div class="rightnav">
+    			<!-- 我的淘宝 -->
+    			<div class="taobao">
+	    			<div class="t1">
+	    				<a href="#" class="alink">我的淘宝</a><img src="/static/imgs/user/index/triangle.png" class="img1">
+	    			</div>
+	    			<div class="t2">
+	    				<div class="t21"><a href="#" class="alink2">已买到的宝贝</a></div>
+	    				<div class="t22"><a href="#" class="alink2">已卖出的宝贝</a></div>
+	    			</div>
+	    		</div>
+	    		<!-- 我的购物车 -->
+	    		<div class="shopping_trolley">
+	    			<div class="spt1"><i class="fa fa-shopping-cart" aria-hidden="true" style="color: #ff0033"></i></div>
+	    			<div class="spt2"><a href="#" class="alink">购物车<span class="spt3">0</span>件</a></div>
+	    		</div>
+	    		<!-- 收藏夹 -->
+	    		<div class="favorite">
+	    			<div class="fav1">
+	    				<a href="#" class="alink">收藏夹</a><img src="/static/imgs/user/index/triangle.png" class="img2">
+	    			</div>
+	    			<div class="fav2">
+	    				<div class="fav21"><a href="#" class="alink2">收藏的宝贝</a></div>
+	    				<div class="fav22"><a href="#" class="alink2">收藏的店铺</a></div>
+	    			</div>
+	    		</div>
+	    		<!-- 分界线 -->
+	    		<div class="boundary"></div>
+	    		<!-- 手机版 -->
+	    		<div class="mobile_phone_version">
+	    			<div class="mpv1">
+		    			<div class="mpv11"><i class="fa fa-mobile" aria-hidden="true" style="color: #ff0033"></i></div>
+		    			<div class="mpv12"><a href="#" class="alink">手机版</a></div>
+		    		</div>
+		    		<div class="mpv2">
+		    			
+		    		</div>
+	    		</div>
+	    		<!-- 淘宝网 -->
+	    		<div class="taobaoguanwang"><a href="www.taobao.com" class="alink">淘宝网</a></div>
+	    		<!-- 商家支持 -->
+	    		<div class="business_support">
+	    			<div class="bs1">
+	    				<a href="#" class="alink">商家支持</a><img src="/static/imgs/user/index/triangle.png" class="img3">
+	    			</div>
+	    			<div class="bs2">
+	    				<div class="bs21">
+	    					<div class="bs211">商家:</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">商家中心</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">天猫规则</a></div>
+	    					</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">商家入驻</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">运营服务</a></div>
+	    					</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">商家品控</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">商家工具</a></div>
+	    					</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">天猫智库</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">喵言喵语</a></div>
+	    					</div>
+	    					<div class="bs213">………………………………</div>
+	    					<div class="bs211">帮助:</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">帮助中心</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">问商友</a></div>
+	    					</div>
+	    					<div class="bs213">………………………………</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<!-- 网站导航 -->
+	    		<div class="site_navigation">
+	    			<div class="sna1">
+	    				<i class="fa fa-map-signs" aria-hidden="true" style="color: #ff0033"></i><a href="#" class="alink">网站导航</a><img src="/static/imgs/user/index/triangle.png" class="img4">
+	    			</div>
+	    			<div class="sna2">
+	                    <div class="sna21">
+	                    	<div class="sna211">热点推荐 Hot</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink4">天猫超市</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">喵鲜生</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">科技新品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">女装新品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">酷玩街</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink4">内衣新品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">试美妆</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">运动新品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">时尚先生</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">精明妈咪</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink4">吃乐会</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">企业采购</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">会员积分</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">天猫国际</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">品质频道</a></div>
+	                    	</div>
+	                    </div>
+	                    <div class="snax1"></div>
+	                    <div class="sna21">
+	                    	<div class="sna221">行业市场 Market</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink5">美妆</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">电器</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">女装</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">男装</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">女鞋</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink5">男鞋</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">内衣</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">箱包</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">运动</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">母婴</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink5">家装</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">医药</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">食品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">配饰</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">汽车</a></div>
+	                    	</div>
+	                    </div>
+	                    <div class="snax1"></div>
+	                    <div class="sna23">
+	                    	<div class="sna231">服务指南 Help</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink6">帮助中心</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink6">品质保障</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink6">特色服务</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink6">7天退换货</a></div>
+	                    	</div>
+	                    </div>
+	    			</div>
+	    		</div>
+    		</div>
+	    		
+    	</div>
+    </div>
+    <!-- 第二注册块 -->
+    <div class="register-block">
+    	<!-- 图片文字块 -->
+    	<div class="tm-photo">
+    		<a href="/user">
+    			<div class="photo-1">
+	    			<img src="/static/imgs/user/index/tm480-260.png" width="120" height="65">
+	    		</div>
+    		</a>
+	    		
+    		<div class="character">
+    			<span>用户注册</span>
+    		</div>
+    	</div>
+    	<!-- 状态块 -->
+    	<div class="status-block status-4">
+    		<ol>
+    			<li >
+    				<span>设置用户名</span>
+    			</li>
+    			<li id="active">
+    				<span>填写账号信息</span>
+    			</li>
+    			<li>
+    				<span>注册成功</span>
+    			</li>
+    		</ol>
+    	</div>
+    	<!-- 信息块 -->
+    	<div class="information-block">
+    		<div class="form-list">
+    			<div class="form-grounp">
+    				<!-- 手机号 -->
+		    		<div class="form-item">
+    					<span class="form-label">手机号</span>
+    					<input type="text" name="phone" id="phone" value="<%= phone1 %>" style="display: none;">
+    					<div class="phone1-text"><%= phone1 %></div>
+    				</div>
+    				<!-- 设置密码 -->
+    				<div class="form-item">
+    					<span class="form-label">设置密码</span>
+    					<input type="password" name="password" id="password" value="" placeholder="大于6位数的英文和数字的组合">
+    					<div class="hint" id="passwordB">密码格式不正确,请重新输入</div>
+	    				<div class="hint" id="passwordK">请输入你的密码</div>
+    				</div>
+    				<!-- 确认密码 -->
+    				<div class="form-item">
+    					<span class="form-label">确认密码</span>
+    					<input type="password" name="password1" id="password1" value="">
+    					<div class="hint" id="password1B">密码不一致,请重新输入</div>
+	    				<div class="hint" id="password1K">请确认你的密码</div>
+    				</div>
+    				<!-- 绑定邮箱 -->
+    				<div class="form-item">
+    					<span class="form-label">绑定邮箱</span>
+    					<input type="email" name="email" id="email" value="">
+    					<div class="hint" id="emailB">邮箱格式不正确,请重新输入</div>
+	    				<div class="hint" id="emailK">请输入你的邮箱</div>
+    				</div>
+    				<!-- 家乡 -->
+    				<div class="form-item">
+    					<span class="form-label">家乡</span>
+    					<input type="text" name="hmetown" id="hmetown" value="">
+    					<div class="hint" id="hmetownB">家乡格式不正确,请重新输入</div>
+	    				<div class="hint" id="hmetownK">请输入你的家乡</div>
+    				</div>
+    				<!-- 会员名 -->
+    				<div class="form-item">
+    					<span class="form-label">会员名</span>
+    					<input type="text" name="name" id="name" value="">
+    					<div class="hint" id="nameB">名字格式不正确,请重新输入</div>
+	    				<div class="hint" id="nameK">请输入你的会员名</div>
+    				</div>
+    				<!-- 提醒 -->
+    				<div class="form-item1">
+    					<span class="form-label">&nbsp;</span>
+    					<div class="remind">会员名只能设置一次,请认真选择</div>
+    				</div>
+    				<div class="form-item2">
+    					<div id="f-son">
+    						<button id="zong">下一步</button>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+<script src="/static/js/user/register2.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>

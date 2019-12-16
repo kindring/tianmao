@@ -1,0 +1,3241 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>天猫tmall.com--理想生活上天猫</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="/static/imgs/tm2.ico"  />
+	<link rel="stylesheet" type="text/css" href="/static/css/user/commonality.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/user/index.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/font-awesome/css/font-awesome.min.css">
+	<script type="text/javascript" src="/static/js/jquery-3.4.1.js"></script>
+	
+</head>
+<body style="background-color: #f5f5f5;">
+    <!-- 第一导航栏 -->
+    <div class="navigation">
+    	<!-- 居中导航栏 -->
+    	<div class="navgt">
+    		<!-- 左导航 -->
+    		<div class="leftnav">
+    			<!-- 欢迎 -->
+	    		<div class="welcome">喵 ,&nbsp&nbsp欢迎来天猫</div>
+	    		<!-- 未登录状态 -->
+	    		<div id="notLogin">
+	    			<!-- 登录 -->
+		    		<div class="register">
+		    		    <a class="alink" href="/user/login">请登录</a>
+		    		</div>
+		    		<!-- 注册 -->
+		    		<div class="register">
+		    		    <a class="alink" href="/user/register1">免费注册</a>
+		    		</div>
+	    		</div>
+	    		<!-- 已登录用户 -->
+	    		<div class="loginUser">
+	    			<div id="userName"></div>
+	    			<div class="userformation">
+	    				<div class="topFor">
+	    					<div class="headPortrait">
+	    						<img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/index/TB1.jpg" class="headPortraitImg">
+	    					</div>
+	    					<div class="userOperation">
+	    						<div class="topOperation">
+	    							<a class="userOA" href="/user/information">账号管理</a>&nbsp;&nbsp;
+	    							<a class="userOA" href="/user/loginOut" onclick="tuichu()">退出</a>
+	    						</div>
+	    						<div class="bottomOperation">普通会员</div>
+	    					</div>
+	    				</div>
+	    				<div class="bottomFor" >
+	    					<a href="#">查看你的专属权益</a>
+	    				</div>
+	    			</div>
+	    		</div>
+    		</div>
+            <!-- 右导航 -->
+    		<div class="rightnav">
+    			<!-- 我的淘宝 -->
+    			<div class="taobao">
+	    			<div class="t1">
+	    				<a href="#" class="alink">我的淘宝</a><img data-src="/static/imgs/user/index/triangle.png" src="" class="img1">
+	    			</div>
+	    			<div class="t2">
+	    				<div class="t21"><a href="#" class="alink2">已买到的宝贝</a></div>
+	    				<div class="t22"><a href="#" class="alink2">已卖出的宝贝</a></div>
+	    			</div>
+	    		</div>
+	    		<!-- 未登录我的购物车 -->
+	    		<div class="shopping_trolley" id="noLoginshop">
+	    			<div class="shoppingTrolley">
+	    				<div class="spt1"><i class="fa fa-shopping-cart" aria-hidden="true" style="color: #ff0033"></i></div>
+		    			<div class="spt2"><a href="#" class="alink">购物车<span class="spt3">0</span>件</a></div>
+	    			</div>
+	    			<div class="shoppingTrolleyFor">
+	    				<div>请登录</div>
+	    			</div>
+	    		</div>
+	    		<!-- 登录之后的购物车 -->
+	    		<div class="shopping_trolley" id="yesLoginshop">
+	    			<div class="shoppingTrolley">
+	    				<div class="spt1"><i class="fa fa-shopping-cart" aria-hidden="true" style="color: #ff0033"></i></div>
+		    			<div class="spt2"><a href="/user/shoppingCar" class="alink">购物车<span class="spt3" id="yesLoginshopNum"></span>件</a></div>
+	    			</div>
+	    			<div class="shoppingTrolleyFor">
+	    				<div class="shoppingTrolleyFormation">
+	    					<div class="recentlyAddBaby">最近添加的宝贝:</div>
+	    					<div class="noshop">你未添加宝贝进入购物车</div>
+	    					<div class="shoppingTrolleyData">
+	    						<div class="shoppingTrolleyUnit">
+	    							<div class="shoppingTrolleyImg">
+	    								<img class="userShopPhoto" data-src="" src="" width="40" height="40">
+	    							</div>
+	    							<div class="shoppingTrolleyTitle"></div>
+	    							<div class="shoppingMoneyDel">
+	    								<div class="shoppingMoney"></div>
+	    								<div class="shoppingDel"><a class="Del" href="" user_id=""></a></div>
+	    							</div>
+	    						</div>
+	    						<div class="shoppingTrolleyUnit">
+	    							<div class="shoppingTrolleyImg">
+	    								<img class="userShopPhoto" data-src="" src="" width="40" height="40">
+	    							</div>
+	    							<div class="shoppingTrolleyTitle"></div>
+	    							<div class="shoppingMoneyDel">
+	    								<div class="shoppingMoney"></div>
+	    								<div class="shoppingDel"><a class="Del" href=""></a></div>
+	    							</div>
+	    						</div>
+	    						<div class="shoppingTrolleyUnit">
+	    							<div class="shoppingTrolleyImg">
+	    								<img class="userShopPhoto" data-src="" src="" width="40" height="40">
+	    							</div>
+	    							<div class="shoppingTrolleyTitle"></div>
+	    							<div class="shoppingMoneyDel">
+	    								<div class="shoppingMoney"></div>
+	    								<div class="shoppingDel"><a class="Del" href=""></a></div>
+	    							</div>
+	    						</div>
+	    						<div class="shoppingTrolleyUnit">
+	    							<div class="shoppingTrolleyImg">
+	    								<img class="userShopPhoto" data-src="" src="" width="40" height="40">
+	    							</div>
+	    							<div class="shoppingTrolleyTitle"></div>
+	    							<div class="shoppingMoneyDel">
+	    								<div class="shoppingMoney"></div>
+	    								<div class="shoppingDel"><a class="Del" href=""></a></div>
+	    							</div>
+	    						</div>
+	    						<div class="shoppingTrolleyUnit">
+	    							<div class="shoppingTrolleyImg">
+	    								<img class="userShopPhoto" data-src="" src="" width="40" height="40">
+	    							</div>
+	    							<div class="shoppingTrolleyTitle"></div>
+	    							<div class="shoppingMoneyDel">
+	    								<div class="shoppingMoney"></div>
+	    								<div class="shoppingDel"><a class="Del" href=""></a></div>
+	    							</div>
+	    						</div>
+	    					</div>
+	    					<div class="shoppingTrolleySurplus">
+	    						<div class="surplusNum">购物车里还有<span class="numValue"></span>件宝贝</div>
+	    					</div>
+	    					<div class="examineShoppingTrolley">
+	    						<div class="eST"><a href="/user/shoppingCar">查看我的购物车</a></div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<!-- 收藏夹 -->
+	    		<div class="favorite">
+	    			<div class="fav1">
+	    				<a href="#" class="alink">收藏夹</a><img data-src="/static/imgs/user/index/triangle.png" src="" class="img2">
+	    			</div>
+	    			<div class="fav2">
+	    				<div class="fav21"><a href="#" class="alink2">收藏的宝贝</a></div>
+	    				<div class="fav22"><a href="#" class="alink2">收藏的店铺</a></div>
+	    			</div>
+	    		</div>
+	    		<!-- 分界线 -->
+	    		<div class="boundary"></div>
+	    		<!-- 手机版 -->
+	    		<div class="mobile_phone_version">
+	    			<div class="mpv1">
+		    			<div class="mpv11"><i class="fa fa-mobile" aria-hidden="true" style="color: #ff0033"></i></div>
+		    			<div class="mpv12"><a href="#" class="alink">手机版</a></div>
+		    		</div>
+		    		<div class="mpv2">
+		    			
+		    		</div>
+	    		</div>
+	    		<!-- 淘宝网 -->
+	    		<div class="taobaoguanwang"><a href="www.taobao.com" class="alink">淘宝网</a></div>
+	    		<!-- 商家支持 -->
+	    		<div class="business_support">
+	    			<div class="bs1">
+	    				<a href="#" class="alink">商家支持</a><img data-src="/static/imgs/user/index/triangle.png" src="" class="img3">
+	    			</div>
+	    			<div class="bs2">
+	    				<div class="bs21">
+	    					<div class="bs211">商家:</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">商家中心</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">天猫规则</a></div>
+	    					</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">商家入驻</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">运营服务</a></div>
+	    					</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">商家品控</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">商家工具</a></div>
+	    					</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">天猫智库</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">喵言喵语</a></div>
+	    					</div>
+	    					<div class="bs213">………………………………</div>
+	    					<div class="bs211">帮助:</div>
+	    					<div class="bs212">
+	    						<div class="bs2121"><a href="#" class="alink3">帮助中心</a></div>
+	    						<div class="bs2122"><a href="#" class="alink3">问商友</a></div>
+	    					</div>
+	    					<div class="bs213">………………………………</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<!-- 网站导航 -->
+	    		<div class="site_navigation">
+	    			<div class="sna1">
+	    				<i class="fa fa-map-signs" aria-hidden="true" style="color: #ff0033"></i><a href="#" class="alink">网站导航</a><img data-src="/static/imgs/user/index/triangle.png" src="" class="img4">
+	    			</div>
+	    			<div class="sna2">
+	                    <div class="sna21">
+	                    	<div class="sna211">热点推荐 Hot</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink4">天猫超市</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">喵鲜生</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">科技新品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">女装新品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">酷玩街</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink4">内衣新品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">试美妆</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">运动新品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">时尚先生</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">精明妈咪</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink4">吃乐会</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">企业采购</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">会员积分</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">天猫国际</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink4">品质频道</a></div>
+	                    	</div>
+	                    </div>
+	                    <div class="snax1"></div>
+	                    <div class="sna21">
+	                    	<div class="sna221">行业市场 Market</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink5">美妆</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">电器</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">女装</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">男装</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">女鞋</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink5">男鞋</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">内衣</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">箱包</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">运动</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">母婴</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink5">家装</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">医药</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">食品</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">配饰</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink5">汽车</a></div>
+	                    	</div>
+	                    </div>
+	                    <div class="snax1"></div>
+	                    <div class="sna23">
+	                    	<div class="sna231">服务指南 Help</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink6">帮助中心</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink6">品质保障</a></div>
+	                    	</div>
+	                    	<div class="sna212">
+	                    		<div class="sna2121"><a href="#" class="alink6">特色服务</a></div>
+	                    		<div class="sna2121"><a href="#" class="alink6">7天退换货</a></div>
+	                    	</div>
+	                    </div>
+	    			</div>
+	    		</div>
+    		</div>
+	    		
+    	</div>
+    </div>
+    <!-- 第二搜索栏 -->
+    <div class="search_box_zong">
+	    <div class="search_box">
+	    	<!-- 图标 -->
+	    	<div class="icon1"><img data-src="/static/imgs/user/index/tm290-130.gif" src="" width="240" height="130"></div>
+	    	<!-- 搜索框 -->
+	    	<div class="search_box1">
+	    		<div class="sbox1">
+	    			<!-- <form id="formId" action="servlet" method="post" onsubmit="return sub();"> -->
+	    				<div class="sbox2">
+		    				<label id="lb1">搜索 天猫 商品/品牌/店铺</label>
+		    				<input type="text" class="ipt1" name="" oninput="OnInput(event)" onpropertychange="OnPropChanged(event)" title="请输入搜索文字">
+		    			</div>
+		    			<button type="submit" class="sub" onClick="blinkit()" >搜索</button>
+	    			<!-- </form>	    			 -->
+	    		</div>
+	            <ul class="sbul">
+	            	<li class="sbli"><a href="#" class="alink7">仿真花</a></li>
+	            	<li class="sbli1"><a href="#" class="alink8">连衣裙</a></li>
+	            	<li class="sbli1"><a href="#" class="alink7">针织衫</a></li>
+	            	<li class="sbli1"><a href="#" class="alink7">运动鞋</a></li>
+	            	<li class="sbli1"><a href="#" class="alink7">洗发水</a></li>
+	            	<li class="sbli1"><a href="#" class="alink8">手机</a></li>
+	            	<li class="sbli1"><a href="#" class="alink7">四件套</a></li>
+	            	<li class="sbli1"><a href="#" class="alink8">牛奶</a></li>
+	            	<li class="sbli1"><a href="#" class="alink7">客厅灯</a></li>
+	            </ul>
+	    	</div>
+	    </div>
+    </div>
+    <!-- 第三类别分类 -->
+	<div class="free_style">
+		<div class="free_style1">
+			<div class="fr_s1">
+	    		<div class="fr_s2">
+	    			<a href="#" class="alink_fr_s"><img data-src="/static/imgs/user/index/TMguoji200-60.png" src="" width="100" height="30" style="margin-top: 3px;"></a>
+	    			<a href="#" class="alink_fr_s"><img data-src="/static/imgs/user/index/TMchaoshi200-60.png" src="" width="100" height="30" style="margin-top: 3px;"></a>
+	    			<a href="#" class="alink_fr_s">天猫会员</a>
+	    			<a href="#" class="alink_fr_s">电器城</a>
+	    			<a href="#" class="alink_fr_s">喵鲜生</a>
+	    			<a href="#" class="alink_fr_s">医药馆</a>
+	    			<a href="#" class="alink_fr_s">营业厅</a>
+	    			<a href="#" class="alink_fr_s">魅力惠</a>
+	    			<a href="#" class="alink_fr_s">飞猪旅行</a>
+	    			<a href="#" class="alink_fr_s">苏宁易购</a>
+	    		</div>
+	    	</div>
+		</div>
+    </div>
+    <!-- 第四商品分类和轮播 -->
+    <div class="goods_category_and_carousel">
+    	<!-- 商品分类总 -->
+    	<div class="goods_category">
+    		<!-- 商品分类title -->
+    		<div class="gcg1">
+    			<i class="fa fa-map-signs" aria-hidden="true" style="color: white;;display: inline-block;font-size: 16px;margin-left: 14px;font-weight: 700;"></i>
+    			<div class="gcg12">商品分类</div>
+    		</div>
+    		<!-- 商品分类类型 -->
+    		<div class="gcg2">
+    			<div class="gcg21">
+    				<ul class="gcgul">
+    					<li class="gcgli" index='1'>
+    						<i class="fa fa-female" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg" index='1'>女装</a> /
+    						<a href="#" class="alinkgcg" index='2'>内衣</a>
+    					</li>
+    					<li class="gcgli1" index='2'>
+    						<i class="fa fa-male" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">男装</a> /
+    						<a href="#" class="alinkgcg">运动户外</a>
+    					</li>
+    					<li class="gcgli2" index='3'>
+    						<i class="fa fa-briefcase" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">女鞋</a> /
+    						<a href="#" class="alinkgcg">男鞋</a> /
+    						<a href="#" class="alinkgcg">箱包</a>
+    					</li>
+    					<li class="gcgli3" index='4'>
+    						<i class="fa fa-male" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">美妆</a> /
+    						<a href="#" class="alinkgcg">个人护理</a>
+    					</li>
+    					<li class="gcgli4" index='5'>
+    						<i class="fa fa-diamond" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">腕表</a> /
+    						<a href="#" class="alinkgcg">眼镜</a> /
+    						<a href="#" class="alinkgcg">珠宝饰品</a>
+    					</li>
+    					<li class="gcgli5" index='6'>
+    						<i class="fa fa-mobile" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">手机</a> /
+    						<a href="#" class="alinkgcg">数码</a> /
+    						<a href="#" class="alinkgcg">电脑办公</a>
+    					</li>
+    					<li class="gcgli6" index='7'>
+    						<i class="fa fa-bath" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">母婴玩具</a>
+    					</li>
+    					<li class="gcgli7" index='8'>
+    						<i class="fa fa-cutlery" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">零食</a> /
+    						<a href="#" class="alinkgcg">茶酒</a> /
+    						<a href="#" class="alinkgcg">进口食品</a>
+    					</li>
+    					<li class="gcgli8" index='9'>
+    						<i class="fa fa-apple" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">生鲜水果</a>
+    					</li>
+    					<li class="gcgli9" index='10'>
+    						<i class="fa fa-archive" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">大家电</a> /
+    						<a href="#" class="alinkgcg">生活电器</a>
+    					</li>
+    					<li class="gcgli10" index='11'>
+    						<i class="fa fa-th" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">家居建材</a>
+    					</li>
+    					<li class="gcgli11" index='12'>
+    						<i class="fa fa-car" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">汽车</a> /
+    						<a href="#" class="alinkgcg">配件</a> /
+    						<a href="#" class="alinkgcg">用品</a>
+    					</li>
+    					<li class="gcgli12" index='13'>
+    						<i class="fa fa-university" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">家纺</a> /
+    						<a href="#" class="alinkgcg">家饰</a> /
+    						<a href="#" class="alinkgcg">鲜花</a>
+    					</li>
+    					<li class="gcgli13" index='14'>
+    						<i class="fa fa-medkit" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">医疗保健</a>
+    					</li>
+    					<li class="gcgli14" index='15'>
+    						<i class="fa fa-coffee" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">厨具</a> /
+    						<a href="#" class="alinkgcg">收纳</a> /
+    						<a href="#" class="alinkgcg">宠物</a>
+    					</li>
+    					<li class="gcgli15" index=''>
+    						<i class="fa fa-book" aria-hidden="true" style="margin-left: 14px;margin-right: 4px;height: 31px;line-height: 31px;font-size: 16px;opacity: .5;"></i>
+    						<a href="#" class="alinkgcg">图书音像</a>
+    					</li>
+    				</ul>
+    			</div>
+    		</div>
+    		<!-- 商品分类显示 -->
+	    	<div class="gcg_show">
+	    		<div class="gcg_show1" index='1'>
+	    			<div class="gcg_show_0">
+	    				<!-- 具体类型 -->
+	    				<div class="gcg_show11">
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">当季流行</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">女装新品</a>
+	    							<a href="#" class="alink_gcg_link1">商场同款</a>
+	    							<a href="#" class="alink_gcg_link1_1">仙女连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">T恤</a>
+	    							<a href="#" class="alink_gcg_link1">衬衫</a>
+	    							<a href="#" class="alink_gcg_link1">时髦外套</a>
+	    							<a href="#" class="alink_gcg_link1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">无痕文胸</a>
+	    							<a href="#" class="alink_gcg_link1">运动文胸</a>
+	    							<a href="#" class="alink_gcg_link1_1">潮流家居服</a>
+	    							<a href="#" class="alink_gcg_link1">百搭船袜</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">精品上装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">毛呢外套</a>
+	    							<a href="#" class="alink_gcg_link1_1">羽绒服</a>
+	    							<a href="#" class="alink_gcg_link1_1">棉服</a>
+	    							<a href="#" class="alink_gcg_link1">丝绒卫衣</a>
+	    							<a href="#" class="alink_gcg_link1">毛针织衫</a>
+	    							<a href="#" class="alink_gcg_link1">皮毛一体</a>
+	    							<a href="#" class="alink_gcg_link1">皮草</a>
+	    							<a href="#" class="alink_gcg_link1">毛衣</a>
+	    							<a href="#" class="alink_gcg_link1">衬衫</a>
+	    							<a href="#" class="alink_gcg_link1">卫衣</a>
+	    							<a href="#" class="alink_gcg_link1">针织衫</a>
+	    							<a href="#" class="alink_gcg_link1_1">T恤</a>
+	    							<a href="#" class="alink_gcg_link1">短外套</a>
+	    							<a href="#" class="alink_gcg_link1_1">小西装</a>
+	    							<a href="#" class="alink_gcg_link1">风衣</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">浪漫裙摆</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">半身裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">A字裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">荷叶边裙</a>
+	    							<a href="#" class="alink_gcg_link1">大摆裙</a>
+	    							<a href="#" class="alink_gcg_link1">包臀裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">百褶裙</a>
+	    							<a href="#" class="alink_gcg_link1">长袖连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">棉麻连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裙</a>
+	    							<a href="#" class="alink_gcg_link1">蕾丝连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">真丝连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">印花连衣裙</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">女士下装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">阔腿裤</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link1">打底裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">开叉运动裤</a>
+	    							<a href="#" class="alink_gcg_link1">哈伦裤</a>
+	    							<a href="#" class="alink_gcg_link1">背带裤</a>
+	    							<a href="#" class="alink_gcg_link1">小脚裤</a>
+	    							<a href="#" class="alink_gcg_link1">西装裤</a>
+	    							<a href="#" class="alink_gcg_link1">短裤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">特色女装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">时尚套装</a>
+	    							<a href="#" class="alink_gcg_link1">休闲套装</a>
+	    							<a href="#" class="alink_gcg_link1_1">日系女装</a>
+	    							<a href="#" class="alink_gcg_link1_1">精选妈妈装</a>
+	    							<a href="#" class="alink_gcg_link1">大码女装</a>
+	    							<a href="#" class="alink_gcg_link1">职业套装</a>
+	    							<a href="#" class="alink_gcg_link1">优雅旗袍</a>
+	    							<a href="#" class="alink_gcg_link1">精致礼服</a>
+	    							<a href="#" class="alink_gcg_link1">婚纱</a>
+	    							<a href="#" class="alink_gcg_link1">唐装</a>
+	    							<a href="#" class="alink_gcg_link1">小码女装</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">文胸塑身</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">光面文胸</a>
+	    							<a href="#" class="alink_gcg_link1">运动文胸</a>
+	    							<a href="#" class="alink_gcg_link1">美背文胸</a>
+	    							<a href="#" class="alink_gcg_link1">聚拢文胸</a>
+	    							<a href="#" class="alink_gcg_link1">大杯文胸</a>
+	    							<a href="#" class="alink_gcg_link1">轻薄塑身</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">家居服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">春夏家居服</a>
+	    							<a href="#" class="alink_gcg_link1">纯棉家居服</a>
+	    							<a href="#" class="alink_gcg_link1">莫代尔家居服</a>
+	    							<a href="#" class="alink_gcg_link1">真丝家居服</a>
+	    							<a href="#" class="alink_gcg_link1">春夏睡裙</a>
+	    							<a href="#" class="alink_gcg_link1">男士家居服</a>
+	    							<a href="#" class="alink_gcg_link1">情侣家居服</a>
+	    							<a href="#" class="alink_gcg_link1">性感睡裙</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">内裤背心</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">男士内裤</a>
+	    							<a href="#" class="alink_gcg_link1">女士内裤</a>
+	    							<a href="#" class="alink_gcg_link1">男士内裤多条装</a>
+	    							<a href="#" class="alink_gcg_link1">女士内裤多条装</a>
+	    							<a href="#" class="alink_gcg_link1">莫代尔内裤</a>
+	    							<a href="#" class="alink_gcg_link1">吊带背心</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">袜类</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">船袜</a>
+	    							<a href="#" class="alink_gcg_link1">长筒丝袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">男士运动袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">女士装饰袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">潮流渔网袜</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<!-- 名牌图标 -->
+	    				<div class="gcg_logo_show">
+	    					<div>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB1.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB2.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB3.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB4.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB5.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB6.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB7.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB8.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB9.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB10.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB11.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB12.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB13.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB14.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB15.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB16.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link1">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB17-378-174.jpg">
+	    						</a>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="gcg_show1" index='2'>
+	    			<div class="gcg_show_0">
+	    				<!-- 具体类型 -->
+	    				<div class="gcg_show11">
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">当季流行</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">当季新品</a>
+	    							<a href="#" class="alink_gcg_link2">商场同款</a>
+	    							<a href="#" class="alink_gcg_link2_1">印花T恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">潮流卫衣</a>
+	    							<a href="#" class="alink_gcg_link2">牛仔衬衫</a>
+	    							<a href="#" class="alink_gcg_link2_1">修身夹克</a>
+	    							<a href="#" class="alink_gcg_link2">保暖棉服</a>
+	    							<a href="#" class="alink_gcg_link2">棉麻面料</a>
+	    							<a href="#" class="alink_gcg_link2">温暖的针织衫</a>
+	    							<a href="#" class="alink_gcg_link2">修身西服</a>
+	    							<a href="#" class="alink_gcg_link2">秋冬风衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">束脚裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">九分裤</a>
+	    							<a href="#" class="alink_gcg_link2">破洞牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">跑步鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">休闲鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">篮球鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">自行车</a>
+	    							<a href="#" class="alink_gcg_link2">平衡车</a>
+	    							<a href="#" class="alink_gcg_link2">帆布鞋</a>
+	    							<a href="#" class="alink_gcg_link2">运动套装</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动卫衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">鱼竿</a>
+	    							<a href="#" class="alink_gcg_link2_1">冲锋衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">九跑步机</a>
+	    							<a href="#" class="alink_gcg_link2_1">电动车</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士外套</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">夹克</a>
+	    							<a href="#" class="alink_gcg_link2">单西</a>
+	    							<a href="#" class="alink_gcg_link2_1">棒球服</a>
+	    							<a href="#" class="alink_gcg_link2">棉衣</a>
+	    							<a href="#" class="alink_gcg_link2">毛呢大衣</a>
+	    							<a href="#" class="alink_gcg_link2">风衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">西服套装</a>
+	    							<a href="#" class="alink_gcg_link2">羽绒服</a>
+	    							<a href="#" class="alink_gcg_link2">皮衣</a>
+	    							<a href="#" class="alink_gcg_link2">运动服</a>
+	    							<a href="#" class="alink_gcg_link2">工装外套</a>
+	    							<a href="#" class="alink_gcg_link2">针织开衫</a>
+	    							<a href="#" class="alink_gcg_link2">马甲</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士内搭</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">短袖T恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">POLO衫</a>
+	    							<a href="#" class="alink_gcg_link2">短袖衬衫</a>
+	    							<a href="#" class="alink_gcg_link2">背心</a>
+	    							<a href="#" class="alink_gcg_link2_1">卫衣</a>
+	    							<a href="#" class="alink_gcg_link2">针织衫/毛衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">长袖衬衫</a>
+	    							<a href="#" class="alink_gcg_link2">长袖T恤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士裤装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">小脚裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">9分裤</a>
+	    							<a href="#" class="alink_gcg_link2">短裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">针织裤</a>
+	    							<a href="#" class="alink_gcg_link2">西裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动裤</a>
+	    							<a href="#" class="alink_gcg_link2">工装裤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">特色男装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">潮牌</a>
+	    							<a href="#" class="alink_gcg_link2">中老年</a>
+	    							<a href="#" class="alink_gcg_link2_1">加大码</a>
+	    							<a href="#" class="alink_gcg_link2">职场精英</a>
+	    							<a href="#" class="alink_gcg_link2_1">中国风</a>
+	    							<a href="#" class="alink_gcg_link2">情侣装</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">运动鞋</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">跑步鞋</a>
+	    							<a href="#" class="alink_gcg_link2">运动鞋</a>
+	    							<a href="#" class="alink_gcg_link2">板鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">潮鞋</a>
+	    							<a href="#" class="alink_gcg_link2">休闲鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">篮球鞋</a>
+	    							<a href="#" class="alink_gcg_link2">足球鞋</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">运动服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">短袖t恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动内衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">速干t恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动Polo</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动卫衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动套装</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动短裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动夹克</a>
+
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">户外鞋服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">冲锋衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">抓绒衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">登山鞋</a>
+	    							<a href="#" class="alink_gcg_link2">户外休闲衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">军迷</a>
+	    							<a href="#" class="alink_gcg_link2">钓鱼服</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">户外用品</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">钓竿</a>
+	    							<a href="#" class="alink_gcg_link2">双肩背包</a>
+	    							<a href="#" class="alink_gcg_link2_1">防晒衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">户外包</a>
+	    							<a href="#" class="alink_gcg_link2_1">帐篷</a>
+	    							<a href="#" class="alink_gcg_link2">手电筒</a>
+	    							<a href="#" class="alink_gcg_link2">刀具</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<!-- 名牌图标 -->
+	    				<div class="gcg_logo_show">
+	    					<div>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (1).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (2).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (3).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (4).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (5).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (6).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (7).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (8).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (9).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (10).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (11).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (12).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (13).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (14).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (15).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (16).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link1">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1-378-174 (1).jpg">
+	    						</a>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="gcg_show1" index='3'>
+	    			<div class="gcg_show_0">
+	    				<!-- 具体类型 -->
+	    				<div class="gcg_show11">
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">当季流行</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">女装新品</a>
+	    							<a href="#" class="alink_gcg_link1">商场同款</a>
+	    							<a href="#" class="alink_gcg_link1_1">仙女连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">T恤</a>
+	    							<a href="#" class="alink_gcg_link1">衬衫</a>
+	    							<a href="#" class="alink_gcg_link1">时髦外套</a>
+	    							<a href="#" class="alink_gcg_link1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">无痕文胸</a>
+	    							<a href="#" class="alink_gcg_link1">运动文胸</a>
+	    							<a href="#" class="alink_gcg_link1_1">潮流家居服</a>
+	    							<a href="#" class="alink_gcg_link1">百搭船袜</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">精品上装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">毛呢外套</a>
+	    							<a href="#" class="alink_gcg_link1_1">羽绒服</a>
+	    							<a href="#" class="alink_gcg_link1_1">棉服</a>
+	    							<a href="#" class="alink_gcg_link1">丝绒卫衣</a>
+	    							<a href="#" class="alink_gcg_link1">毛针织衫</a>
+	    							<a href="#" class="alink_gcg_link1">皮毛一体</a>
+	    							<a href="#" class="alink_gcg_link1">皮草</a>
+	    							<a href="#" class="alink_gcg_link1">毛衣</a>
+	    							<a href="#" class="alink_gcg_link1">衬衫</a>
+	    							<a href="#" class="alink_gcg_link1">卫衣</a>
+	    							<a href="#" class="alink_gcg_link1">针织衫</a>
+	    							<a href="#" class="alink_gcg_link1_1">T恤</a>
+	    							<a href="#" class="alink_gcg_link1">短外套</a>
+	    							<a href="#" class="alink_gcg_link1_1">小西装</a>
+	    							<a href="#" class="alink_gcg_link1">风衣</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">浪漫裙摆</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">半身裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">A字裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">荷叶边裙</a>
+	    							<a href="#" class="alink_gcg_link1">大摆裙</a>
+	    							<a href="#" class="alink_gcg_link1">包臀裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">百褶裙</a>
+	    							<a href="#" class="alink_gcg_link1">长袖连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">棉麻连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裙</a>
+	    							<a href="#" class="alink_gcg_link1">蕾丝连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">真丝连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">印花连衣裙</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">女士下装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">阔腿裤</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link1">打底裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">开叉运动裤</a>
+	    							<a href="#" class="alink_gcg_link1">哈伦裤</a>
+	    							<a href="#" class="alink_gcg_link1">背带裤</a>
+	    							<a href="#" class="alink_gcg_link1">小脚裤</a>
+	    							<a href="#" class="alink_gcg_link1">西装裤</a>
+	    							<a href="#" class="alink_gcg_link1">短裤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">特色女装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">时尚套装</a>
+	    							<a href="#" class="alink_gcg_link1">休闲套装</a>
+	    							<a href="#" class="alink_gcg_link1_1">日系女装</a>
+	    							<a href="#" class="alink_gcg_link1_1">精选妈妈装</a>
+	    							<a href="#" class="alink_gcg_link1">大码女装</a>
+	    							<a href="#" class="alink_gcg_link1">职业套装</a>
+	    							<a href="#" class="alink_gcg_link1">优雅旗袍</a>
+	    							<a href="#" class="alink_gcg_link1">精致礼服</a>
+	    							<a href="#" class="alink_gcg_link1">婚纱</a>
+	    							<a href="#" class="alink_gcg_link1">唐装</a>
+	    							<a href="#" class="alink_gcg_link1">小码女装</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">文胸塑身</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">光面文胸</a>
+	    							<a href="#" class="alink_gcg_link1">运动文胸</a>
+	    							<a href="#" class="alink_gcg_link1">美背文胸</a>
+	    							<a href="#" class="alink_gcg_link1">聚拢文胸</a>
+	    							<a href="#" class="alink_gcg_link1">大杯文胸</a>
+	    							<a href="#" class="alink_gcg_link1">轻薄塑身</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">家居服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">春夏家居服</a>
+	    							<a href="#" class="alink_gcg_link1">纯棉家居服</a>
+	    							<a href="#" class="alink_gcg_link1">莫代尔家居服</a>
+	    							<a href="#" class="alink_gcg_link1">真丝家居服</a>
+	    							<a href="#" class="alink_gcg_link1">春夏睡裙</a>
+	    							<a href="#" class="alink_gcg_link1">男士家居服</a>
+	    							<a href="#" class="alink_gcg_link1">情侣家居服</a>
+	    							<a href="#" class="alink_gcg_link1">性感睡裙</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">内裤背心</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">男士内裤</a>
+	    							<a href="#" class="alink_gcg_link1">女士内裤</a>
+	    							<a href="#" class="alink_gcg_link1">男士内裤多条装</a>
+	    							<a href="#" class="alink_gcg_link1">女士内裤多条装</a>
+	    							<a href="#" class="alink_gcg_link1">莫代尔内裤</a>
+	    							<a href="#" class="alink_gcg_link1">吊带背心</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">袜类</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">船袜</a>
+	    							<a href="#" class="alink_gcg_link1">长筒丝袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">男士运动袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">女士装饰袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">潮流渔网袜</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<!-- 名牌图标 -->
+	    				<div class="gcg_logo_show">
+	    					<div>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB1.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB2.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB3.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB4.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB5.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB6.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB7.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB8.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB9.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB10.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB11.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB12.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB13.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB14.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB15.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB16.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link1">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB17-378-174.jpg">
+	    						</a>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="gcg_show1" index='4'>
+	    			<div class="gcg_show_0">
+	    				<!-- 具体类型 -->
+	    				<div class="gcg_show11">
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">当季流行</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">当季新品</a>
+	    							<a href="#" class="alink_gcg_link2">商场同款</a>
+	    							<a href="#" class="alink_gcg_link2_1">印花T恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">潮流卫衣</a>
+	    							<a href="#" class="alink_gcg_link2">牛仔衬衫</a>
+	    							<a href="#" class="alink_gcg_link2_1">修身夹克</a>
+	    							<a href="#" class="alink_gcg_link2">保暖棉服</a>
+	    							<a href="#" class="alink_gcg_link2">棉麻面料</a>
+	    							<a href="#" class="alink_gcg_link2">温暖的针织衫</a>
+	    							<a href="#" class="alink_gcg_link2">修身西服</a>
+	    							<a href="#" class="alink_gcg_link2">秋冬风衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">束脚裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">九分裤</a>
+	    							<a href="#" class="alink_gcg_link2">破洞牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">跑步鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">休闲鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">篮球鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">自行车</a>
+	    							<a href="#" class="alink_gcg_link2">平衡车</a>
+	    							<a href="#" class="alink_gcg_link2">帆布鞋</a>
+	    							<a href="#" class="alink_gcg_link2">运动套装</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动卫衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">鱼竿</a>
+	    							<a href="#" class="alink_gcg_link2_1">冲锋衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">九跑步机</a>
+	    							<a href="#" class="alink_gcg_link2_1">电动车</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士外套</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">夹克</a>
+	    							<a href="#" class="alink_gcg_link2">单西</a>
+	    							<a href="#" class="alink_gcg_link2_1">棒球服</a>
+	    							<a href="#" class="alink_gcg_link2">棉衣</a>
+	    							<a href="#" class="alink_gcg_link2">毛呢大衣</a>
+	    							<a href="#" class="alink_gcg_link2">风衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">西服套装</a>
+	    							<a href="#" class="alink_gcg_link2">羽绒服</a>
+	    							<a href="#" class="alink_gcg_link2">皮衣</a>
+	    							<a href="#" class="alink_gcg_link2">运动服</a>
+	    							<a href="#" class="alink_gcg_link2">工装外套</a>
+	    							<a href="#" class="alink_gcg_link2">针织开衫</a>
+	    							<a href="#" class="alink_gcg_link2">马甲</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士内搭</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">短袖T恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">POLO衫</a>
+	    							<a href="#" class="alink_gcg_link2">短袖衬衫</a>
+	    							<a href="#" class="alink_gcg_link2">背心</a>
+	    							<a href="#" class="alink_gcg_link2_1">卫衣</a>
+	    							<a href="#" class="alink_gcg_link2">针织衫/毛衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">长袖衬衫</a>
+	    							<a href="#" class="alink_gcg_link2">长袖T恤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士裤装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">小脚裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">9分裤</a>
+	    							<a href="#" class="alink_gcg_link2">短裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">针织裤</a>
+	    							<a href="#" class="alink_gcg_link2">西裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动裤</a>
+	    							<a href="#" class="alink_gcg_link2">工装裤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">特色男装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">潮牌</a>
+	    							<a href="#" class="alink_gcg_link2">中老年</a>
+	    							<a href="#" class="alink_gcg_link2_1">加大码</a>
+	    							<a href="#" class="alink_gcg_link2">职场精英</a>
+	    							<a href="#" class="alink_gcg_link2_1">中国风</a>
+	    							<a href="#" class="alink_gcg_link2">情侣装</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">运动鞋</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">跑步鞋</a>
+	    							<a href="#" class="alink_gcg_link2">运动鞋</a>
+	    							<a href="#" class="alink_gcg_link2">板鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">潮鞋</a>
+	    							<a href="#" class="alink_gcg_link2">休闲鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">篮球鞋</a>
+	    							<a href="#" class="alink_gcg_link2">足球鞋</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">运动服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">短袖t恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动内衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">速干t恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动Polo</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动卫衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动套装</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动短裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动夹克</a>
+
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">户外鞋服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">冲锋衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">抓绒衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">登山鞋</a>
+	    							<a href="#" class="alink_gcg_link2">户外休闲衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">军迷</a>
+	    							<a href="#" class="alink_gcg_link2">钓鱼服</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">户外用品</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">钓竿</a>
+	    							<a href="#" class="alink_gcg_link2">双肩背包</a>
+	    							<a href="#" class="alink_gcg_link2_1">防晒衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">户外包</a>
+	    							<a href="#" class="alink_gcg_link2_1">帐篷</a>
+	    							<a href="#" class="alink_gcg_link2">手电筒</a>
+	    							<a href="#" class="alink_gcg_link2">刀具</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<!-- 名牌图标 -->
+	    				<div class="gcg_logo_show">
+	    					<div>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (1).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (2).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (3).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (4).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (5).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (6).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (7).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (8).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (9).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (10).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (11).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (12).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (13).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (14).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (15).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (16).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link1">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1-378-174 (1).jpg">
+	    						</a>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="gcg_show1" index='5'>
+	    			<div class="gcg_show_0">
+	    				<!-- 具体类型 -->
+	    				<div class="gcg_show11">
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">当季流行</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">女装新品</a>
+	    							<a href="#" class="alink_gcg_link1">商场同款</a>
+	    							<a href="#" class="alink_gcg_link1_1">仙女连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">T恤</a>
+	    							<a href="#" class="alink_gcg_link1">衬衫</a>
+	    							<a href="#" class="alink_gcg_link1">时髦外套</a>
+	    							<a href="#" class="alink_gcg_link1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">无痕文胸</a>
+	    							<a href="#" class="alink_gcg_link1">运动文胸</a>
+	    							<a href="#" class="alink_gcg_link1_1">潮流家居服</a>
+	    							<a href="#" class="alink_gcg_link1">百搭船袜</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">精品上装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">毛呢外套</a>
+	    							<a href="#" class="alink_gcg_link1_1">羽绒服</a>
+	    							<a href="#" class="alink_gcg_link1_1">棉服</a>
+	    							<a href="#" class="alink_gcg_link1">丝绒卫衣</a>
+	    							<a href="#" class="alink_gcg_link1">毛针织衫</a>
+	    							<a href="#" class="alink_gcg_link1">皮毛一体</a>
+	    							<a href="#" class="alink_gcg_link1">皮草</a>
+	    							<a href="#" class="alink_gcg_link1">毛衣</a>
+	    							<a href="#" class="alink_gcg_link1">衬衫</a>
+	    							<a href="#" class="alink_gcg_link1">卫衣</a>
+	    							<a href="#" class="alink_gcg_link1">针织衫</a>
+	    							<a href="#" class="alink_gcg_link1_1">T恤</a>
+	    							<a href="#" class="alink_gcg_link1">短外套</a>
+	    							<a href="#" class="alink_gcg_link1_1">小西装</a>
+	    							<a href="#" class="alink_gcg_link1">风衣</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">浪漫裙摆</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">半身裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">A字裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">荷叶边裙</a>
+	    							<a href="#" class="alink_gcg_link1">大摆裙</a>
+	    							<a href="#" class="alink_gcg_link1">包臀裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">百褶裙</a>
+	    							<a href="#" class="alink_gcg_link1">长袖连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">棉麻连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裙</a>
+	    							<a href="#" class="alink_gcg_link1">蕾丝连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">真丝连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">印花连衣裙</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">女士下装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">阔腿裤</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link1">打底裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">开叉运动裤</a>
+	    							<a href="#" class="alink_gcg_link1">哈伦裤</a>
+	    							<a href="#" class="alink_gcg_link1">背带裤</a>
+	    							<a href="#" class="alink_gcg_link1">小脚裤</a>
+	    							<a href="#" class="alink_gcg_link1">西装裤</a>
+	    							<a href="#" class="alink_gcg_link1">短裤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">特色女装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">时尚套装</a>
+	    							<a href="#" class="alink_gcg_link1">休闲套装</a>
+	    							<a href="#" class="alink_gcg_link1_1">日系女装</a>
+	    							<a href="#" class="alink_gcg_link1_1">精选妈妈装</a>
+	    							<a href="#" class="alink_gcg_link1">大码女装</a>
+	    							<a href="#" class="alink_gcg_link1">职业套装</a>
+	    							<a href="#" class="alink_gcg_link1">优雅旗袍</a>
+	    							<a href="#" class="alink_gcg_link1">精致礼服</a>
+	    							<a href="#" class="alink_gcg_link1">婚纱</a>
+	    							<a href="#" class="alink_gcg_link1">唐装</a>
+	    							<a href="#" class="alink_gcg_link1">小码女装</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">文胸塑身</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">光面文胸</a>
+	    							<a href="#" class="alink_gcg_link1">运动文胸</a>
+	    							<a href="#" class="alink_gcg_link1">美背文胸</a>
+	    							<a href="#" class="alink_gcg_link1">聚拢文胸</a>
+	    							<a href="#" class="alink_gcg_link1">大杯文胸</a>
+	    							<a href="#" class="alink_gcg_link1">轻薄塑身</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">家居服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">春夏家居服</a>
+	    							<a href="#" class="alink_gcg_link1">纯棉家居服</a>
+	    							<a href="#" class="alink_gcg_link1">莫代尔家居服</a>
+	    							<a href="#" class="alink_gcg_link1">真丝家居服</a>
+	    							<a href="#" class="alink_gcg_link1">春夏睡裙</a>
+	    							<a href="#" class="alink_gcg_link1">男士家居服</a>
+	    							<a href="#" class="alink_gcg_link1">情侣家居服</a>
+	    							<a href="#" class="alink_gcg_link1">性感睡裙</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">内裤背心</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">男士内裤</a>
+	    							<a href="#" class="alink_gcg_link1">女士内裤</a>
+	    							<a href="#" class="alink_gcg_link1">男士内裤多条装</a>
+	    							<a href="#" class="alink_gcg_link1">女士内裤多条装</a>
+	    							<a href="#" class="alink_gcg_link1">莫代尔内裤</a>
+	    							<a href="#" class="alink_gcg_link1">吊带背心</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">袜类</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">船袜</a>
+	    							<a href="#" class="alink_gcg_link1">长筒丝袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">男士运动袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">女士装饰袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">潮流渔网袜</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<!-- 名牌图标 -->
+	    				<div class="gcg_logo_show">
+	    					<div>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB1.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB2.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB3.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB4.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB5.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB6.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB7.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB8.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB9.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB10.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB11.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB12.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB13.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB14.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB15.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB16.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link1">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB17-378-174.jpg">
+	    						</a>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="gcg_show1" index='6'>
+	    			<div class="gcg_show_0">
+	    				<!-- 具体类型 -->
+	    				<div class="gcg_show11">
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">当季流行</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">当季新品</a>
+	    							<a href="#" class="alink_gcg_link2">商场同款</a>
+	    							<a href="#" class="alink_gcg_link2_1">印花T恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">潮流卫衣</a>
+	    							<a href="#" class="alink_gcg_link2">牛仔衬衫</a>
+	    							<a href="#" class="alink_gcg_link2_1">修身夹克</a>
+	    							<a href="#" class="alink_gcg_link2">保暖棉服</a>
+	    							<a href="#" class="alink_gcg_link2">棉麻面料</a>
+	    							<a href="#" class="alink_gcg_link2">温暖的针织衫</a>
+	    							<a href="#" class="alink_gcg_link2">修身西服</a>
+	    							<a href="#" class="alink_gcg_link2">秋冬风衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">束脚裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">九分裤</a>
+	    							<a href="#" class="alink_gcg_link2">破洞牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">跑步鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">休闲鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">篮球鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">自行车</a>
+	    							<a href="#" class="alink_gcg_link2">平衡车</a>
+	    							<a href="#" class="alink_gcg_link2">帆布鞋</a>
+	    							<a href="#" class="alink_gcg_link2">运动套装</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动卫衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">鱼竿</a>
+	    							<a href="#" class="alink_gcg_link2_1">冲锋衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">九跑步机</a>
+	    							<a href="#" class="alink_gcg_link2_1">电动车</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士外套</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">夹克</a>
+	    							<a href="#" class="alink_gcg_link2">单西</a>
+	    							<a href="#" class="alink_gcg_link2_1">棒球服</a>
+	    							<a href="#" class="alink_gcg_link2">棉衣</a>
+	    							<a href="#" class="alink_gcg_link2">毛呢大衣</a>
+	    							<a href="#" class="alink_gcg_link2">风衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">西服套装</a>
+	    							<a href="#" class="alink_gcg_link2">羽绒服</a>
+	    							<a href="#" class="alink_gcg_link2">皮衣</a>
+	    							<a href="#" class="alink_gcg_link2">运动服</a>
+	    							<a href="#" class="alink_gcg_link2">工装外套</a>
+	    							<a href="#" class="alink_gcg_link2">针织开衫</a>
+	    							<a href="#" class="alink_gcg_link2">马甲</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士内搭</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">短袖T恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">POLO衫</a>
+	    							<a href="#" class="alink_gcg_link2">短袖衬衫</a>
+	    							<a href="#" class="alink_gcg_link2">背心</a>
+	    							<a href="#" class="alink_gcg_link2_1">卫衣</a>
+	    							<a href="#" class="alink_gcg_link2">针织衫/毛衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">长袖衬衫</a>
+	    							<a href="#" class="alink_gcg_link2">长袖T恤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士裤装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">小脚裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">9分裤</a>
+	    							<a href="#" class="alink_gcg_link2">短裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">针织裤</a>
+	    							<a href="#" class="alink_gcg_link2">西裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动裤</a>
+	    							<a href="#" class="alink_gcg_link2">工装裤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">特色男装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">潮牌</a>
+	    							<a href="#" class="alink_gcg_link2">中老年</a>
+	    							<a href="#" class="alink_gcg_link2_1">加大码</a>
+	    							<a href="#" class="alink_gcg_link2">职场精英</a>
+	    							<a href="#" class="alink_gcg_link2_1">中国风</a>
+	    							<a href="#" class="alink_gcg_link2">情侣装</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">运动鞋</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">跑步鞋</a>
+	    							<a href="#" class="alink_gcg_link2">运动鞋</a>
+	    							<a href="#" class="alink_gcg_link2">板鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">潮鞋</a>
+	    							<a href="#" class="alink_gcg_link2">休闲鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">篮球鞋</a>
+	    							<a href="#" class="alink_gcg_link2">足球鞋</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">运动服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">短袖t恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动内衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">速干t恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动Polo</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动卫衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动套装</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动短裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动夹克</a>
+
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">户外鞋服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">冲锋衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">抓绒衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">登山鞋</a>
+	    							<a href="#" class="alink_gcg_link2">户外休闲衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">军迷</a>
+	    							<a href="#" class="alink_gcg_link2">钓鱼服</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">户外用品</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">钓竿</a>
+	    							<a href="#" class="alink_gcg_link2">双肩背包</a>
+	    							<a href="#" class="alink_gcg_link2_1">防晒衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">户外包</a>
+	    							<a href="#" class="alink_gcg_link2_1">帐篷</a>
+	    							<a href="#" class="alink_gcg_link2">手电筒</a>
+	    							<a href="#" class="alink_gcg_link2">刀具</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<!-- 名牌图标 -->
+	    				<div class="gcg_logo_show">
+	    					<div>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (1).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (2).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (3).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (4).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (5).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (6).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (7).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (8).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (9).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (10).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (11).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (12).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (13).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (14).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (15).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (16).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link1">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1-378-174 (1).jpg">
+	    						</a>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="gcg_show1" index='7'>
+	    			<div class="gcg_show_0">
+	    				<!-- 具体类型 -->
+	    				<div class="gcg_show11">
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">当季流行</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">女装新品</a>
+	    							<a href="#" class="alink_gcg_link1">商场同款</a>
+	    							<a href="#" class="alink_gcg_link1_1">仙女连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">T恤</a>
+	    							<a href="#" class="alink_gcg_link1">衬衫</a>
+	    							<a href="#" class="alink_gcg_link1">时髦外套</a>
+	    							<a href="#" class="alink_gcg_link1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">无痕文胸</a>
+	    							<a href="#" class="alink_gcg_link1">运动文胸</a>
+	    							<a href="#" class="alink_gcg_link1_1">潮流家居服</a>
+	    							<a href="#" class="alink_gcg_link1">百搭船袜</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">精品上装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">毛呢外套</a>
+	    							<a href="#" class="alink_gcg_link1_1">羽绒服</a>
+	    							<a href="#" class="alink_gcg_link1_1">棉服</a>
+	    							<a href="#" class="alink_gcg_link1">丝绒卫衣</a>
+	    							<a href="#" class="alink_gcg_link1">毛针织衫</a>
+	    							<a href="#" class="alink_gcg_link1">皮毛一体</a>
+	    							<a href="#" class="alink_gcg_link1">皮草</a>
+	    							<a href="#" class="alink_gcg_link1">毛衣</a>
+	    							<a href="#" class="alink_gcg_link1">衬衫</a>
+	    							<a href="#" class="alink_gcg_link1">卫衣</a>
+	    							<a href="#" class="alink_gcg_link1">针织衫</a>
+	    							<a href="#" class="alink_gcg_link1_1">T恤</a>
+	    							<a href="#" class="alink_gcg_link1">短外套</a>
+	    							<a href="#" class="alink_gcg_link1_1">小西装</a>
+	    							<a href="#" class="alink_gcg_link1">风衣</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">浪漫裙摆</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">半身裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">A字裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">荷叶边裙</a>
+	    							<a href="#" class="alink_gcg_link1">大摆裙</a>
+	    							<a href="#" class="alink_gcg_link1">包臀裙</a>
+	    							<a href="#" class="alink_gcg_link1_1">百褶裙</a>
+	    							<a href="#" class="alink_gcg_link1">长袖连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">棉麻连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裙</a>
+	    							<a href="#" class="alink_gcg_link1">蕾丝连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">真丝连衣裙</a>
+	    							<a href="#" class="alink_gcg_link1">印花连衣裙</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">女士下装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">阔腿裤</a>
+	    							<a href="#" class="alink_gcg_link1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link1">打底裤</a>
+	    							<a href="#" class="alink_gcg_link1_1">开叉运动裤</a>
+	    							<a href="#" class="alink_gcg_link1">哈伦裤</a>
+	    							<a href="#" class="alink_gcg_link1">背带裤</a>
+	    							<a href="#" class="alink_gcg_link1">小脚裤</a>
+	    							<a href="#" class="alink_gcg_link1">西装裤</a>
+	    							<a href="#" class="alink_gcg_link1">短裤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">特色女装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1_1">时尚套装</a>
+	    							<a href="#" class="alink_gcg_link1">休闲套装</a>
+	    							<a href="#" class="alink_gcg_link1_1">日系女装</a>
+	    							<a href="#" class="alink_gcg_link1_1">精选妈妈装</a>
+	    							<a href="#" class="alink_gcg_link1">大码女装</a>
+	    							<a href="#" class="alink_gcg_link1">职业套装</a>
+	    							<a href="#" class="alink_gcg_link1">优雅旗袍</a>
+	    							<a href="#" class="alink_gcg_link1">精致礼服</a>
+	    							<a href="#" class="alink_gcg_link1">婚纱</a>
+	    							<a href="#" class="alink_gcg_link1">唐装</a>
+	    							<a href="#" class="alink_gcg_link1">小码女装</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">文胸塑身</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">光面文胸</a>
+	    							<a href="#" class="alink_gcg_link1">运动文胸</a>
+	    							<a href="#" class="alink_gcg_link1">美背文胸</a>
+	    							<a href="#" class="alink_gcg_link1">聚拢文胸</a>
+	    							<a href="#" class="alink_gcg_link1">大杯文胸</a>
+	    							<a href="#" class="alink_gcg_link1">轻薄塑身</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">家居服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">春夏家居服</a>
+	    							<a href="#" class="alink_gcg_link1">纯棉家居服</a>
+	    							<a href="#" class="alink_gcg_link1">莫代尔家居服</a>
+	    							<a href="#" class="alink_gcg_link1">真丝家居服</a>
+	    							<a href="#" class="alink_gcg_link1">春夏睡裙</a>
+	    							<a href="#" class="alink_gcg_link1">男士家居服</a>
+	    							<a href="#" class="alink_gcg_link1">情侣家居服</a>
+	    							<a href="#" class="alink_gcg_link1">性感睡裙</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">内裤背心</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">男士内裤</a>
+	    							<a href="#" class="alink_gcg_link1">女士内裤</a>
+	    							<a href="#" class="alink_gcg_link1">男士内裤多条装</a>
+	    							<a href="#" class="alink_gcg_link1">女士内裤多条装</a>
+	    							<a href="#" class="alink_gcg_link1">莫代尔内裤</a>
+	    							<a href="#" class="alink_gcg_link1">吊带背心</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">袜类</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link1">船袜</a>
+	    							<a href="#" class="alink_gcg_link1">长筒丝袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">男士运动袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">女士装饰袜</a>
+	    							<a href="#" class="alink_gcg_link1_1">潮流渔网袜</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<!-- 名牌图标 -->
+	    				<div class="gcg_logo_show">
+	    					<div>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB1.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB2.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB3.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB4.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB5.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB6.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB7.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB8.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB9.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB10.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB11.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB12.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB13.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB14.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB15.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB16.jpg_170x120q30.jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link1">
+	    							<img src="../public/image/goods_category_logo/women_wear/TB17-378-174.jpg">
+	    						</a>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="gcg_show1" index='8'>
+	    			<div class="gcg_show_0">
+	    				<!-- 具体类型 -->
+	    				<div class="gcg_show11">
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">当季流行</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">当季新品</a>
+	    							<a href="#" class="alink_gcg_link2">商场同款</a>
+	    							<a href="#" class="alink_gcg_link2_1">印花T恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">潮流卫衣</a>
+	    							<a href="#" class="alink_gcg_link2">牛仔衬衫</a>
+	    							<a href="#" class="alink_gcg_link2_1">修身夹克</a>
+	    							<a href="#" class="alink_gcg_link2">保暖棉服</a>
+	    							<a href="#" class="alink_gcg_link2">棉麻面料</a>
+	    							<a href="#" class="alink_gcg_link2">温暖的针织衫</a>
+	    							<a href="#" class="alink_gcg_link2">修身西服</a>
+	    							<a href="#" class="alink_gcg_link2">秋冬风衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">束脚裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">九分裤</a>
+	    							<a href="#" class="alink_gcg_link2">破洞牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">跑步鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">休闲鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">篮球鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">自行车</a>
+	    							<a href="#" class="alink_gcg_link2">平衡车</a>
+	    							<a href="#" class="alink_gcg_link2">帆布鞋</a>
+	    							<a href="#" class="alink_gcg_link2">运动套装</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动卫衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">鱼竿</a>
+	    							<a href="#" class="alink_gcg_link2_1">冲锋衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">九跑步机</a>
+	    							<a href="#" class="alink_gcg_link2_1">电动车</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士外套</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">夹克</a>
+	    							<a href="#" class="alink_gcg_link2">单西</a>
+	    							<a href="#" class="alink_gcg_link2_1">棒球服</a>
+	    							<a href="#" class="alink_gcg_link2">棉衣</a>
+	    							<a href="#" class="alink_gcg_link2">毛呢大衣</a>
+	    							<a href="#" class="alink_gcg_link2">风衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">西服套装</a>
+	    							<a href="#" class="alink_gcg_link2">羽绒服</a>
+	    							<a href="#" class="alink_gcg_link2">皮衣</a>
+	    							<a href="#" class="alink_gcg_link2">运动服</a>
+	    							<a href="#" class="alink_gcg_link2">工装外套</a>
+	    							<a href="#" class="alink_gcg_link2">针织开衫</a>
+	    							<a href="#" class="alink_gcg_link2">马甲</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士内搭</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">短袖T恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">POLO衫</a>
+	    							<a href="#" class="alink_gcg_link2">短袖衬衫</a>
+	    							<a href="#" class="alink_gcg_link2">背心</a>
+	    							<a href="#" class="alink_gcg_link2_1">卫衣</a>
+	    							<a href="#" class="alink_gcg_link2">针织衫/毛衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">长袖衬衫</a>
+	    							<a href="#" class="alink_gcg_link2">长袖T恤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">男士裤装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">小脚裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">9分裤</a>
+	    							<a href="#" class="alink_gcg_link2">短裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">休闲裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">牛仔裤</a>
+	    							<a href="#" class="alink_gcg_link2_1">针织裤</a>
+	    							<a href="#" class="alink_gcg_link2">西裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动裤</a>
+	    							<a href="#" class="alink_gcg_link2">工装裤</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">特色男装</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">潮牌</a>
+	    							<a href="#" class="alink_gcg_link2">中老年</a>
+	    							<a href="#" class="alink_gcg_link2_1">加大码</a>
+	    							<a href="#" class="alink_gcg_link2">职场精英</a>
+	    							<a href="#" class="alink_gcg_link2_1">中国风</a>
+	    							<a href="#" class="alink_gcg_link2">情侣装</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">运动鞋</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">跑步鞋</a>
+	    							<a href="#" class="alink_gcg_link2">运动鞋</a>
+	    							<a href="#" class="alink_gcg_link2">板鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">潮鞋</a>
+	    							<a href="#" class="alink_gcg_link2">休闲鞋</a>
+	    							<a href="#" class="alink_gcg_link2_1">篮球鞋</a>
+	    							<a href="#" class="alink_gcg_link2">足球鞋</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">运动服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">短袖t恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动内衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">速干t恤</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动Polo</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动卫衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动套装</a>
+	    							<a href="#" class="alink_gcg_link2_1">运动短裤</a>
+	    							<a href="#" class="alink_gcg_link2">运动夹克</a>
+
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">户外鞋服</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">冲锋衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">抓绒衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">登山鞋</a>
+	    							<a href="#" class="alink_gcg_link2">户外休闲衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">军迷</a>
+	    							<a href="#" class="alink_gcg_link2">钓鱼服</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    					<div class="gcg_word_line">
+	    						<div class="gcg_line_title">
+	    							<div class="title_text">户外用品</div>
+	    							<i class="fa fa-chevron-right" aria-hidden="true" style="    display: block;position: absolute;top: 6px;right: -15px;"></i>
+	    						</div>
+	    						<div class="gcg_line_link">
+	    							<a href="#" class="alink_gcg_link2_1">钓竿</a>
+	    							<a href="#" class="alink_gcg_link2">双肩背包</a>
+	    							<a href="#" class="alink_gcg_link2_1">防晒衣</a>
+	    							<a href="#" class="alink_gcg_link2_1">户外包</a>
+	    							<a href="#" class="alink_gcg_link2_1">帐篷</a>
+	    							<a href="#" class="alink_gcg_link2">手电筒</a>
+	    							<a href="#" class="alink_gcg_link2">刀具</a>
+	    							<div class="gcg_dashed"></div>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<!-- 名牌图标 -->
+	    				<div class="gcg_logo_show">
+	    					<div>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (1).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (2).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (3).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (4).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (5).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (6).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (7).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (8).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (9).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (10).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (11).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (12).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (13).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (14).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (15).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1.jpg_170x120q30 (16).jpg">
+	    						</a>
+	    						<a href="#" class="gcg_logo_link1">
+	    							<img src="../public/image/goods_category_logo/man_wear/TB1-378-174 (1).jpg">
+	    						</a>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
+    	</div>
+    	<!-- 轮播 -->
+    	<div class="carousel">
+    		<div class="carousel1">
+    			<!-- 分 -->
+    			<div class="carousel_f">
+    				<div class="carousel_f_1" style="background-color: #FF00FF;" >
+    					<div class="carousel_f_2">
+    						<!-- 加两个容器是为了定位，给左边的导航留出位置，否则背景无法平铺，第f_3个容器无法使用margin居中-->
+    						<div class="carousel_f_3">
+    							<div class="carousel_f_4">
+    								<a href="#">
+    									<img width="1230" height="500" src="../public/image/carousel/1/TB1W4.jpg">
+    								</a>
+    								<a href="#" class="carousel_f_4_a" style="top: 10px;">
+    									<img width="220" height="235" src="../public/image/carousel/1/TB17-440-470.png_294x430q100.jpg_.webp">
+    								</a>
+    								<a href="#" class="carousel_f_4_a" style="top: 255px;">
+    									<img width="220" height="235" src="../public/image/carousel/1/TB19-440-470.png_294x430q100.jpg_.webp">
+    								</a>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="carousel_f">
+    				<div class="carousel_f_1" style="background-color: #eee;" >
+    					<div class="carousel_f_2">
+    						<!-- 加两个容器是为了定位，给左边的导航留出位置，否则背景无法平铺，第f_3个容器无法使用margin居中-->
+    						<div class="carousel_f_3">
+    							<div class="carousel_f_4" >
+    								<a href="#" class="carousel_f_4_a" style="top: 10px;">
+    									<img width="220" height="235" src="../public/image/carousel/1/TB17-440-470.png_294x430q100.jpg_.webp">
+    								</a>
+    								<a href="#" class="carousel_f_4_a" style="top: 255px;">
+    									<img width="220" height="235" src="../public/image/carousel/1/TB19-440-470.png_294x430q100.jpg_.webp">
+    								</a>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="carousel_f">
+    				<div class="carousel_f_1" style="background-color: black;" >
+    					<div class="carousel_f_2">
+    						<!-- 加两个容器是为了定位，给左边的导航留出位置，否则背景无法平铺，第f_3个容器无法使用margin居中-->
+    						<div class="carousel_f_3">
+    							<div class="carousel_f_4" >
+    								<a href="#" class="carousel_f_4_a" style="top: 10px;">
+    									<img width="220" height="235" src="../public/image/carousel/1/TB17-440-470.png_294x430q100.jpg_.webp">
+    								</a>
+    								<a href="#" class="carousel_f_4_a" style="top: 255px;">
+    									<img width="220" height="235" src="../public/image/carousel/1/TB19-440-470.png_294x430q100.jpg_.webp">
+    								</a>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="carousel_f">
+    				<div class="carousel_f_1" style="background-color: red;" >
+    					<div class="carousel_f_2">
+    						<!-- 加两个容器是为了定位，给左边的导航留出位置，否则背景无法平铺，第f_3个容器无法使用margin居中-->
+    						<div class="carousel_f_3">
+    							<div class="carousel_f_4" >
+    								<a href="#" class="carousel_f_4_a" style="top: 10px;">
+    									<img width="220" height="235" src="../public/image/carousel/1/TB17-440-470.png_294x430q100.jpg_.webp">
+    								</a>
+    								<a href="#" class="carousel_f_4_a" style="top: 255px;">
+    									<img width="220" height="235" src="../public/image/carousel/1/TB19-440-470.png_294x430q100.jpg_.webp">
+    								</a>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    		<!-- 小标签 -->
+    		<div class="small_label">
+    			<li index='1'></li>
+    			<li index='2'></li>
+    			<li index='3'></li>
+    			<li index='4'></li>
+    			<li index='5'></li>
+    		</div>
+    	</div>
+    </div>
+    <!-- 第五左侧导航 -->
+	<div class="leftNavigation">
+    	<div class="leftNavigationSon">导航</div>
+    	<div class="leftSite">天猫国际</div>
+    	<div class="leftSite">美丽人生</div>
+    	<div class="leftSite">潮电酷玩</div>
+    	<div class="leftSite">居家生活</div>
+    	<div class="leftSite">打造爱巢</div>
+    	<div class="leftSite">户外出行</div>
+    	<div class="leftSite">猜你喜欢</div>
+    	<div id="returnTop"><i class="fa fa-chevron-up" style="width:40px;"></i><span>顶部</span></div>
+    </div>
+    
+    <!-- 第六上导航 -->
+    <div id="topNavigation">
+    	<div class="topNavigationSon">
+    		<div class="fontTMBlock">
+    			<div class="fontEnglish">TMALL</div>
+    			<div class="fontChina">天猫</div>
+    		</div>
+    		<div class="topNavigationIpt">
+    			<input type="text" name="" placeholder="搜索 天猫 商品/品牌/店铺"> 
+    		</div>
+    		<div class="topNavigationBt"><button>搜索</button></div>
+    	</div>
+    </div>
+    <!-- 超大块居中 -->
+    <!-- <div style=""> -->
+    	<!-- 第七店铺 -->
+	    <div class="merchant">
+	    	<ul>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    		<li class="merchant-item">
+	    			<div class="merchant-img"><img data-src="/static/imgs/user/index/TB1.jpg" src="/static/imgs/user/tp/placeholder.jpg"></div>
+	    			<a class="merchant-alink" href="">
+	    				<div class="coupon">
+	    					<span class="couponFont"></span>
+	    				</div>
+	    				<div class="enter">
+	    					<span>点击进入</span>
+	    				</div>
+	    			</a>
+	    		</li>
+	    	</ul>
+	    </div>
+	    <!-- 第八天猫国际 -->
+	    <div class="leftNavTerminus">
+	    	<div class="leftNaviP">
+	    		<img data-src="/static/imgs/user/leftN/tmguoji.png" src="/static/imgs/user/tp/placeholder.jpg" width="214" height="25">
+	    	</div>
+	    	<div class="leftShopFrame">
+	    		<div class="leftShopCon">
+	    			<img class="leftNavPhoto" data-src="/static/imgs/user/leftN/guoji.jpg" src="/static/imgs/user/tp/placeholder.jpg" width="256" height="630">
+	    		</div>
+	    	</div>
+	    	<div class="rightShopFrame">
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink guojiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg guojiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText guojiShopText"></div>
+	    				<div class="rightShopPrice guojiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink guojiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg guojiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText guojiShopText"></div>
+	    				<div class="rightShopPrice guojiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink guojiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg guojiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText guojiShopText"></div>
+	    				<div class="rightShopPrice guojiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink guojiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg guojiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText guojiShopText"></div>
+	    				<div class="rightShopPrice guojiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink guojiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg guojiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText guojiShopText"></div>
+	    				<div class="rightShopPrice guojiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink guojiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg guojiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText guojiShopText"></div>
+	    				<div class="rightShopPrice guojiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink guojiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg guojiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText guojiShopText"></div>
+	    				<div class="rightShopPrice guojiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink guojiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg guojiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText guojiShopText"></div>
+	    				<div class="rightShopPrice guojiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- 第九美丽人生 -->
+	    <div class="leftNavTerminus">
+	    	<div class="leftNaviP">
+	    		<div class="leftNavBlock"></div>
+	    		<div class="leftNavText"><span style="float: left;">美丽人生</span><div class="leftNavText1">FASHION & BEAUTY</div>
+	    		</div>
+	    	</div>
+	    	<div class="leftShopFrame">
+	    		<div class="leftShopCon">
+	    			<img class="leftNavPhoto" data-src="/static/imgs/user/leftN/mli.jpg" src="/static/imgs/user/tp/placeholder.jpg" width="256" height="630">
+	    		</div>
+	    	</div>
+	    	<div class="rightShopFrame">
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink mliShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg mliShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText mliShopText"></div>
+	    				<div class="rightShopPrice mliShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink mliShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg mliShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText mliShopText"></div>
+	    				<div class="rightShopPrice mliShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink mliShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg mliShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText mliShopText"></div>
+	    				<div class="rightShopPrice mliShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink mliShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg mliShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText mliShopText"></div>
+	    				<div class="rightShopPrice mliShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink mliShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg mliShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText mliShopText"></div>
+	    				<div class="rightShopPrice mliShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink mliShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg mliShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText mliShopText"></div>
+	    				<div class="rightShopPrice mliShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink mliShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg mliShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText mliShopText"></div>
+	    				<div class="rightShopPrice mliShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink mliShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg mliShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText mliShopText"></div>
+	    				<div class="rightShopPrice mliShopPrice"></div>
+	    			</a>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- 第十潮电酷玩 -->
+	    <div class="leftNavTerminus">
+	    	<div class="leftNaviP">
+	    		<div class="leftNavBlock"></div>
+	    		<div class="leftNavText"><span style="float: left;">潮电酷玩</span><div class="leftNavText1">ELECTRONICS</div>
+	    		</div>
+	    	</div>
+	    	<div class="leftShopFrame">
+	    		<div class="leftShopCon">
+	    			<img class="leftNavPhoto" data-src="/static/imgs/user/leftN/kuwan.png" src="/static/imgs/user/tp/placeholder.jpg" width="256" height="630">
+	    		</div>
+	    	</div>
+	    	<div class="rightShopFrame">
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink kuwanShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg kuwanShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText kuwanShopText"></div>
+	    				<div class="rightShopPrice kuwanShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink kuwanShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg kuwanShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText kuwanShopText"></div>
+	    				<div class="rightShopPrice kuwanShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink kuwanShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg kuwanShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText kuwanShopText"></div>
+	    				<div class="rightShopPrice kuwanShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink kuwanShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg kuwanShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText kuwanShopText"></div>
+	    				<div class="rightShopPrice kuwanShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink kuwanShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg kuwanShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText kuwanShopText"></div>
+	    				<div class="rightShopPrice kuwanShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink kuwanShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg kuwanShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText kuwanShopText"></div>
+	    				<div class="rightShopPrice kuwanShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink kuwanShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg kuwanShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText kuwanShopText"></div>
+	    				<div class="rightShopPrice kuwanShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink kuwanShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg kuwanShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText kuwanShopText"></div>
+	    				<div class="rightShopPrice kuwanShopPrice"></div>
+	    			</a>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- 第十一居家生活 -->
+	    <div class="leftNavTerminus">
+	    	<div class="leftNaviP">
+	    		<div class="leftNavBlock"></div>
+	    		<div class="leftNavText"><span style="float: left;">居家生活</span><div class="leftNavText1">GROCERY & HEALTH</div>
+	    		</div>
+	    	</div>
+	    	<div class="leftShopFrame">
+	    		<div class="leftShopCon">
+	    			<img class="leftNavPhoto" data-src="/static/imgs/user/leftN/jujia.jpg" src="/static/imgs/user/tp/placeholder.jpg" width="256" height="630">
+	    		</div>
+	    	</div>
+	    	<div class="rightShopFrame">
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink jujiaShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg jujiaShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText jujiaShopText"></div>
+	    				<div class="rightShopPrice jujiaShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink jujiaShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg jujiaShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText jujiaShopText"></div>
+	    				<div class="rightShopPrice jujiaShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink jujiaShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg jujiaShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText jujiaShopText"></div>
+	    				<div class="rightShopPrice jujiaShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink jujiaShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg jujiaShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText jujiaShopText"></div>
+	    				<div class="rightShopPrice jujiaShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink jujiaShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg jujiaShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText jujiaShopText"></div>
+	    				<div class="rightShopPrice jujiaShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink jujiaShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg jujiaShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText jujiaShopText"></div>
+	    				<div class="rightShopPrice jujiaShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink jujiaShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg jujiaShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText jujiaShopText"></div>
+	    				<div class="rightShopPrice jujiaShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink jujiaShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg jujiaShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText jujiaShopText"></div>
+	    				<div class="rightShopPrice jujiaShopPrice"></div>
+	    			</a>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- 第十二打造爱巢 -->
+	    <div class="leftNavTerminus">
+	    	<div class="leftNaviP">
+	    		<div class="leftNavBlock"></div>
+	    		<div class="leftNavText"><span style="float: left;">打造爱巢</span><div class="leftNavText1">HOME</div>
+	    		</div>
+	    	</div>
+	    	<div class="leftShopFrame">
+	    		<div class="leftShopCon">
+	    			<img class="leftNavPhoto" data-src="/static/imgs/user/leftN/dazao.jpg" src="/static/imgs/user/tp/placeholder.jpg" width="256" height="630">
+	    		</div>
+	    	</div>
+	    	<div class="rightShopFrame">
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- 第十三户外出行 -->
+	    <div class="leftNavTerminus">
+	    	<div class="leftNaviP">
+	    		<div class="leftNavBlock"></div>
+	    		<div class="leftNavText"><span style="float: left;">户外出行</span><div class="leftNavText1">OUTDOORS & AUTOMOTIVE</div>
+	    		</div>
+	    	</div>
+	    	<div class="leftShopFrame">
+	    		<div class="leftShopCon">
+	    			<img class="leftNavPhoto" data-src="/static/imgs/user/leftN/huwai.jpg" src="/static/imgs/user/tp/placeholder.jpg" width="256" height="630">
+	    		</div>
+	    	</div>
+	    	<div class="rightShopFrame">
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink dazaoShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg dazaoShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText dazaoShopText"></div>
+	    				<div class="rightShopPrice dazaoShopPrice"></div>
+	    			</a>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- 猜你喜欢 -->
+	    <div class="leftNavTerminus" style="height: 1350px;">
+	    	<div class="leftNaviC">
+	    		<!-- <div class="leftNavBlock"></div> -->
+	    		<div class="leftNavTextC">猜你喜欢<div class="leftNavText1"></div>
+	    		</div>
+	    	</div>
+	    	<div class="rightShopFrameC">
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    		<div class="rightShopCon">
+	    			<a class="rightShopAlink cainiShopAlink" href="">
+	    				<div class="rightShopHide"></div>
+	    				<img class="rightShopImg cainiShopImg" data-src='' src="/static/imgs/user/tp/placeholder.jpg">
+	    				<div class="rightShopText cainiShopText"></div>
+	    				<div class="rightShopPrice cainiShopPrice"></div>
+	    			</a>
+	    		</div>
+	    	</div>
+	    </div>
+	    <div style="width: 100%;height: 50px;"></div>
+    <!-- </div> -->
+
+<script type="text/javascript" src="/static/js/user/commonality.js"></script>
+<script type="text/javascript" src="/static/js/user/index.js"></script>
+<!-- <script type="text/javascript" src="/static/js/user/indexjs.js"></script> -->
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>天猫tmall.com--找回密码</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="/static/imgs/tm2.ico"  />
+	<link rel="stylesheet" type="text/css" href="/static/css/user/style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/user/findPass.css">
+	
+	<script type="text/javascript" src="/static/js/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<div class="findHeadTotal">
+		<div class="phoneTextBlock">
+			<div class="phoneBlock">
+				<img src="/static/imgs/user/login/2.jpg" width="200" height="30">
+			</div>
+			<div class="textBlock">找回密码</div>
+			<div class="operation">
+				<div class="register"><a href="/user/register1">注册</a></div>
+				<div class="login"><a href="/user/login">登录</a></div>
+				<div class="index"><a href="/user">我的淘宝</a></div>
+			</div>
+		</div>
+		<div class="findInformation">
+			<div class="findUser">
+				<div>请输入你需要找回的登录密码的账号名</div>
+			</div>
+			<div class="userInformation">
+				<form  id="yanZUser">
+					<div class="userNameinquire">
+						<span>登录名:</span><input class="userNameIpt" type="text" name="userName" id="userName" placeholder="会员名/邮箱/手机号">
+						<span>忘记会员名？可使用邮箱</span>
+					</div>
+					<div class="userpduan">
+						<div class="pduanyang" id="pduanK">登录名不能为空</div>
+						<div class="pduanyang" id="pduanB">登录名格式错误</div>
+						<div class="pduanyang" id="pduanC">登录名不存在</div>
+						<div class="pduanyang" id="pduanY">没有进行图片验证</div>
+					</div>
+					<div class="userYanzZong">
+						<div class="userYanzT"><span >验证:</span></div>
+						<div class="userYanz">
+							<div id="slideBar"></div>
+						</div>
+					</div>
+					<div class="qding">
+						<input class="qdingT" type="submit" value="确定" disabled="true">
+					</div>
+					<div class="pduan"><input type="text" name="pduan" id="pduan1" value=""></div>
+				</form>
+			</div>
+		</div>
+		
+	</div>
+
+<script type="text/javascript" src="/static/js/user/style.js"></script>
+<script type="text/javascript" src="/static/js/user/findPass.js"></script>
+<script type="text/javascript">
+    var dataList = ["0","1"];
+    var options = {
+        dataList: dataList,
+        success:function(){  
+            console.log("show");  
+        },
+        fail: function(){
+            console.log("fail");  
+        }
+    };
+    SliderBar("slideBar", options);
+</script>
+</body>
+</html>

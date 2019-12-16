@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>天猫tmall.com--重置登录密码</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="/static/imgs/tm2.ico"  />
+	<link rel="stylesheet" type="text/css" href="/static/css/user/findPass.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/user/phoneReset.css">
+	<script type="text/javascript" src="/static/js/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<div class="findHeadTotal">
+		<div class="phoneTextBlock">
+			<div class="phoneBlock">
+				<img src="/static/imgs/user/login/2.jpg" width="200" height="30">
+			</div>
+			<div class="textBlock">重置登录密码</div>
+			<div class="operation">
+				<div class="register"><a href="/user/register1">注册</a></div>
+				<div class="login"><a href="/user/login">登录</a></div>
+				<div class="index"><a href="/user">我的淘宝</a></div>
+			</div>
+		</div>
+		<div class="phoneReset">
+			<div class="phoneResetTitle">您正在使用 “<span>验证短信</span>” 进行校验</div>
+			<div class="phoneDate">
+				<div class="phoneAll">
+					<div class="phoneTitle"><div>手机号码</div></div>
+					<div id="phone1"></div>
+				</div>
+				<div class="verificationAll">
+					<form action="/user/phoneResetVerification" method="post" enctype="multipart/form-data" id="phoneVer">
+						<div class="phoneTitle"><div>验证码</div></div>
+						<div class="verificationIpt">
+							
+						</div>
+						<div class="gain">
+							<input style="display: none;" type="password" name="phone" id="phone" value="<%= phone %>">
+							<input style="display: none;" type="password" name="user_id" id="user_id" value="<%= user_id %>">
+							<img id="forbid" src="/static/imgs/user/phoneReset/forbid.png" width="15" height="15" />
+							<button type="submit" id="huoqu">获取验证码</button>
+						</div>
+					</form>
+				</div>
+				<div class="subAll" >
+					<form id="verificationVer">
+						<input type="text" name="verification" id="verification" placeholder="5位数字">
+						<input style="display: none;" type="password" name="phone" value="<%= phone %>">
+						<input style="display: none;" type="password" name="user_id" value="<%= user_id %>">
+						<div class="yanzpduan">
+							<div class="pduanText" id="verpduanK">验证码不能为空</div>
+							<div class="pduanText" id="verpduanG">验证码格式不对</div>
+							<div class="pduanText" id="verpduanW">验证码是五位数</div>
+							<div class="pduanText" id="verpduanB">验证码不正确</div>
+							<div class="pduanText" id="verpduanP">验证码已过期</div>
+						</div>
+						<button>提交</button>
+					</form>
+				</div>
+				<div class="passwordAll">
+					<form id="xgaiPass">
+						<div style="width: 400px;height: 50px;">
+							<div class="xinPassword">
+								<div class="passwordText">新密码</div>
+							</div>
+							<input class="passwordIpt" type="password" name="password" id="password">
+							<input style="display: none;" type="password" name="user_id" value="<%= user_id %>">
+						</div>
+						<div style="width: 400px;height: 20px;">
+							<div class="pduanPassword" id="pduanPsK">密码不能为空</div>
+							<div class="pduanPassword" id="pduanPsB">密码格式不正确</div>
+							<div class="pduanPassword" id="pduanPsD">必须大于6位数</div>
+							<div class="pduanPassword" id="pduanPsY">没有验证手机号</div>
+						</div>
+						<div style="width: 400px;height: 30px;">
+							<button class="resetBt">重置</button>	
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+<div style="display: none;" id="judgeCondition1"></div>
+
+<script type="text/javascript" src="/static/js/user/phoneResetForm.js"></script>
+<script type="text/javascript" src="/static/js/user/phoneReset.js"></script>
+<script type="text/javascript" src="/static/js/user/gainVerificationcom.js"></script>
+
+</body>
+</html>

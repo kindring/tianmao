@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>天猫tmall.com--重置登录密码</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="/static/imgs/tm2.ico"  />
+	<link rel="stylesheet" type="text/css" href="/static/css/user/findPass.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/user/securitQuestionVerification.css">
+	<script type="text/javascript" src="/static/js/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<div class="findHeadTotal">
+		<div class="phoneTextBlock">
+			<div class="phoneBlock">
+				<img src="/static/imgs/user/login/2.jpg" width="200" height="30">
+			</div>
+			<div class="textBlock">重置登录密码</div>
+			<div class="operation">
+				<div class="register"><a href="/user/register1">注册</a></div>
+				<div class="login"><a href="/user/login">登录</a></div>
+				<div class="index"><a href="/user">我的淘宝</a></div>
+			</div>
+		</div>
+		<div class="securitQuestionVerification">
+			<div class="securitQuestionVerificationTitle">您正在使用 “<span>密保问题</span>” 进行校验</div>
+			<!-- 密保问题总框 -->
+			<div class="securitQuestionAll">
+				<form id="verificationSecurQ">
+					<div class="securityQuestionTopic1">
+						<!-- 1 -->
+						<div class="sQTT">
+							<div><span>密保问题1:</span></div>
+							<div><span>答案:</span></div>
+						</div>
+						<div class="sQT">
+							<div class="sQTTo">
+								<select class="sQTToSel" name="securtiy_topic1" id="securtiy_topic1">
+								</select>
+							</div>
+							<div class="sQTTo">
+								<input class="sQTD" type="text" name="securtiy_topic_anwer1" id="securtiy_topic_anwer1">
+							</div>
+						</div>
+						<div class="pduan">
+							<div class="pduanshow" id="pduanK1">不能为空</div>
+							<div class="pduanshow" id="pduanB1">格式不正确</div>
+						</div>
+					</div>
+					<!-- 2 -->
+					<div class="securityQuestionTopic1">
+						<div class="sQTT">
+							<div><span>密保问题2:</span></div>
+							<div><span>答案:</span></div>
+						</div>
+						<div class="sQT">
+							<div class="sQTTo">
+								<select class="sQTToSel" name="securtiy_topic2" id="securtiy_topic2">
+								</select>
+							</div>
+							<div class="sQTTo">
+								<input class="sQTD" type="text" name="securtiy_topic_anwer2" id="securtiy_topic_anwer2">
+							</div>
+						</div>
+						<div class="pduan">
+							<div class="pduanshow" id="pduanK2">不能为空</div>
+							<div class="pduanshow" id="pduanB2">格式不正确</div>
+						</div>
+					</div>
+					<!-- 3 -->
+					<div class="securityQuestionTopic1">
+						<div class="sQTT">
+							<div><span>密保问题3:</span></div>
+							<div><span>答案:</span></div>
+						</div>
+						<div class="sQT">
+							<div class="sQTTo">
+								<select class="sQTToSel" name="securtiy_topic3" id="securtiy_topic3">
+								</select>
+							</div>
+							<div class="sQTTo">
+								<input class="sQTD" type="text" name="securtiy_topic_anwer3" id="securtiy_topic_anwer3">
+							</div>
+						</div>
+						<div class="pduan">
+							<div class="pduanshow" id="pduanK3">不能为空</div>
+							<div class="pduanshow" id="pduanB3">格式不正确</div>
+						</div>
+					</div>
+					<div class="tjiaodata" id="securitQtjiao">
+						<input style="display: none;" type="password" name="user_id" id="user_id_identity" value="<%= user_id %>">
+						<button class="tjiaoxgai" id="tjiao">验证密保问题</button>
+					</div>
+				</form>
+				<!-- 重置密码 -->
+				<div id="passwordAll">
+					<form id="securitQuestionPassword">
+						<div class="securitQPassword">
+							<div class="sQTT" style="height: 40px;">
+								<div><span style="color: red;">新密码:</span></div>
+							</div>
+							<div class="sQT" style="height: 40px;">
+								<div class="sQTTo">
+									<input class="sQTD" type="password" name="password" id="password">
+								</div>
+							</div>
+							<div class="pduan" style="height: 40px;">
+								<div class="pduanshow" id="pduanK4">不能为空</div>
+								<div class="pduanshow" id="pduanB4">格式不正确</div>
+								<div class="pduanshow" id="pduanD4">大于6位数</div>
+								<div class="pduanshow" id="pduanY4">未通过验证</div>
+							</div>
+						</div>
+						<div class="tjiaodata">
+							<input style="display: none;" type="password" name="user_id" value="<%= user_id %>">
+							<button class="tjiaoxgai" id="tjiao">重置密码</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="nosecurQ">你未设置密保问题,无法使用此功能</div>
+		</div>
+	</div>
+
+<div style="display: none;" id="securitQ"><%= user_id %></div>
+
+<script type="text/javascript" src="/static/js/user/securitQuestionVerification.js"></script>
+
+</body>
+</html>
