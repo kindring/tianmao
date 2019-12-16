@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>天猫商家首页</title>
+    <style>
+        .content-wrapper {
+            /* overflow-x: hidden; */
+            overflow:auto;
+            background: white;
+        }
+    </style>
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="/static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/static/css/sb-admin.css" rel="stylesheet">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" type="text/css" href="/static/css/merchant/index.css">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- 更改头像的div -->
+<div class="center-in-center">
+    <div style="width: 200px;height: 20px;">
+        <div id="hide-change">
+            <button>X</button>
+        </div>
+    </div>
+    <div style="width: 200px;height: 180px;">
+        <image id="blah" style="width:120px; height:120px;position: relative;border-radius: 50%;margin:10px 40px;"/>
+        <form action="/merchant/changeBusinessesface" name="file" class="file" method="post"
+              enctype="multipart/form-data">
+            <span>上传文件</span><input type="file" id="imgInp" name="shop_photo">
+            <input style="display: none;" type="text" name="shop_account_change" value="<%= shop.shop_account %>">
+            <button type="submit" style="border:0;font-size: 15.5px;">保存文件</button>
+        </form>
+    </div>
+</div>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">天猫国际商家平台</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="/merchant/register">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">免费开店</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <a class="nav-link" href="charts.html">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">图表</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+                <a class="nav-link" href="tables.html">
+                    <i class="fa fa-fw fa-table"></i>
+                    <span class="nav-link-text">桌子</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">店铺管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a href="/merchant/information">店铺基本信息</a>
+                    </li>
+                    <li>
+                        <a href="cards.html">子账号管理</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-file"></i>
+                    <span class="nav-link-text">宝贝管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                    <li>
+                        <a href="/merchant/releaseBaby">发布宝贝</a>
+                    </li>
+                    <li>
+                        <a href="register.html">出售中的宝贝</a>
+                    </li>
+                    <li>
+                        <a href="/merchant/babys">仓库中的宝贝</a>
+                    </li>
+                    <li>
+                        <a href="blank.html">空白页</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-sitemap"></i>
+                    <span class="nav-link-text">菜单级别</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseMulti">
+                    <li>
+                        <a href="#">二级物品</a>
+                    </li>
+                    <li>
+                        <a href="#">二级物品</a>
+                    </li>
+                    <li>
+                        <a href="#">二级物品</a>
+                    </li>
+                    <li>
+                        <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">第三级</a>
+                        <ul class="sidenav-third-level collapse" id="collapseMulti2">
+                            <li>
+                                <a href="#">第三级物品</a>
+                            </li>
+                            <li>
+                                <a href="#">第三级物品</a>
+                            </li>
+                            <li>
+                                <a href="#">第三级物品</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-fw fa-link"></i>
+                    <span class="nav-link-text">链接</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <!-- <i class="fa fa-fw fa-envelope"></i> -->
+                    <img src="<%= shop.shop_photo %>"
+                         style="width:30px;height: 30px;border-radius: 50%;margin-right: 10px;">
+                    <%= shop.shop_name %>
+                    <span class="d-lg-none">
+              <span class="badge badge-pill badge-primary">12 New</span>
+            </span>
+                    <span class="indicator text-primary d-none d-lg-block">
+              <!-- <i class="fa fa-fw fa-circle"></i> -->
+            </span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+                    <div class="store-information-show-k">
+                        <input type="text" id="untitledY" name="untitledY" value="<%= shop.untitled %>"
+                               style="display: none;">
+                        <input type="text" id="landlordY" name="landlordY" value="<%= shop.landlord %>"
+                               style="display: none;">
+                        <div class="store-name-zong">
+                            <div class="store-name"><%= shop.shop_name %></div>
+                            <div class="store-identity-verify">
+                                <i id="store-identity-verify-i1" class="fa fa-address-card-o" aria-hidden="true"
+                                   title="已实名认证"></i>
+                                <i id="store-identity-verify-i2" class="fa fa-address-card-o" aria-hidden="true"
+                                   title="未实名认证"></i></div>
+                        </div>
+                        <div class="head-portrait">
+                            <img src="<%= shop.shop_photo %>"
+                                 style="width:40px; height:40px;position: absolute;border-radius: 50%;"/>
+                            <button id="show-change">更改头像</button>
+                        </div>
+                        <div class="business-level-zong">
+                            <div class="business-level-title">店铺等级:</div>
+                            <div class="business-level-data"><%= shop.shop_live %></div>
+                        </div>
+                        <div class="merchant-credit-score-zong">
+                            <div class="merchant-credit-score-title">店铺信用:</div>
+                            <div class="merchant-credit-score-data"><%= shop.shop_credit %></div>
+                        </div>
+                        <div class="registration-time-zong">
+                            <div class="registration-time-title">注册时间:</div>
+                            <input type="text" name="register-date-ipt-name" id="register-date-ipt-id"
+                                   value="<%= shop.register_date %>" style="display: none;">
+                            <div class="registration-time-data" id="register-date-id1">1</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-bell"></i>
+                    <span class="d-lg-none">警报
+              <span class="badge badge-pill badge-warning">6 New</span>
+            </span>
+                    <span class="indicator text-warning d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                    <h6 class="dropdown-header">新警报:</h6>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">This is an automated server response message. All systems
+                            are online.
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+              <span class="text-danger">
+                <strong>
+                  <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">This is an automated server response message. All systems
+                            are online.
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">This is an automated server response message. All systems
+                            are online.
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item small" href="#">View all alerts</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="内容">
+                        <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+                    </div>
+                </form>
+            </li>
+            <li class="nav-item">
+                <a href="/merchant/loginout" class="nav-link" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>登出</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper" id="app">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <!-- <li class="breadcrumb-item">
+              <a href="#">Dashboard</a>
+            </li> -->
+            <li class="breadcrumb-item active">店铺管理</li>
+        </ol>
+
+    </div>
+
+    <div class="goods_table">
+        <div class="search_box"></div><!--搜索框的div盒子-->
+
+        <div class="goods_list_box">
+                <div class="goods t">
+                        <div class="goods_id chunk">商品编号</div>
+                        <div class="cover chunk">
+                            图片
+                        </div>
+                        <div class="goods_name chunk">
+                            名称
+                        </div>
+                        <div class="price chunk">
+                            <span>最低价</span>
+                            <span>-</span>
+                            <span>最高价</span>
+                        </div>
+                        <div class="descript chunk">
+                            简介
+                        </div>
+                        <div class="chunk verify">
+                            审核状态
+                        </div>
+                        <div class="chunk sales_volume">
+                            销量
+                        </div>
+                        <div class="chunk comment_volume">
+                            评论
+                        </div>
+                        <div class="chunk operation">
+                            操作
+                        </div>
+                    </div>
+            <div class="goods" v-for="item in get_list()">
+                <div class="goods_id chunk" v-text="item.goods_id"></div>
+                <div class="cover">
+                    <img :src="'../'+item.filepath" alt="">
+                    <div class="big">
+                        <img :src="'../'+item.filepath" alt="">
+                    </div>
+                </div>
+                <div class="goods_name chunk" v-text="item.goods_name">
+                </div>
+                <div class="price chunk">
+                    <span v-text="item.min_price"></span>
+                    <span>-</span>
+                    <span v-text="item.max_price"></span>
+                </div>
+                <div class="descript chunk" v-text="item.brief">
+
+                </div>
+                <div class="chunk verify">
+                    待审核
+                </div>
+                <div class="chunk sales_volume">
+                    销量
+                </div>
+                <div class="chunk comment_volume">
+                    评论
+                </div>
+                <div class="chunk operation">
+                    <div class="detail">
+                        <div class="me_btn">详细</div>
+                    </div>
+                    <div class="sold_out">
+                        <div class="me_btn warning text-warning">下架</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div><!--商品列表盒子-->
+
+        <div class="page_control">
+            <div class="page_detail">
+                <span>总数据:</span>
+                <span v-text="total"></span>
+                <span class="ml-5">当前</span>
+                <span v-text="page"></span>
+                <span>/</span> 
+                <span v-text="total_page"></span>
+                <span>页</span>   
+            </div>
+            <div class="skip_box">
+                <input type="text" class="input" placeholder="输入页数" v-model="jump_input">
+                <div class="s_btn" @click="skip_to">迁跃<i class="fa fa-fighter-jet" aria-hidden="true"></i></div>
+            </div>
+            <div class="btn_box">
+                <div class="prev con" title="上一页" @click="prev">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </div>
+                <div class="page_num">
+                    <ul :style="{
+                        left:ul_left
+                    }">
+                        <li v-for="i in total_page" :class="{
+                            con:true,
+                            now:i==page
+                        }" v-text="i" @click="topage(i)"></li>
+                    </ul>
+                </div>
+            <div class="next con" title="下一页" @click="next()">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+            </div>
+            
+        </div>
+        <!--分页管理盒子-->
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+<template id="loading"></template>
+<!-- Bootstrap core JavaScript-->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="/static/vendor/chart.js/Chart.min.js"></script>
+<script src="/static/vendor/datatables/jquery.dataTables.js"></script>
+<script src="/static/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/static/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="/static/js/sb-admin-datatables.min.js"></script>
+<script src="/static/js/sb-admin-charts.min.js"></script>
+
+<script src="/static/js/merchant/index.js"></script>
+<script src="/static/js/merchant/verification.js"></script>
+<script src="/static/js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            limit:10,
+            goods_list:[],
+            lists:[],
+            page:1,
+            total:0,
+            remain:0,
+            jump_input:'',
+            ul_left:0
+        },
+        computed:{
+            //计算一共有多少页
+            total_page(){
+                var total = Number(this.total);
+                var limit = Number(this.limit);
+                console.log(total,limit);
+               return Math.ceil(total/limit);
+            },
+            //获取某页的数据
+            get_list(){
+                console.log(this.goods_list);
+                return this.goods_list[this.page-1];
+            },
+            
+        },
+        methods: {
+            //获取偏移值
+            getLeft(){
+                //获取是否要偏移位置保持居中
+                //先判断当前的数值是否大于3
+                //在判断当前的数值是否小于总数-3
+                console.log(this.page<this.total_page-3);
+                //判断数据是否小于5条
+                if(this.total_page<5){
+                    var width = this.total_page*40;
+                    var l = (200 - width)/2;
+                    this.ul_left = l+'px';
+                    return;
+                }
+                if(this.page<=3){
+                    this.ul_left='0px';
+                }else if(this.page>this.total_page-2){
+                    //alert("无需改变left值");
+                } else{
+                    this.ul_left = 0-((this.page-1)*40)+80+'px';
+                }
+
+
+            },
+            pag(){
+                // 使用前的页数将数据进行分割
+               var list = [];
+               var limit = this.limit;
+               var index = 0;
+               this.goods_list[index]=[];
+               for(var i=0;i<this.lists.length;i++){
+                    console.log(index)
+                   if(i%limit===0&&i!=0){
+                        //为一页
+                        index++;
+                        //清空记录
+                        //console.log(index)
+                        this.goods_list[index]=[];
+                   }
+                   this.goods_list[index].push(this.lists[i]);
+                   //将其push至数组中
+               }
+            },
+            skip_to(){
+                //跳转页面
+                this.topage(Number(this.jump_input));
+                this.jump_input=''
+            },
+            topage(num){
+                //直接跳转到多少页
+                if(!num){
+                    return alert('无法跳转至相应页');
+                }
+                num=Number(num);
+                if(num>0&&num<=this.total_page){
+                    this.page=num;
+                    this.getLeft();
+                }
+            },
+            get_list(){
+                console.log(this.goods_list);
+                return this.goods_list[this.page-1];
+            },
+            next(){
+                if(this.page<this.total_page){
+                    this.page++; 
+                    this.getLeft();
+                    // 获取下一页的数据
+                }
+            },
+            prev(){
+                if(this.page>1){
+                    this.page--;
+                    this.getLeft();
+                }
+            }
+        },
+        created() {
+            //limit 应当包含限制,以及在多少页
+            //page
+            var that = this;
+            $.get('/goods/mebabys', function (result) {
+                console.log(result);
+                if(result.code == 200){
+                    that.lists=result.result.data;
+                    console.log(result.result.number);
+                    that.total = result.result.number;//将其中的数据存储于vue文件当中
+                    that.remain = result.result.residuce;//剩余多少条
+                    that.pag();
+                    that.getLeft();
+                }else{
+                    console.log(result.message);
+                    alert(result.descript);
+                }
+                
+            })
+        }
+    })
+</script>
+</body>
+
+
+</html>

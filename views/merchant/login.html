@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天猫登录页面</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{height:100%;}
+        @media screen and (min-width:768px){
+
+        }
+        @media screen and (min-width:992px){
+            .logo{
+                display:none
+            }
+        }
+        @media screen and (min-width:1200px){
+            .logo{
+                display: block;
+            }
+        }
+        @media screen and (min-height:500px){
+            .logo{
+                display:none
+            }
+            .content{
+                left:50%;
+                top:20px;
+                margin:0 -250px;
+            }
+        }
+        @media screen and (min-height:600px){
+            .logo{
+                display:none
+            }
+            .content{
+                left:50%;
+                top:0;
+                margin:0 -250px;
+            }
+        }
+
+        @media screen and (min-height:800px){
+            .logo{
+                display: block;
+            }
+            .content{
+                left:50%;
+                top:0;
+                margin:0 -250px;
+            }
+        }
+        @media screen and (min-width:768px){
+
+        }
+        .container{
+            width:100%;
+            height:100%;
+            position:relative;
+            background-color: #f9f4d9;
+        }
+        .content{
+            width:500px;
+            height:300px;
+            box-shadow:3px 3px 5px 1px black;
+            position:absolute;
+            padding-top:5px;
+            left:50%;
+            top:50%;
+            margin:-250px -250px;
+            background-color:#006;
+            border-radius: 2px;
+        }
+        .title{
+            height:80px;
+            padding-left:80px;
+            font-size:36px;
+            line-height:80px;
+            font-weight:600;
+            border-bottom:1px solid black;
+        }
+        .logo{
+            width:480px;
+            height:200px;
+            position:absolute;
+            top:-135px;
+            left:-70px;
+        }
+        .post{
+            display:block;
+            width:450px;
+            height:300px;
+            margin:0 auto;
+            padding-top:40px;
+            box-shadow: 1px 1px 5px black;
+            background-color: rgba(150,150,150, 0.8);
+            border-radius: 1px;
+        }
+        .btn{
+            box-shadow: 2px 2px 3px black;
+            width:120px;
+            height:45px;
+            line-height:45px;
+            font-size:24px;
+            background-color:#00f300;
+            color:#ffffff;
+            border-radius:3px;
+            text-align:center;
+            cursor:pointer;
+            margin:0 auto;
+        }
+        .field{
+            width:400px;
+            height:80px;
+            margin:0 auto 20px;
+        }
+
+        .label{
+            display: block;
+            position:relative;
+            width:360px;
+            height:50px;
+            line-height:50px;
+            text-align: center;
+            font-size:24px;
+            margin:0 auto 10px;
+        }
+        .label .eye{
+            position:absolute;
+            right:5px;
+            width:50px;
+            height:50px;
+            cursor:pointer;
+        }
+        .label .eye:hover{
+            color:red;
+        }
+        .label .name{
+            display: block;
+            width:90px;
+            height:50px;
+            line-height: 50px;
+            float:left;
+            overflow:hidden;
+        }
+        .label input{
+            display: block;
+            width:270px;
+            height:50px;
+            outline:none;
+            float:left;
+            border:0;
+            font-size:24px;
+            box-shadow: 1px 1px 5px black;
+        }
+        .tips{
+            width:auto;
+            height:30px;
+            line-height: 30px;
+            padding-left:30px;
+            font-size:20px;
+            color: #ce081a;
+        }
+        .green{
+            color:#00f300;
+        }
+    </style>
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.min.css">
+    <script src="../../static/js/vue.js"></script>
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/pop.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="content" id="app">
+            <form action="post" class="post" v-on:keyup.13="login()">
+                <div class="field" v-for="item in fields">
+                    <label :for="item.name" class="label">
+                        <div class="name">
+                            <i :class="item.icon"></i>
+                            <span @click="check(item)" v-text="item.cname+':'"></span>
+                        </div>
+                        <input :type="item.type" :name="item.name" :id="item.name" v-model="item.value">
+                        <div class="eye" v-if="item.name=='password'" @click="showandhide(item)">
+                            <i :class="{
+                            fa:true,
+                            'fa-eye':item.show,
+                            'fa-eye-slash':!item.show
+                        }" aria-hidden="true"></i>
+                        </div>
+
+                    </label>
+                    <div class="tips" v-text="item.tips" :class="{
+                        green:item.name=='account'?account:password
+                    }"></div>
+                </div>
+                <div class="btn" id="btn" @click="login()">登录</div>
+                <div ><span>不是商家?-></span><a href="/merchant/register">免费开店</a></div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    //创建弹出框对象
+    //弹出时间
+    //文本内容
+    //背景颜色
+    //确认文本
+    //确认后触发的回调
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            flag:true,
+            fields:[
+                {
+                    cname:"账号",
+                    name:"account",
+                    value:'',
+                    icon:'fa fa-user',
+                    placeholder:'你的商家账号',
+                    flag:false,
+                    type:'text',
+                    show:false,
+                    tips:''
+                },
+                {
+                    cname:"密码",
+                    name:"password",
+                    value:'',
+                    icon:'fa fa-key',
+                    placeholder:'8到16位的密码',
+                    flag:false,
+                    type:'password',
+                    show:false,
+                    tips:''
+                }
+            ]
+        },
+        computed:{
+            password(){
+                    if(/^\w{8,16}$/.test(this.fields[1].value)){
+                        this.fields[1].tips="OK";
+                        return true;
+                    }else{
+                        if(this.fields[1].value) {
+                            this.fields[1].tips = "密码格式不对";
+                        }
+                        return false
+                    }
+                },
+            account(){
+                if(/^\d{9,16}$/.test(this.fields[0].value)){
+                    this.fields[0].tips="OK";
+                    return true;
+                }else{
+                    if(this.fields[0].value){
+                        this.fields[0].tips="账号格式不对";
+                    }
+                    return false
+                }
+            }
+        },
+        methods:{
+            check(item){
+                console.log(item);
+                //检测数据是否合法
+            },
+            showandhide(item){
+                if(item.name==="password"){
+                    if(!item.show){
+                        //如果隐藏的显示
+                        item.type='text';
+                        item.show=true;
+                    }else{
+                        item.type='password';
+                        item.show=false;
+                    }
+                }else{
+                    return false
+                }
+            },
+            login(){
+                if(!this.flag){return false}
+                var that=this;
+                that.flag=false;
+                if(!this.password||!this.account){return pop({//是否无限持续,直到点击确认
+                    width:300,
+                    bgColor:"yellow",
+                    color:'black',
+                    text:"请按要求填写完必要数据",
+                    btn:"明白",
+                    //infinite:true无限持续,必须点击
+                },function(){
+                    that.flag=true
+                })}
+                //数据合法,发起请求
+                var staff = {
+                  account:this.fields[0].value,
+                  password:this.fields[1].value
+                };
+                $.post('/merchant/login',staff,function(result){
+                    console.log(result);
+                    if(result.code===200){
+                        pop({//是否无限持续,直到点击确认
+                            width:400,
+                            bgColor:"white",
+                            color:'black',
+                            text:"登陆成功",
+                            btn:"确认",
+                            time:1500
+                        },function(){
+                            //在此动画结束之后弹出自动跳转?
+                            pop({
+                                width:400,
+                                bgColor:"white",
+                                color:'black',
+                                text:"将在一定时间内自动跳转页面",
+                                btn:"<a href='/merchant'>立即跳转</a>",
+                                time:4000
+                            },function(){
+                                //自动跳转
+                                location.href="/merchant";
+                            })
+                        });
+                    }else{
+                        pop({//是否无限持续,直到点击确认
+                            width:400,
+                            bgColor:"red",
+                            color:'yellow',
+                            text:result.message+'<br/>'+result.desctipt,
+                            btn:"确认",
+                            time:2500
+                        },function(){
+                            that.flag=true
+                        })
+                    }
+                })
+            }
+        }
+    })
+
+</script>
+</html>

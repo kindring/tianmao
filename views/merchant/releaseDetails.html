@@ -1,0 +1,745 @@
+<! DOCTYPE>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>发布宝贝详情信息</title>
+    <style type="text/css">
+        /*switch模式的多选框或者单选的按钮*/
+    </style>
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap@3.3.7/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <link rel="stylesheet" type="text/css" href="../static/css/merchant/releaseDetails.css">
+    <script src="../static/js/vue.js"></script>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" style="background: #F7F8FA;">
+<div class="navigation">
+    <!-- 居中导航栏 -->
+    <div class="navgt">
+        <!-- 左导航 -->
+        <div class="leftnav">
+            <!-- 欢迎 -->
+            <div class="welcome">喵 ,&nbsp&nbsp欢迎来天猫商品详情发布</div>
+            <!-- 登录 -->
+            <div class="register">
+                <a class="alink" href="/merchant" target="_blank"><%= shop.shop_name %></a>
+            </div>
+        </div>
+        <!-- 右导航 -->
+        <div class="rightnav">
+        </div>
+    </div>
+</div>
+<!-- 天猫图片&&网站用处类型 -->
+<div class="photo-user-type">
+    <div class="photo-user-type-son">
+        <!-- 图片div -->
+        <div class="photo-div"><img width="140" height="75" src="/static/imgs/merchant/releaseDetails/tm480-260.png">
+        </div>
+        <!-- 网站用处类型div -->
+        <div class="user-type-div"><b>商品发布</b></div>
+    </div>
+</div>
+<!-- 提醒商家需要注意的事项 -->
+<div class="matters-need-attention">
+    <div class="matters-need-attention-son">
+        <span class="matters-need-attention-font">亲，当您遇到店铺保证金、资质认证等问题时，请先确认对方的淘宝小二身份后再沟通，谨防上当受骗。如发布宝贝遇到问题，您也可以尝试使用右侧的万象客服来解决哦。</span>
+    </div>
+</div>
+<!-- 信息导航 -->
+<div id="information-navigation" style="z-index: 99;">
+    <nav style="width: 1080px;margin: 0 auto;background-color: white;position: relative;" id="navbar-example1"
+         class="navbar navbar-default navbar-static">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse bs-example-js-navbar-scrollspy">
+                <ul class="nav navbar-nav">
+                    <li class=""><a id="nav-a1" href="#basic-information">基础信息</a></li>
+                    <li class=""><a id="nav-a2" href="#sales-message">销售信息</a></li>
+                    <li class=""><a id="nav-a3" href="#graphic-description">图文描述</a></li>
+                    <li class=""><a id="nav-a4" href="#payment-information">支付信息</a></li>
+                    <li class=""><a id="nav-a5" href="#logistics-information">物流信息</a></li>
+                    <li class=""><a id="nav-a6" href="#after-sales-service">售后服务</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- 当前类目 -->
+<form action="/merchant/releaseDetails" method="POST" enctype="multipart/form-data" id="add_form">
+    <input style="display: none;" type="password" name="shop_id" value="<%= shop.shop_id %>">
+    <div class="current-category">
+        <div class="current-category-son">
+            <span title="<%= catenamearr[0] %> >> <%= catenamearr[1] %> >> <%= catenamearr[2] %>">选择的类目是: &nbsp;&nbsp;<%= catenamearr[0] %> >> <%= catenamearr[1] %> >> <%= catenamearr[2] %></span>
+            <a href="/merchant/releaseBaby">切换类目</a>
+        </div>
+    </div>
+
+    <div class="bs-example" data-example-id="embedded-scrollspy">
+
+        <!-- 信息总*** -->
+        <div style="width: 100%;">
+            <div style="width: 1080px;margin: 0 auto;position: relative;height: 1000px;" id="gundong" data-offset="0"
+                 class="scrollspy-example" data-spy="scroll" data-target="#navbar-example">
+                <!-- 基础信息 -->
+                <div id="basic-information" class="basic_information">
+                    <!-- 基础信息标题 -->
+                    <div class="information_title_share">基础信息</div>
+                    <!-- 宝贝标题 -->
+                    <div class="boby_title_zong">
+                        <div class="boby_title_name"><span>*&nbsp;</span>宝贝标题</div>
+                        <div class="boby_title_data">
+                            <input type="text" name="goods_name" id="goods_name" v-model="goods_name">
+                        </div>
+                    </div>
+                    <div class="boby_title_zong">
+                        <div class="boby_title_name"><span>*&nbsp;</span>宝贝简介</div>
+                        <div class="boby_title_data">
+                            <input type="text" name="goods_name" id="goods_brief" v-model="brief">
+                        </div>
+                    </div>
+                    <!-- 提示 -->
+                    <div class="boby_title_hint" id="goods_name1">必填项不能为空</div>
+                    <!-- 类目属性 -->
+                    <div class="category_attributes_zong">
+                        <!-- 类目属性标题 -->
+                        <div class="category_attributes_title">
+                            类目属性<span>错误填写宝贝属性，可能会引起宝贝下架或搜索流量减少，影响您的正常销售，请认真准确填写</span></div>
+                        <!-- 类目属性数据 -->
+                        <div class="category_attributes_data">
+                            <div class="category_attributes_data_son" v-for="item in par">
+                                <!-- <option value="1"> 1</option> -->
+                                <div class="category_attributes_data_title"><span v-if="item.required" style="color:red"
+                                                                                  title="带*号的项为必须填写">*</span><span
+                                        v-text="item.name"></span></div>
+                                <div class="category_attributes_data_sl">
+                                    <input type="text" :class="{
+                    input:item.input_list.length>=1,
+                    fill:!item.input_list.length>=1
+                  }" placeholder="可以输入或者选择" @focus="showSelect(item)" @blur="hideSelect(item)" v-model="item.value">
+                                    <div class="icon" v-if="item.input_list.length>=1" @click="showSelect(item)">
+                                        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                                    </div>
+                                    <!--选择框,在其支持手动增加时显示此样式-->
+                                    <div class="select_list" v-show="item.show_select">
+                                        <div class="selects" v-for="list in item.input_list" v-text="list"
+                                             @click="selected(item,list)">红色
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 销售信息 -->
+                <div id="sales-message" class="sales_message">
+                    <!-- 销售信息标题 -->
+                    <div class="information_title_share">销售信息</div>
+                    <!-- 销售信息大数据 -->
+                    <div class="spelist">
+                        <div class="spe" v-for="item in spe">
+                            <div class="spe_title" v-text="item.name">规格名称</div>
+                            <div class="input_box">
+                                <input type="text" class="input" placeholder="属性值" v-model="item.value">
+                                <input type="text" class="input" placeholder="备注" v-model="item.remarks">
+                            </div>
+                            <!--可选值列表?  -->
+                            <div class="selectList">
+                                <div class="spe" v-for="list in item.input_list" v-text="list"
+                                     @click="selected_spe(item,list)">可选项
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 销售信息一口价 -->
+                    <div class="sales_message_prc_cod_zong_share">
+                        <div class="sales_message_name_share"><span>*&nbsp;</span>一口价(元)</div>
+                        <div class="sales_message_data_share">
+                            <input type="text" name="price" id="price" value="" v-model="price">
+                        </div>
+                    </div>
+                    <!-- 提示 -->
+                    <div class="boby_title_hint" id="price1">必填项不能为空</div>
+                    <div class="boby_title_hint" id="price2">价格数据格式错误</div>
+                    <!-- 销售信息数量 -->
+                    <div class="sales_message_prc_cod_zong_share">
+                        <div class="sales_message_name_share"><span>*&nbsp;</span>总数量(件)</div>
+                        <div class="sales_message_data_share">
+                            <input type="text" name="stock" id="stock" value="" v-model="total">
+                        </div>
+                    </div>
+                    <!-- 提示 -->
+                    <div class="boby_title_hint" id="stock1">必填项不能为空</div>
+                    <div class="boby_title_hint" id="stock2">数量数据格式错误</div>
+                    <!-- 销售信息编码 -->
+                    <div class="sales_message_prc_cod_zong_share">
+                        <div class="sales_message_name_share">&nbsp;&nbsp;商家编码</div>
+                        <div class="sales_message_data_share">
+                            <input type="text" name="goods_sn" value="" v-model="skucode">
+                        </div>
+                    </div>
+                    <div class="btn_box">
+                        <div class="add btn" @click="addsku()">添加sku</div>
+                    </div>
+                    <div class="sku_table">
+                        <div class="table_row" v-for="(item,key) in sku_table">
+                            <div class="table_col" v-for="col in item.values">
+                                <input type="text" class="input" disabled="disabled" :value="col">
+                            </div>
+                            <div class="table_col">
+                                <input type="text" class="input" v-model="item.price" :disabled="item.head">
+                            </div>
+                            <div class="table_col">
+                                <input type="text" class="input" v-model="item.total" :disabled="item.head">
+                            </div>
+                            <div class="table_col">
+                                <input type="text" class="input" v-model="item.sku" :disabled="item.head">
+                            </div>
+                            <div class="table_col">
+                                <span v-if="item.head">操作</span>
+                                <span class="del" v-if="!item.head" @click="del(key)">删除</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 图文描述 -->
+                <div id="graphic-description" class="graphic_description">
+                    <!-- 图文描述标题 -->
+                    <div class="information_title_share">图文描述</div>
+                    <!-- 电脑端宝贝 -->
+                    <div class="computer_boby">
+                        <!-- 电脑端宝贝标题 -->
+                        <div class="computer_boby_name">
+                            <span>*&nbsp;</span>电脑端宝贝图片
+                            <view class="view">第一张为宝贝主图,请自觉排序,以上图片上传后宝贝详情页自动提供放大镜功能
+                            </view>
+                            <div class="boby_title_hint" id="file_input2">请选择5张图片</div>
+                        </div>
+                        <!-- 提示 -->
+                        <!-- <div class="boby_title_hint" id="stock1">必填项不能为空</div> -->
+
+                        <!-- 电脑端宝贝 -->
+                        <div id="computer_boby_data">
+                            <div class="container">
+                                <label style="float: left;">请选择图像文件：</label>
+                                <!-- <button id="select">(重新)选择图片</button>
+                                <button id="add">(追加)图片</button>   -->
+                                <!--<input style="float: left;" type="file" id="file_input" name="shop_photo" multiple/>-->
+                                <!--&lt;!&ndash;用input标签并选择type=file，记得带上multiple，不然就只能单选图片了&ndash;&gt;-->
+                            </div>
+                            <div class="shop_covers" id="shop_covers">
+                                <div class="covers">
+                                    <input type="file" class="file" id="goods_master">
+                                    <div class="tips cover_show">点击选择商品主图</div>
+                                    <div class="cover" id="cover_master"></div>
+                                </div>
+                                <div class="covers">
+                                    <input type="file" class="file" id="goods_cover2">
+                                    <div class="tips cover_show">点击选择商品次图</div>
+                                    <div class="cover" id="cover2"></div>
+                                </div>
+                                <div class="covers">
+                                    <input type="file" class="file" id="goods_cover3">
+                                    <div class="tips cover_show">点击选择商品次图</div>
+                                    <div class="cover" id="cover3"></div>
+                                </div>
+                                <div class="covers">
+                                    <input type="file" class="file" id="goods_cover4">
+                                    <div class="tips cover_show">点击选择商品次图</div>
+                                    <div class="cover" id="cover4"></div>
+                                </div>
+                                <div class="covers">
+                                    <input type="file" class="file" id="goods_cover5">
+                                    <div class="tips cover_show">点击选择商品次图</div>
+                                    <div class="cover" id="cover5"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- 文件数据 -->
+                </div>
+                <!-- 支付信息 -->
+                <div id="payment-information" class="payment_information">
+                    <!-- 支付信息标题 -->
+                    <div class="information_title_share">支付信息</div>
+                    <!-- 付款方式 -->
+                    <div class="payment_method">
+                        <!-- 付款方式标题 -->
+                        <div class="payment_method_name"><span>*&nbsp;</span>付款方式</div>
+                        <!-- 付款方式数据 -->
+                        <div class="payment_method_data">
+                            <div class="payment_method_data_i">
+                                <label><input type="radio" name="" value=""></label>
+                            </div>
+                            <div class="payment_method_data_w">
+                                <span>一口价(普通交易模式)</span>
+                            </div>
+                            <div class="payment_method_data_i">
+                                <label><input type="radio" name="" value=""></label>
+                            </div>
+                            <div class="payment_method_data_w">
+                                <span>预售模式</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 库存计数 -->
+                    <div class="payment_method">
+                        <!-- 付款方式标题 -->
+                        <div class="payment_method_name"><span>*&nbsp;</span>库存计数</div>
+                        <!-- 付款方式数据 -->
+                        <div class="payment_method_data">
+                            <div class="payment_method_data_i">
+                                <label><input type="radio" name="" value=""></label>
+                            </div>
+                            <div class="payment_method_data_w">
+                                <span>买家拍下减库存</span>
+                            </div>
+                            <div class="payment_method_data_i">
+                                <label><input type="radio" name="" value=""></label>
+                            </div>
+                            <div class="payment_method_data_w">
+                                <span>买家付款减库存</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 物流信息 -->
+                <div id="logistics-information" class="logistics_information">
+                    <!-- 物流信息标题 -->
+                    <div class="information_title_share">物流信息</div>
+                    <!-- 配送方式 -->
+                    <div class="retrieving_means">
+                        <div class="retrieving_means_name">
+                            <span>*&nbsp;</span>提取方式
+                            <view class="DIV">使用物流配送为了提升消费者购物体验，淘宝要求全网商品设置运费模板</view>
+                        </div>
+                        <div class="retrieving_means_data">
+                            <div class="retrieving_means_data_son">
+                                <div class="retrieving_means_k">
+                                    <div class="template_of_freight">运费模板<span>&nbsp;*</span></div>
+                                    <div class="template_ipt">
+                                        <select>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                    <!-- 新建模板链接 -->
+                                    <div class="new_template">
+                                        <button class="new_template_a"><a href="#">新建模板</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 售后服务 -->
+                <div id="after-sales-service" class="after_sales_service">
+                    <!-- 售后服务标题 -->
+                    <div class="information_title_share">售后服务</div>
+                    <div class="service_zong">
+                        售后服务
+                        <view>服务承诺：该类商品，必须支持【七天退货】服务</view>
+                    </div>
+                    <div class="date_issued ">
+                        <span>*&nbsp;</span>上架时间
+                        <view>仓库中的商品在上架前请到“仓库中的宝贝”里编辑商品</view>
+                    </div>
+                    <div class="date_issued_data">
+                        <div class="payment_method_data_i">
+                            <input type="radio" id="publish_status" class="switch-component" disabled="disabled"
+                                   name="publish_status" value="1" v-model="publish_status">
+                        </div>
+                        <div class="payment_method_data_w">
+                            <label for="publish_status"> <span>立刻上架</span></label>
+                        </div>
+                        <div class="payment_method_data_i">
+                            <input type="radio" id="publish_status1" class="switch-component" name="publish_status"
+                                   value="0" v-model="publish_status">
+                        </div>
+                        <div class="payment_method_data_w">
+                            <label for="publish_status1"><span>放入仓库</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 1080px;height: 100px;margin:0 auto;"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- 最下面的div -->
+    <div class="footer">
+        <div class="footer-son">
+            <button type="submit" class="bottom-button" @click="add_goods()">提交宝贝信息</button>
+        </div>
+
+    </div>
+</form>
+
+<!-- <script src="/static/vendor/jquery/jquery.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> -->
+<script src="/static/vendor/bootstrap@3.3.7/bootstrap.min.js"></script>
+<script src="/static/js/merchant/releaseDetails.js"></script>
+<script src="../static/js/vue.js"></script>
+<script src="../static/js/pop.js"></script>
+<div style="display:none"><input disabled="disabled" displaye="none" type="text" id="categoryPath"
+                                 value="{{categoryPath}}"></div>
+<script type="text/javascript">
+    var ___categoryPath = document.getElementById("categoryPath").value;
+    var dataArr = {
+        0: null,
+        1: null,
+        2: null,
+        3: null,
+        4: null,
+    };//图形数据仓库,一对一
+    ___categoryPath = JSON.parse(___categoryPath);
+    var vm = new Vue({
+        el: "#add_form",
+        data: {
+            goods_name: "",
+            brief:"",
+            categoryPath: ___categoryPath,
+            attrs: [],//所有的属性
+            spe: [],//规格
+            par: [],//参数
+            par_i_list: [],//属性input类型,按照数据结构生成相应的数据结构
+            sku: [],//规格列表,用来展示列表
+            price: "",//单品价格
+            total: "",//总数量
+            skucode: "",//sku编号
+            timer: null,//数据防抖
+            publish_status: 0,//上架状态,0存入仓库,1直接上架
+            sku_table: []//每一条数据为一行
+        },
+        methods: {
+            //转换分类数据
+            transformCategory(categorys) {
+                //循环遍历
+                for (var key in categorys) {
+                    var category = categorys[key];//单独取出数据
+                    if (category.input_list != "" && category.input_list) {//列表为空设置空数组
+                        category.input_list = category.input_list.split(",");
+                    } else {
+                        category.input_list = [];
+                    }
+                    category.hand_add_status = category.hand_add_status == "0" ? true : false;//是否支持手动添加
+                    category.required = category.required == "0" ? true : false;//是否为必填
+                    category.show_select = false;
+                    category.value = "";
+                    if (category.type == '0') {
+                        this.spe.push(category);
+                    } else {
+                        category.remarks = "";//备注
+                        this.par.push(category);
+                    }
+                }
+            },
+            showSelect(item) {
+                var name = item.name;
+                item.show_select = true;
+                item.name = "";
+                item.name = name;
+                clearTimeout(this.timer);
+                this.timer = null;
+            },//显示显示框
+            hideSelect(item) {
+                this.timer = setTimeout(function () {
+                    var name = item.name;
+                    item.show_select = false;
+                    item.name = "";
+                    item.name = name;
+                }, 150);
+            },//隐藏选择框
+            selected(item, value) {
+                item.value = value;
+                this.hideSelect(item);
+            },//点击被选择的元素
+            selected_spe(item, value) {
+                item.value = value;
+                var name = item.name;
+                item.name = "";
+                item.name = name;
+            },//点击后绑定数据
+            addsku() {
+                //验证数据完整性
+                var spe = this.spe;
+                if (!this.price) {
+                    return pop({text: "单品价格为必填项"})
+                }
+                if (!this.total) {
+                    return pop({text: "数量为必填项"})
+                }
+                var names = [];//对应的名称
+                var values = [];//值列表
+                var datas = [];//关键数据列表
+                for (var i in spe) {
+                    if (spe[i].required) {
+                        //必须填写项
+                        if (!spe[i].value) {
+                            return pop({text: spe[i].name + "为必填项"})
+                        }
+                    }
+                    names.push(spe[i].name);
+                    values.push(spe[i].value);
+                    datas.push({
+                        id:spe[i].id,
+                        key:spe[i].name,
+                        value:spe[i].value,
+                    });
+                    //初始化数据
+                    spe[i].value = ""
+                }
+                // 判断是否为第一次添加
+                if (this.sku_table.length < 1) {
+                    // push表头
+                    //表格结构
+                    var table_head = {
+                        values: names,
+                        head: true,
+                        price: "价格",
+                        total: "数量",
+                        sku: "sku编号",
+                        option: "操作"
+                    };
+                    this.sku_table.push(table_head);
+
+                }
+                var new_sku = {
+                    names: names,
+                    head: false,
+                    values: values,
+                    price: this.price,
+                    total: this.total,
+                    sku: this.skucode,
+                    datas:datas,
+                    option: "删除"
+                };
+                this.sku_table.push(new_sku);
+                //console.log(new_sku);
+                // 去掉重复属性
+                var arr = [];
+                for (var i = 0; i < this.sku_table.length; i++) {
+                    var one = this.sku_table[i];
+                    var flag = true;
+                    for (var x = i + 1; x < this.sku_table.length; x++) {
+                        var two = this.sku_table[x];
+                        //判断两者的key是否相同
+                        if (__equal_array(one.values, two.values)) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        arr.push(one)
+                    }
+                }//使用循环q重
+                this.sku_table = arr;
+            },//添加sku
+            del(key) {
+                this.sku_table.splice(key, 1)
+            },//删除某项
+            add_goods() {
+                //先验证数据是否填写完整
+                if (this.goods_name == "") {
+                    return pop({text: "请输入商品名称"})
+                }
+                for (var i in this.par) {
+                    var par = this.par[i];
+                    if (par.required) {
+                        if (par.value == "") {
+                            return pop({text: "属性" + par.name + "为必填项"})
+                        }
+                    }
+                }
+                if (this.sku_table.length < 2) {
+                    return pop({text: "至少添加一条规格信息"})
+                }
+                //判断图片是否补全
+                for (var i in dataArr) {
+                    if (!dataArr[i]) {
+                        //return pop({text: "请选择5张商品图片"})
+                    }
+                }//封面验证,
+                // 生成商品数据?
+                // 获取分类id
+
+                var categoy_id = this.categoryPath[this.categoryPath.length-1].id;
+                var pars = [];
+                // 生成属性列表
+                for(var i in this.par){
+                    pars.push({
+                        id:this.par[i].id,
+                        key:this.par[i].name,
+                        value:this.par[i].value
+                    })
+                }
+                //生成sku数据
+                var skus = [];
+                for(var i = 1;i<this.sku_table.length;i++){
+                    // 规格id,名称,值,价格数量,sku编号
+                    var sku = this.sku_table[i];
+                    skus.push({
+                        price:sku.price,
+                        total:sku.total,
+                        datas:JSON.stringify(sku.datas)
+                    })
+                }
+                var new_goods = {
+                    category_id: categoy_id,//分类id
+                    name: this.goods_name,//商品名称
+                    brief: this.brief,//简介
+                    publish_status: 0,//即存入仓库
+                    pars: pars,//属性表,
+                    skus:skus,
+                };
+                var that = this;
+                $.post('/goods/add',new_goods,function(result){
+                    console.log(result);
+                    if(result.code===200){
+                        pop({text:"基本信息上传完毕,开始传输图片"});
+                        // 尝试上传图片
+                        upload_image(result.data);//传入商品id
+                    }else{
+                        pop({text:result.message})
+                    }
+                })
+            },
+        },
+        created() {
+            // 获取当前的分类属性信息
+            var lastCategory = this.categoryPath[this.categoryPath.length - 1];
+            console.log(lastCategory);
+            // 获取分类属性数据
+            var that = this;
+            $.get("../platform_goods/attr?category_id=" + lastCategory.id, function (result) {
+                if (result.code === 200) {
+                    that.attrs = result.data;
+                    console.log(result.data);
+                    that.transformCategory(result.data)
+                } else {
+                    console.log(result);
+                    pop({text: result.message})
+                }
+            })
+        }//创建后的钩子函数
+    });
+
+    // 创建对应的绑定对象
+    function create_cover_object() {
+        function get_id(id) {
+            return document.getElementById(id)
+        }
+
+        var file_img = [];
+        var shop_covers = get_id("shop_covers");
+        var list = shop_covers.getElementsByClassName("tips");
+        var cover_master_file = get_id("goods_master");
+        var cover_master = get_id("cover_master");
+        file_img.push({file: cover_master_file, cover: cover_master, tips: list[0]});
+        var cover2_file = get_id("goods_cover2");
+        var cover2 = get_id("cover2");
+        file_img.push({file: cover2_file, cover: cover2, tips: list[1]});
+        var cover3_file = get_id("goods_cover3");
+        var cover3 = get_id("cover3");
+        file_img.push({file: cover3_file, cover: cover3, tips: list[2]});
+        var cover4_file = get_id("goods_cover4");
+        var cover4 = get_id("cover4");
+        file_img.push({file: cover4_file, cover: cover4, tips: list[3]});
+        var cover5_file = get_id("goods_cover5");
+        var cover5 = get_id("cover5");
+        file_img.push({file: cover5_file, cover: cover5, tips: list[4]});
+        return file_img;
+    }
+
+    (function () {
+        var x = null;
+        if (typeof FileReader === 'undefined') {
+            return pop({text: "抱歉，你的浏览器不支持 FileReader 无法正常上传图片,请立即更换浏览器"});
+        } else {
+            //input.addEventListener('change', readFile, false);
+        }
+        var files = create_cover_object();
+        for (var i in files) {
+            files[i].file.index = i;
+            files[i].file.addEventListener('change', function () {
+                // console.log(this);
+                // console.log(this.index);
+                // console.log(this.value);
+                var index = this.index;
+                var file_obj = files[this.index];
+                if (!this.files[0]) {
+                    //没有任何选择,数据不做改变
+                    return;
+                }
+                if (!this['value'].match(/.jpg|.gif|.png|.jpeg|.bmp/i)) {　　//判断上传文件格式
+                    this.value = null;//清空以选择的文件
+                    return alert("上传的图片格式不正确，请重新选择");
+                }
+                var reader = new FileReader();
+                reader.readAsDataURL(this.files[0]);//创建第一个值//转成base64
+                reader.fileName = this.files[0].name;//设置名称
+                reader.onload = function (e) {
+                    // 因为当前this被其改变,所以当前的this目前指向reader对象
+                    var imgMsg = {
+                        name: this.fileName,//获取文件名
+                        base64: this.result   //reader.readAsDataURL方法执行完后，base64数据储存在reader.result里
+                    };
+                    //去重?
+                    for (var x in dataArr) {
+                        if (dataArr[x] && imgMsg.base64 === dataArr[x].base64) {
+                            file_obj.file.value = null;
+                            return pop({text: "请选择5张不一样的商品图片"})
+                        }
+                    }
+                    dataArr[index] = imgMsg;
+                    // 创建一个img标签
+                    var new_img = document.createElement("img");
+                    new_img.src = this.result;//将其结果添加至src属性中
+                    new_img.alt = this.fileName;//名称存储
+                    console.log(file_obj.tips);
+                    file_obj.tips.className = "tips";
+                    file_obj.cover.appendChild(new_img);
+                }
+            }, false);
+        }//遍历添加数据
+
+     
+    })();//自执行函数
+
+    function upload_image(goods_id){
+        if(!goods_id){return alert("未能正常获取商品id")}
+        for(var index = 0;index < 5;index++){
+            var img_data = dataArr[index];
+            if(!img_data){console.log("出现错误")};
+            // 生成数据体
+            img_data.goods_id = goods_id;
+            img_data.index = index;
+            $.post('/goods/uplaod_goods_image',img_data,function(result){
+                console.log(result);
+                if(result.code===200){
+                    console.log("第"+(index+1)+"张图片上传成功");
+                }else{
+                    pop({text:"第"+(index+1)+"张图片上传失败"});
+                }
+            })
+        }
+
+    }//图片上传服务
+</script>
+</body>
+
+</html>
