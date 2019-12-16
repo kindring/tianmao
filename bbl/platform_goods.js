@@ -147,6 +147,30 @@ function add_attr(req,res){
     })
 }//添加属性规格
 
+function del_attr(req,res){
+    if(!req.query){return res.json({code:403,message:"must have data",descript:"必须含有数据"})}
+    var id = req.query['attr_id'];
+    if(!id){ return res.json({code:403,message:"not par",descript:"未指定删除项"})}
+    //功能验证
+    check_func({staff_id:req.session.staff,func_id:12}).then((flag)=>{
+        if(!flag){return res.json({code:403,message:"无权限访问",descript:"无权限使用该功能"})}
+        db.platform_goods.del_attr(id,function(err,result){
+            if(err){
+                return res.json({
+                    code:500,
+                    message:err.message,
+                    descript:"服务器错误,自行查询msg"
+                })
+            }
+            res.json({
+                code:200,
+                message:'ok',
+                descript:"ok"
+            });
+        })
+    })
+}//删除属性或者规格
+
 function delect_category(req,res){
     //首先判断是否有此功能
     var id = req.query['id'];
@@ -157,7 +181,8 @@ function delect_category(req,res){
         db.platform_goods.delect_category(id,function(err,result){
             if(err){return res.json({code:err.code||500, message: err.message || "未知错误",descript:err.descript||"未知错误"})}
             res.json({code:200,message:'ok',descript:'ok'});
-        })
+        });
+        
     })
 }//删除分类的方法
 
@@ -188,12 +213,13 @@ function attribute_change(req,res){
 
 }//属性修改,
 
-module.exports.categorys = categorys;
-module.exports.category_add = category_add;
-module.exports.update_category = update_category;
-module.exports.delect_category = delect_category;
-module.exports.category_num = category_num;
+module.exports.category_add = category_add;//增
+module.exports.delect_category = delect_category;//删
+module.exports.update_category = update_category;//改
+module.exports.categorys = categorys;//查
+module.exports.category_num = category_num;//查
 
-module.exports.add_attr = add_attr;
-module.exports.attr = attr;
-module.exports.attribute_change = attribute_change;
+module.exports.add_attr = add_attr;//增
+module.exports.del_attr = del_attr;//删
+module.exports.attribute_change = attribute_change;//改
+module.exports.attr = attr;//查
