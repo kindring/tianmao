@@ -1,0 +1,132 @@
+/*可能是公共css*/
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+		color: #666;
+	}
+	a:hover{
+		color: #f03;
+	}
+	.findHeadTotal{
+		width: 100%;
+		height: 100px;
+		background-color: #f0f0f0;
+	}
+	.phoneTextBlock{
+		width: 1280px;
+		height: 100px;
+		margin: 0 auto;
+	}
+	.phoneBlock{
+		width: 200px;
+		height: 100px;
+		float: left;
+	}
+	.phoneBlock img{
+		margin-top: 35px;
+	}
+	.textBlock{
+		width: 150px;
+		height: 100px;
+		float: left;
+		font-size: 24px;
+		color: black;
+		text-align: center;
+		line-height: 100px;
+	}
+	.operation{
+		width: 150px;
+		height: 100px;
+		float: right;
+	}
+	.operation div{
+		width: 50px;
+		height: 100px;
+		text-align: center;
+		line-height: 100px;
+		font-size: 12px;
+		color: #666;
+		float: left;
+	}
+	.register{
+		width: 100px;
+		height: 100px;
+	}
+
+	.findInformation{
+		width: 1280px;
+		height: 300px;
+		margin: 0 auto;
+	}
+	.findUser{
+		padding: 50px 100px 0; 
+		color: #666;
+	}
+	.userNameinquire{
+		height: 50px;
+	}
+	.userpduan{
+		height: 30px;
+	}
+	.pduanyang{
+		display: none;
+		color: red;
+		font-size: 12px;
+		margin-left: 70px;
+	}
+	.userNameinquire span{
+		margin-top: 20px;
+		margin-left: 10px;
+		color: #666;
+		font-size: 13px;
+	}
+	.userInformation{
+		padding: 30px 200px 0;
+	}
+	.userNameIpt{
+		width: 200px;
+		height: 40px;
+		margin-left: 15px;
+	}
+	.userYanzZong{
+		height: 230px;
+	}
+	.userYanzT{
+		width: 50px;
+		height: 200px;
+		float: left;
+		margin-top: 20px;
+		margin-left: 10px;
+		color: #666;
+		font-size: 13px;
+	}
+	.userYanz{
+		height: 200px;
+		width: 200px;
+		float: left;
+		margin-top: 20px;
+		margin-left: 10px;
+	}
+	.qding{
+		height: 30px;
+	}
+	.qdingT{
+		width: 100px;
+		height: 30px;
+		background-color: #eee;
+		text-align: center;
+		margin-left: 150px;
+		color: #666;
+		line-height: 30px;
+		border:0;
+	}
+	
+	.userIn{
+		background-color: #f03;
+	}
+	.pduan{
+		display: none;
+	}

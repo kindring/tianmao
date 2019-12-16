@@ -1,559 +1,6 @@
-/*总样式*/
-    *{
-		padding: 0;
-		margin: 0;
-	}
-
-/*alink样式*/
-	.alink{
-	    text-decoration: none;
-	    color: #999999;
-	    line-height: 32px;
-	}
-	.alink2{
-	    text-decoration: none;
-	    color: #777777;
-	    line-height: 32px;
-	}
-	.alink3{
-		text-decoration: none;
-	    color: #999999;
-	    line-height: 20px;
-	}
-	.alink4{
-		text-decoration: none;
-	    color: #777777;
-	    line-height: 30px;
-	}
-	.alink5{
-		text-decoration: none;
-	    color: #777777;
-	    line-height: 30px;
-	}
-	.alink6{
-		text-decoration: none;
-	    color: #777777;
-	    line-height: 30px;
-	}
-	.alink7{
-		text-decoration: none;
-		color: #999999;
-	}
-	.alink8{
-		text-decoration: none;
-		color: #ff0033;
-	}
 
 
-	.alink:hover{
-		color: #ff0033;
-	}
-	.alink1:hover{
-		color: #ff0033;
-	}
-	.alink2:hover{
-		color: #ff0033;
-	}
-	.alink3:hover{
-		color: #ff0033;
-	}
-	.alink4:hover{
-		color: #f5700b;
-	}
-	.alink5:hover{
-		color: #2263d4;
-	}
-
-/*第一导航栏*/
-	.navigation{
-		width: 100%;
-		height: 32px;
-		background-color: #f2f2f2;
-		border-bottom: 1px solid #e5e5e5;
-	}
-	.navgt{
-		margin: 0 auto;
-		width: 1280px;
-		height: 100%;
-		position: relative;
-	}
-	.leftnav{
-		display: inline-block;
-		position: relative;
-	}
-	.rightnav{
-		position: absolute;
-		right: 0;
-		top:0;
-		display: block;
-		white-space: nowrap;
-	}
-	.welcome{
-		white-space: nowrap;
-		float: left;
-		line-height: 32px;
-		color: #999999;
-		font-size: 12px;
-	}
-	.register{
-        float: left;
-        line-height: 32px;
-		font-size: 12px;
-		margin-left: 20px;
-	}
-	.taobao{
-		width: 75px;
-		height: 32px;
-		float: left;
-		line-height: 32px;
-		font-size: 12px;
-		/*margin-left: 500px;*/
-		color: #999999;
-	}
-	.t1{
-		white-space: nowrap;
-		padding-left: 10px;
-		width: 65px;
-		height: 32px;
-		line-height: 32px;
-	}
-	.t2{
-		z-index: 2;
-		position: absolute;
-		width: 90px;
-		height: 60px;
-		background-color: white;
-		display: none;
-		border-left: 1px solid #e5e5e5;
-		border-right: 1px solid #e5e5e5;
-		border-bottom: 1px solid #e5e5e5;
-	}
-	.t21{
-		
-		margin-top: 0px;
-		margin-left: 5px;
-	}
-	.t22{
-
-		margin-top: -5px;
-		margin-left: 5px;
-	}
-	.img1{
-		transition:all 1s;
-		margin-left: 2px;
-	}
-	.taobao:hover.taobao .t1 img{
-        transform:rotate(180deg);
-	}
-	.taobao:hover{
-		background-color: white;
-	}
-	.taobao:hover.taobao .t1{
-		border-left: 1px solid #e5e5e5;
-		border-right: 1px solid #e5e5e5;
-	}
-	.taobao:hover.taobao .t2{
-		display: block;
-	}
-	.taobao:hover.taobao .t3{
-		display: block;
-	}
-
-	.shopping_trolley{
-		line-height: 32px;
-		float: left;
-		width: 80px;
-		height: 32px;
-		/*float: left;*/
-		margin-left: 5px;
-	}
-	.spt1{
-		float: left;
-		width: 15px;
-		height: 16px;
-		margin-top: 0px;
-		margin-right: 2px;
-	}
-	.spt2{
-		float: left;
-		width: 55px;
-		height: 16px;
-		font-size: 12px;
-		float: left;
-	}
-	.spt3{
-		margin-left: 1px;
-		margin-right: 1px;
-		color: #666666;
-	}
-	.shopping_trolley:hover.shopping_trolley .spt2 .spt3{
-		color: #ff0033;
-	}
-
-	.favorite{
-		width: 65px;
-		height: 32px;
-		float: left;
-		line-height: 32px;
-		font-size: 12px;
-		color: #999999;
-	}
-	.fav1{
-		padding-left: 10px;
-		width: 54px;
-		height: 32px;
-		line-height: 32px;
-	}
-	.fav2{
-		z-index: 2;
-		position: absolute;
-		width: 80px;
-		height: 60px;
-		background-color: white;
-		display: none;
-		border-left: 1px solid #e5e5e5;
-		border-right: 1px solid #e5e5e5;
-		border-bottom: 1px solid #e5e5e5;
-	}
-	.fav21{
-		
-		margin-top: 0px;
-		margin-left: 5px;
-	}
-	.fav22{
-
-		margin-top: -5px;
-		margin-left: 5px;
-	}
-
-	.img2{
-		transition:all 1s;
-		margin-left: 2px;
-	}
-	.favorite:hover.favorite .fav1 img{
-        transform:rotate(180deg);
-	}
-	.favorite:hover{
-		background-color: white;
-	}
-	.favorite:hover.favorite .fav1{
-		border-left: 1px solid #e5e5e5;
-		border-right: 1px solid #e5e5e5;
-	}
-	.favorite:hover.favorite .fav2{
-		display: block;
-	}
-	.favorite:hover.favorite .fav3{
-		display: block;
-	}
-
-	.boundary{
-		margin-left: 5px;
-		margin-top: 8px;
-		float: left;
-		width: 1px;
-		height: 16px;
-		border-left: 1px solid #cccccc;
-	}
-
-	.mobile_phone_version{
-		margin-left: 10px;
-		float: left;
-		width: 65px;
-		height: 32px;
-	}
-	.mpv1{
-		width: 65px;
-		height: 32px;
-	}
-	.mpv2{
-		position: absolute;
-		width: 100px;
-		height: 100px;
-		margin-left: -25px;
-		background-color: black;
-		display: none;
-	}
-	.mobile_phone_version:hover.mobile_phone_version .mpv2{
-        display: block;
-	}
-	.mpv11{
-		float: left;
-		width: 7px;
-		height: 16px;
-		margin-top: 5px;
-	}
-	.mpv12{
-		white-space: nowrap;
-		margin-left: 5px;
-        float: left;
-        width: 50px;
-        font-size: 12px;
-        line-height: 32px;
-	}
-
-	.taobaoguanwang{
-		float: left;
-		width: 36px;
-		height: 32px;
-		font-size: 12px;
-		line-height: 32px;
-	}
-
-	.business_support{
-		width: 75px;
-		height: 32px;
-		float: left;
-		line-height: 32px;
-		font-size: 12px;
-		color: #999999;
-		margin-left: 10px;
-	}
-	.bs1{
-		padding-left: 10px;
-		width: 64px;
-		height: 32px;
-		line-height: 32px;
-	}
-	.bs2{
-		z-index: 2;
-		position: absolute;
-		width: 140px;
-		height: 180px;
-		margin-left: -65px;
-		background-color: white;
-		display: none;
-		border-left: 1px solid #e5e5e5;
-		border-right: 1px solid #e5e5e5;
-		border-bottom: 1px solid #e5e5e5;
-	}
-	.bs21{
-		width: 124px;
-		height: 150px;
-		margin-top: 8px;
-		margin-left: 8px;
-	}
-	.bs211{
-        width: 124px;
-        height: 20px;
-        font-size: 12px;
-        color: #666666;
-        line-height: 16px;
-	}
-    .bs212{
-    	width: 124px;
-    	height: 20px;
-    	line-height: 12px;
-    	font-size: 12px;
-    	color: #999999;
-    }
-    .bs213{
-    	width: 124px;
-        height: 14px;
-        font-size: 12px;
-        color: #666666;
-        line-height: 14px;
-    }
-    .bs2121{
-    	float: left;
-    }
-    .bs2122{
-    	float: left;
-    	margin-left: 20px;
-    }
-
-	.bs22{
-
-		margin-top: -5px;
-		margin-left: 5px;
-	}
-
-	.img3{
-		transition:all 1s;
-		margin-left: 2px;
-	}
-	.business_support:hover.business_support .bs1 img{
-        transform:rotate(180deg);
-	}
-	.business_support:hover{
-		background-color: white;
-	}
-	.business_support:hover.business_support .bs1{
-		border-left: 1px solid #e5e5e5;
-		border-right: 1px solid #e5e5e5;
-	}
-	.business_support:hover.business_support .bs2{
-		display: block;
-	}
-	.business_support:hover.business_support .bs3{
-		display: block;
-	}
-
-	.site_navigation{
-		width: 85px;
-		height: 32px;
-		float: left;
-		line-height: 32px;
-		font-size: 12px;
-		color: #999999;
-	}
-	.sna1{
-		padding-left: 10px;
-		width: 74px;
-		height: 32px;
-		line-height: 32px;
-	}
-	.sna2{
-		z-index: 2;
-		position: absolute;
-		margin-left: -1096px;
-		width: 1180px;
-		height: 160px;
-		background-color: white;
-		display: none;
-		border-left: 1px solid #e5e5e5;
-		border-right: 1px solid #e5e5e5;
-		border-bottom: 1px solid #e5e5e5;
-	}
-	.sna21{
-		
-		margin-top: 0px;
-		margin-left: 5px;
-	}
-	.sna22{
-
-		margin-top: -5px;
-		margin-left: 5px;
-	}
-
-	.sna21{
-		float: left;
-		width: 450px;
-		height: 140px;
-		margin-left: 20px;
-		margin-top: 10px;
-	}
-	.sna23{
-		float: left;
-		width: 200px;
-		height: 140px;
-		margin-left: 20px;
-		margin-top: 10px;
-	}
-	.sna211{
-        font-size: 16px;
-        color: #f5700b;
-	}
-	.sna221{
-		font-size: 16px;
-        color: #2263d4;
-	}
-	.sna231{
-		font-size: 16px;
-        color: #777777;
-	}
-	.sna212{
-		font-size: 12px;
-		width: 450px;
-		height: 30px;
-	}
-	.sna2121{
-		float: left;
-		width: 90px;
-		height: 30px;
-	}
-	.snax1{
-		margin-top: 20px;
-		float: left;
-		height: 120px;
-		border-left: 1px solid #eee;
-	}
-	.img4{
-		transition:all 1s;
-		margin-left: 2px;
-	}
-	.site_navigation:hover.site_navigation .sna1 img{
-        transform:rotate(180deg);
-	}
-	.site_navigation:hover{
-		background-color: white;
-	}
-	.site_navigation:hover.site_navigation .sna1{
-		border-left: 1px solid #e5e5e5;
-		border-right: 1px solid #e5e5e5;
-	}
-	.site_navigation:hover.site_navigation .sna2{
-		display: block;
-	}
-	.site_navigation:hover.site_navigation .sna3{
-		display: block;
-	}
-
-/*第二导航栏*/
-    .navigation2{
-    	width: 100%;
-    	height: 70px;
-    	background-color: #ff0033;
-    }
-    .navgt2{
-		margin: 0 auto;
-		width: 1280px;
-		height: 100%;
-		position: relative;
-    }
-    .wod{
-    	width: 150px;
-    	height: 70px;
-    	font-size: 36px;
-    	color: white;
-    	line-height: 70px;
-    	float: left;
-    }
-    .fun1{
-    	line-height: 70px;
-    	width: 200px;
-    	height: 70px;
-    	float: left;
-    	margin-left: 150px;
-    }
-    .navgt2 .fun{
-        font-size: 16px;
-        color: white;
-        padding: 0 8px;
-    }
-/*第三信息*/
-    .information{
-    	margin: 0 auto;
-		width: 1080px;
-		height: 500px;
-		position: relative;
-    }
-    .left-list{
-    	width: 200px;
-    	height: 500px;
-    	float: left;
-    }
-    .left-list-photo{
-    	margin: 20px 40px;
-    	width: 120px;
-    	height: 120px;
-    	background-color: black;
-    }
-    .left-list ul{
-    	list-style: none;
-    	margin: 20px 40px;
-    }
-    .left-list ul li{
-    	margin: 15px 0;
-    	font-size: 14px;
-    }
-    .right-data{
-    	width: 870px;
-    	height: 500px;
-    	float: left;
-    	border:1px solid #c4d5e0;
-    	margin-top:20px; 
-    }
+    /*右数据*/
     .top-information{
     	width: 830px;
     	height: 140px;
@@ -607,3 +54,130 @@
     .c36:hover{
     	color: #ff0033;
     }
+
+    /*下安全服务*/
+    	/*安全等级*/
+    	.bottom-security{
+    		width: 830px;
+	    	height: 659px;
+	    	margin: 0px 20px;
+    	}
+    	.safetyInformationTitle{
+    		width: 790px;
+	    	height: 20px;
+	    	margin: 20px 20px;
+    	}
+    	.safetyInformation{
+    		width: 680px;
+	    	height: 329px;
+	    	margin: 20px 80px;
+	    	font-size: 14px;
+    	}
+    	.safetyClassAll{
+    		height: 20px;
+    		padding: 20px 0;
+    	}
+    	.safetyClass{
+    		width: 120px;
+    		height: 20px;
+    		float: left;
+    	}
+    	.safetyClassData{
+    		margin-left: 15px;
+    	}
+    	.safetyClassPhoto{
+    		width: 200px;
+    		height: 20px;
+    		float: left;
+    		border: 1px solid #eee;
+    	}
+    	.safetyClassPhoto div{
+    		height: 20px;
+    		border-radius: 5%;
+    	}
+    	/*linear-gradient(to right, red , #ec7474 , #03f403);*/
+    	.safetyClassPhotoData{
+    		width: 67px;
+    		background-color: red;
+    		/*display: none;*/
+    	}
+    	.safetyClassPhotoData1{
+    		width: 133px;
+    		background-image: linear-gradient(to right, red , #ec7474);
+    		display: none;
+    	}
+    	.safetyClassPhotoData2{
+    		width: 200px;
+    		background-image: linear-gradient(to right, red , #ec7474 , #03f403);
+    		display: none;
+    	}
+    	.safetyClassIocn{
+    		width: 50px;
+    		height: 20px;
+    		float: left;
+    		padding-left: 10px;
+    	}
+    	.safetyClassIocn img{
+    		margin-top: -3px;
+    	}
+    	/*身份认证*/
+    	.identityAuthentication{
+    		height: 45px;
+    		padding: 20px 0;
+    		font-size: 14px;
+    		border-bottom:1px dashed #eee;
+    	}
+    	.noPassIconAll{
+    		width: 50px;
+    		float: left;
+    	}
+    	.noPassIcon{
+    		height: 25px;
+    	}
+    	.noPassText{
+    		height: 20px;
+    	}
+    	.identityAuthenticationImg{
+    		margin-left:10px;
+    		display: none;
+    	}
+    	.securityQuestionImg{
+    		margin-left:10px;
+    		display: none;
+    	}
+    	.authenticationTitle{
+    		width: 70px;
+    		float: left;
+    		height: 45px;
+    		padding: 0 30px;
+    		letter-spacing:3px ;
+    	}
+    	.authenticationExplain{
+    		width: 400px;
+    		height: 45px;
+    		font-size: 13px;
+    		color: #666;
+    		float: left;
+    	}
+    	.authenticationAlink{
+    		width: 60px;
+    		height: 45px;
+    		float: left;
+    		margin-left: 25px;
+    	}
+        .authenticationAlink a{
+            color: #36c;
+        }
+        .authenticationAlink a:hover{
+            color: #ff0033;;
+        }
+        .safetyClassImgG{
+            display: none;
+        }
+        #identityShowpduan{
+            display: none;
+        }
+        #securityQuestionShowpduan{
+            display: none;
+        }
+    	

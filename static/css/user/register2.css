@@ -1,0 +1,71 @@
+/*信息块*/
+	.information-block{
+		display: none;
+		padding:25px 0;
+	}
+	.form-list{
+		width: 720px;
+		margin:0 auto;
+	}
+	.form-group{
+		padding:10px 0;
+	}
+	.form-item{
+		width: 720px;
+		height: 37px;
+		padding:20px 0;
+	}
+	.form-item4{
+		width: 720px;
+		height: 37px;
+		margin-top: -20px;
+	}
+	.form-item2{
+		width: 720px;
+		height: 37px;
+		padding:20px 0;
+	}
+	/*#f-son{
+		padding-left: 200px;
+	}*/
+	.phone1-text{
+		float: left;
+		width: 200px;
+		height: 30px;
+		margin-left: 20px; 
+		border:1px solid #eee;
+		line-height: 30px;
+		font-size: 12px;
+	}
+	.form-label{
+		display: inline;
+		color: #3c3c3c;
+		float: left;
+		width: 240px;
+		height: 37px;
+	    line-height: 37px;
+	    text-align: right;
+	}
+	.form-item input{
+		float: left;
+		width: 200px;
+		height: 30px;
+		margin-left: 20px; 
+	}
+	.hint{
+		float: left;
+		font-size: 12px;
+		color: red;
+		line-height: 34px;
+		margin-left: 10px;
+		display: none;
+	}
+	.remind{
+		float: left;
+		width: 200px;
+		height: 30px;
+		margin-left: 20px; 
+		font-size: 12px;
+		color:red;
+		line-height:30px;
+	}

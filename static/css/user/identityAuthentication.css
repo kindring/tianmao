@@ -1,0 +1,128 @@
+/*判断图标文字*/
+	.rightTitle{
+		background-color: #F3F8FE;
+		height: 30px;
+	    padding: 0 10px;
+	    line-height: 30px;
+	    color: #014D7F;
+	    font-weight: 700;
+	    font-size: 14px;
+	}
+	.rightAll{
+		width: 810px;
+		height: 600px;
+		margin: 20px 30px;
+	}
+
+	.informationPass{
+		width: 750px;
+		height: 150px;
+		padding: 0 30px;
+		/*background: #edfed0;*/
+	    border: 1px solid #ddd;
+	    border-bottom: none;
+	}
+	.passIconText{
+		width: 610px;
+		height: 90px;
+		padding: 30px 70px;
+	}
+	.passIcon{
+		height: 36px;
+	}
+	.passIconImg{
+		width: 40px;
+		height: 36px;
+		float: left;
+	}
+	.passIconText1{
+		width: 150px;
+		height: 36px;
+		float: left;
+		font-weight: 700;
+	}
+	.passIconText span{
+		font-size: 20px;
+		line-height: 36px;
+	}
+	.passText{
+		height: 54px;
+		padding-left: 40px;
+		padding-top: 10px;
+	}
+/*数据输入*/
+	.idDataImport{
+		width: 750px;
+		height: 200px;
+		padding: 0 30px;
+	    border: 1px solid #ddd;
+	}
+	.leftTitleBlock{
+		width: 200px;
+		height: 150px;
+		padding: 10px 0;
+		float: left;
+	}
+	.leftTitle1{
+		width: 200px;
+		height: 20px;
+		padding: 20px 0;
+	}
+	.leftTitle{
+		width: 200px;
+		height: 20px;
+		margin: 20px 0;
+	}
+	.leftTitle1 div{
+		font-weight: 550;
+		float: right;
+	}
+	.leftTitle div{
+		float: right;
+	}
+	.rightTitleBlock{
+		width: 200px;
+		height: 170px;
+		padding: 16px 0;
+		float: left;
+	}
+	.rightPlaceholder{
+		padding: 30px 0;
+	}
+	.yanz{
+		margin-top: 2px;
+		width: 200px;
+		height: 12px;
+	}
+	.yanz11{
+		margin-top: 2px;
+		width: 200px;
+		height: 12px;
+		font-size: 12px;
+		color: red;
+		display: none;
+	}
+	.rightInput1{
+		width: 200px;
+		height: 20px;
+		margin-top: 10px;
+	}
+	.rightInput{
+		width: 200px;
+		height: 20px;
+		margin-top: 8px;
+	}
+	.tjiao{
+		width: 200px;
+		height: 20px;
+		margin-top: 5px;
+	}
+	.tjiao button{
+		border: 0;
+		width: 80px;
+		height: 18px;
+		margin-left: 35px;
+	}
+	.identityAuthenticationImg1{
+		display: none;
+	}

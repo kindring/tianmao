@@ -1,0 +1,91 @@
+.idDataSecurity{
+	width: 750px;
+	height: 500px;
+	padding: 0 30px;
+    border: 1px solid #ddd;
+}
+.securityQuestionTitle{
+	height: 30px;
+	font-weight: 550;
+	padding: 20px 20px;
+}
+.securityQuestionTopic{
+	height: 300px;
+	padding: 10px 60px; 
+}
+.tjiaodata{
+	height: 60px;
+}
+.tjiaoxgai{
+	margin-left: 250px;
+	margin-top: 20px;
+	width: 90px;
+	height: 30px;
+	border:0;
+}
+.securityQuestionTopic1{
+	height: 80px;
+}
+.sQTT{
+	width: 100px;
+	height: 80px;
+	float: left;
+}
+.sQTT div{
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+}
+.sQTT div span{
+	float: right;
+}
+.sQT{
+	width: 350px;
+	height: 80px;
+	float: left;
+	
+}
+.sQTTo{
+	width: 300px;
+	height: 40px;
+}
+.sQTToSel{
+	width: 300px;
+	height: 24px;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+.sQTD{
+	width: 300px;
+	margin-top: 10px;
+	margin-left: 20px;
+	height: 20px;
+}
+.pduan{
+	width: 100px;
+	height: 80px;
+	float: left;
+}
+.pduanshow{
+	width: 100px;
+	height: 20px;
+	padding-top: 55px;
+	color: red;
+	font-size: 12px;
+	display: none;
+}
+.tjiaoxgai1{
+	background-color: #eee;
+	font-size: 14px;
+	text-align: center;
+	line-height: 30px;
+	margin-left: 250px;
+	margin-top: 20px;
+	width: 90px;
+	height: 30px;
+	border:0;
+	color: black;
+}
+#banzige{
+	display: none;
+}

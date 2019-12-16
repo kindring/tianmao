@@ -1,0 +1,90 @@
+/*手机号*/
+	.phone-block{
+		padding:50px 0;
+	}
+	.form-list{
+		width: 720px;
+		margin:0 auto;
+	}
+	.form-group{
+		padding:10px 0;
+	}
+	.form-item{
+		width: 720px;
+		height: 37px;
+		padding:20px 0;
+	}
+	.form-item input{
+		float: left;
+		width: 200px;
+		height: 30px;
+		margin-left: 20px; 
+	}
+	.hint{
+		float: left;
+		font-size: 12px;
+		color: red;
+		line-height: 34px;
+		margin-left: 10px;
+		display: none;
+	}
+	.form-label{
+		display: inline;
+		color: #3c3c3c;
+		float: left;
+		width: 240px;
+		height: 37px;
+	    line-height: 37px;
+	    text-align: right;
+	}
+	.form-item1{
+		width: 720px;
+		height: 37px;
+		padding:20px 0;
+	}
+	.form-item1 input{
+		float: left;
+		width: 100px;
+		height: 30px;
+		margin-left: 20px; 
+	}
+	.form-item2{
+		width: 720px;
+		height: 37px;
+		padding:20px 0;
+		/*background-color: black;*/
+	}
+	#f-son{
+		padding-left: 250px;
+	}
+	#zong{
+		width: 200px;
+		height: 35px;
+		border:0;
+		background-color: red;
+		color:white;
+		font-weight: 600;
+	}
+	#huoqu{
+		float: left;
+		width: 70px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+		font-size: 12px;
+		border-radius: 5%;
+		/*border:;*/
+		background-color: #ff0033;
+		color: white;
+		margin-left: 10px;
+		margin-top: 2px;
+		border:0;
+	}
+	.hint1{
+		float: left;
+		font-size: 12px;
+		color: red;
+		line-height: 34px;
+		margin-left: 10px;
+		display: none;
+	}

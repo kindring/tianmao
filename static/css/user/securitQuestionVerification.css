@@ -1,0 +1,104 @@
+.securitQuestionVerification{
+	margin: 30px auto;
+	width: 880px;
+	height: 600px;
+	border: 1px solid #eee;
+	color: #666;
+}
+.securitQuestionVerificationTitle{
+	margin: 0 20px;
+	width: 840px;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #eee;
+}
+.nosecurQ{
+	width: 840px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 24px;
+	text-align: center;
+	display: none;
+}
+
+/* 密保问题*/
+.securitQuestionAll{
+	width: 840px;
+	height: 500px;
+}
+.securityQuestionTopic1{
+	width: 600px;
+	height: 80px;
+	margin: 0 auto;
+}
+.sQTT{
+	width: 100px;
+	height: 80px;
+	float: left;
+}
+.sQTT div{
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+}
+.sQTT div span{
+	float: right;
+}
+.sQT{
+	width: 350px;
+	height: 80px;
+	float: left;
+	
+}
+.sQTTo{
+	width: 300px;
+	height: 40px;
+}
+.sQTToSel{
+	width: 300px;
+	height: 24px;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+.sQTD{
+	width: 300px;
+	margin-top: 10px;
+	margin-left: 20px;
+	height: 20px;
+}
+.pduan{
+	width: 100px;
+	height: 80px;
+	float: left;
+	display: block;
+}
+.pduanshow{
+	width: 100px;
+	height: 20px;
+	padding-top: 55px;
+	color: red;
+	font-size: 12px;
+	display: none;
+}
+
+/*提交按钮*/
+.tjiaodata{
+	height: 60px;
+}
+.tjiaoxgai{
+	margin-left: 250px;
+	margin-top: 20px;
+	width: 90px;
+	height: 30px;
+	border:0;
+}
+
+.securitQPassword{
+	width: 600px;
+	height: 40px;
+	margin: 0 auto;
+	padding-top:  30px;
+}
+#passwordAll{
+	display: none;
+}
