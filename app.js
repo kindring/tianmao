@@ -11,6 +11,7 @@ const merchant = require('./routers/merchant');
 const user = require('./routers/user');//用户
 const goods = require('./routers/goods.js');//商品路由
 const public_interface = require('./routers/public_interface');//公共接口
+const platform_goods = require('./routers/platform_goods.js');//平台与商品路由
 
 const sockets = require('./model/sockets.js');//socktes列表,用来作为全局作用域存储所有的socket连接
 let public_path = require('./model/public_file_path.js');//公共路径
