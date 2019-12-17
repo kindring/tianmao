@@ -59,7 +59,7 @@ app.use(public_interface);
 app.use('*',function(req,res){
     res.send("404 page not found"+req.url)
 });
-app.listen(8000,'127.0.0.1',()=>{
+var server = app.listen(8000,'127.0.0.1',()=>{
     console.log("server is running");
 });
 var io = require('socket.io').listen(server);
