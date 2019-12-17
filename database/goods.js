@@ -289,22 +289,45 @@ search_sku();
 function search(condition,limit,callback){
     //判断参数数量
     // 如果只有一个参数则直接查询不做任何筛选
-    let limit = {
+    let default_limit = {
         page:1,
         limit:20,
     }//默认分页配置
+    let option = {
+        category:null,//分类选择
+        shop:null,//商家id,
+        shop_name:null,//商家名称
+        keywords:null,//关键字  商品名称中包含此值的 以及分类关键字中包含有此值的 商品
+        delected:null,//是否被删除的状态  ,默认应当为未删除
+        veify_status:null,//审核状态,是否被审核
+        publish_status:null,//上架状态,可以为0,1或者true或者false.对应值为 0-false-未上架(存入仓库)
+
+    };//默认的参数,只允许从此间获取用来筛选的字段  只在其有值时进行数据获取  是否被删除的状态时默认显示为未删除的数据
     if(arguments.length===1){
         if(typeof(argument[0]) != 'function'){throw "如果你只想使用默认配置搜索,至少需要一个callback回调来获取结果";}
         //直接生成sql进行查询即可
-        let sql = "select * from limit ?,?";
-        let values = [limit*(page-1),limit];
+        let sql = "select * from goods_base limit ?,?";
+        let values = [default_limit.limit*(default_limit.page-1),default_limit.limit];
         query(sql,values,callback);
     }else if(arguments.length===2){
         // 如果只有两个参数则查看第一个参数的具体数据来查看该如何获取数据
         if(typeof(arguments[1])!='function'){throw "两个参宿时第二个参数必须为callback"}
-    
+        if(arguments[0].limit||argument[0].page){
+            //此项为分页数据
+            // 无需获取数据直接
+            default_limit.limit = arguments.limit||default_limit.limit;
+            default_limit.page = arguments.page||default_limit.page;
+            // 直接生成一个普通的sql
+            let sql = "select * from goods_base limit ?,?";
+            let values = [default_limit.limit*(default_limit.page-1),default_limit.limit];
+            query(sql,values,callback);
+        }else{
+            //认为是用来筛选的函数
+        }
     }else{
         //在参数大于等于3个时,只取三个参数
+        //第一条件  使用分类查询
+        
     }
 }
 
