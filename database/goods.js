@@ -1,5 +1,11 @@
 //商品管理的部分数据库操作
 const pool = require('./pool.js');
+/**
+ * 
+ * @param {string} sql 要查询的sql语句
+ * @param {array or string or null} values 值,可以为空 
+ * @param {*} cb 回调函数
+ */
 function query(sql,values,cb){
     pool.getConnection((err,conn)=>{
         if(err){return cb(err)}
@@ -128,55 +134,58 @@ function add_goods(json, cb) {
 
 };//添加商品
 
-var goods = {
-    category_id: 2,//分类id
-    name: "小米9",//商品名称
-    brief: "最新款的小米手机",//简介
-    publish_status: 0,//即存入仓库
-    pars: [
-        {key: "屏幕尺寸", value: "5寸"},
-        {key: "电池容量", value: "4000毫安"},
-        {key: "网络运营商", value: "电信,移动,联通"},
-        {key: "分辨率", value: "4k"}
-    ],//属性表,
-    skuValues: [
-        {
-            id: 1,//属性的id
-            name: "颜色"//属性的名称
-        },
-        {
-            id: 2,
-            name: "内存"
-        },
-    ],//存储sku对象的属性
-    skus: [
-        {
-            values: [
-                {id: 1, value: '革命红'},
-                {id: 2, value: '16g'},
-            ],
-            stock: 15,//存货
-            price: 100,
-        }, {
-            spe_value: [
-                {id: 1, value: '飘雪白'},
-                {id: 2, value: '32g'},
-            ],
-            stock: 15,//存货
-            price: 1988,
-        }, {
-            spe_value: [
-                {id: 1, value: '炫酷黑'},
-                {id: 2, value: '64g'},
-            ],
-            stock: 10,//存货
-            price: 3200,
-        },
-    ]
-};//添加商品因该有的数据结构?
+// var goods = {
+//     category_id: 2,//分类id
+//     name: "小米9",//商品名称
+//     brief: "最新款的小米手机",//简介
+//     publish_status: 0,//即存入仓库
+//     pars: [
+//         {key: "屏幕尺寸", value: "5寸"},
+//         {key: "电池容量", value: "4000毫安"},
+//         {key: "网络运营商", value: "电信,移动,联通"},
+//         {key: "分辨率", value: "4k"}
+//     ],//属性表,
+//     skuValues: [
+//         {
+//             id: 1,//属性的id
+//             name: "颜色"//属性的名称
+//         },
+//         {
+//             id: 2,
+//             name: "内存"
+//         },
+//     ],//存储sku对象的属性
+//     skus: [
+//         {
+//             values: [
+//                 {id: 1, value: '革命红'},
+//                 {id: 2, value: '16g'},
+//             ],
+//             stock: 15,//存货
+//             price: 100,
+//         }, {
+//             spe_value: [
+//                 {id: 1, value: '飘雪白'},
+//                 {id: 2, value: '32g'},
+//             ],
+//             stock: 15,//存货
+//             price: 1988,
+//         }, {
+//             spe_value: [
+//                 {id: 1, value: '炫酷黑'},
+//                 {id: 2, value: '64g'},
+//             ],
+//             stock: 10,//存货
+//             price: 3200,
+//         },
+//     ]
+// };//添加商品因该有的数据结构?
 //暂时先让商家添加这么一些信息,然后可以到商品列表中自行修改一些数据
 // add_goods(goods);
 
+/**
+ * 搜索商品,貌似无用,
+ */
 function search_goods() {
     pool.getConnection(function (err, coon) {
         if (err) {
@@ -194,6 +203,11 @@ function search_goods() {
     })
 }
 
+/**
+ * 设置商品封面
+ * @param {json} json 对象 包含商品id,文件路径,下标(即第几张图片) 
+ * @param {function} cb 回调,错误,和结果
+ */
 function setcover(json,cb){
     if(!json.goods_id||!json.filePath||!json.index){return cb({message:"数据缺失"})}
     //连接
@@ -246,7 +260,12 @@ function new_goods_id(moon, cb) {
         }
     })
 }//生成一个新的商品id
-
+/**
+ * 搜索某个商家的所有商品
+ * @param {*} condition 
+ * @param {*} limition 
+ * @param {*} callback 
+ */
 function search_me_goods(condition,limition,callback){
     //判断参数数量
     let cb,limit;
@@ -270,8 +289,6 @@ function search_me_goods(condition,limition,callback){
     //创建连接
     pool.getConnection(function(err,conn){
         if(err){ return cb(err);}
-        //promise进行并发连接查询
-
         let goods_base = new Promise((resolve,reject)=>{
             var sql = "select * from goods_base where shop_id = ? limit ? , ?";
             var values = [condition.shop_id,limit.limit*(limit.page-1),limit.limit];
@@ -400,7 +417,7 @@ function search(condition,limit,callback){
                 });
             });
             promise.then((result)=>{
-                //只用此语句来进行查询
+                //result 关键字能匹配到的所有分类
             },(err)=>{
                 callback(err);
                 conn.release();
