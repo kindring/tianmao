@@ -7,6 +7,48 @@ function query(sql,values,cb){
         conn.release();
     })
 }
+/**
+ * async异步简化请求方法
+ * @param {string} sql 
+ * @param {string | function} values 
+ * @param {function} [cb]
+ */
+function aquery(sql,values){
+    if(arguments.length<2){
+        throw "暂时不支持此参数的参数";
+    }else if(arguments.length==2){
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,conn)=>{
+                if(err){
+                    return reject(err);
+                }
+                conn.query(sql,(err,result)=>{
+                    conn.release();
+                    if(err){
+                        return reject(err);
+                    }
+                    resolve(result);
+                });
+            });
+        });
+    }else{
+        return new Promise((resolve,reject)=>{
+            pool.getConnection((err,conn)=>{
+                if(err){
+                    return reject(err);
+                }
+                conn.query(sql,values,(err,result)=>{
+                    conn.release();
+                    if(err){
+                        return reject(err);
+                    }
+                    resolve(result);
+                });
+            });
+        });
+    }
+}
+
 function add_goods(json, cb) {
     // 数据格式,至少一个sku,商品名称
     pool.getConnection(function (err, coon) {
@@ -175,6 +217,11 @@ function setcover(json,cb){
     })
 }
 
+/**
+ * 
+ * @param {*} moon mysql的连接柄
+ * @param {function} cb 回调函数,参数-> 错误,新的商品id
+ */
 function new_goods_id(moon, cb) {
     var sql = "select * from goods where goods_id=?";
     var rnd = "";
@@ -282,10 +329,14 @@ function search_sku(){
         console.log(result);
     });
 }
-search_sku();
-/*
-/*
-*/
+
+
+/**
+ * 
+ * @param {object} condition 条件
+ * @param {object} limit 分页条件
+ * @param {function} callback 
+ */
 function search(condition,limit,callback){
     //判断参数数量
     // 如果只有一个参数则直接查询不做任何筛选
@@ -327,8 +378,61 @@ function search(condition,limit,callback){
     }else{
         //在参数大于等于3个时,只取三个参数
         //第一条件  使用分类查询
-        
+        pool.getConnection((err,conn)=>{
+            if(err){
+                return callback({
+                    code:500,
+                    message:err.message,
+                    descript:"连接错误"
+                });
+            }
+            let keywords = condition.keywords;/** @param {string} keywords 应当为字符串 */
+            /**
+             * 获取关键字相关的数据
+             */
+            let promise = new Promise((resolve,reject)=>{
+                query(conn,keywords,function(error,result){
+                    if(error){
+                        return reject(error)
+                    }else{
+                      return resolve(result);  
+                    }
+                });
+            });
+            promise.then((result)=>{
+                //只用此语句来进行查询
+            },(err)=>{
+                callback(err);
+                conn.release();
+            });
+
+
+        })
     }
+    /**
+     * 在分类中搜索关键字
+     * @param {*} conn 连接的对象
+     * @param {string} keywords 字符串
+     * @param {*} callback 回调函数
+     */
+    function search_key_category(conn,keywords,callback){
+        var sql = `select id from goods_category as c where c.name like '%?%' or c.keywords like '%?%'`;
+        var values = [keywords,keywords];
+        conn.query(sql,values,function(err,result){
+            callback(err,result);
+        });
+    }
+}
+
+
+
+/**
+ * 
+ * @param {string} keywords 用来搜索的关键字
+ * @param {function} callback 回调函数
+ */
+function searchkey(keywords,callback){
+   //通过关键字获取数据
 }
 
 module.exports.add_goods = add_goods;//添加商品
