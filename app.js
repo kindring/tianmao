@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 const server_config = require('./server_config.json');//配置
+const serverConfig = require('./config/server.json');//服务器的基本配置,如端口和地址等
 
 const platform = require('./routers/platform');
 const merchant = require('./routers/merchant');
@@ -57,10 +58,10 @@ app.use(public_interface);
 /*处理部分没有被匹配到的路由,
 */
 app.use('*',function(req,res){
-    res.send("404 page not found"+req.url)
+    res.send("404 page not found"+req.url);
 });
-var server = app.listen(8000,'127.0.0.1',()=>{
-    console.log("server is running");
+var server = app.listen(serverConfig.port,serverConfig.host,()=>{
+    console.log("server is running... to "+serverConfig.host+':'+serverConfig.port);
 });
 var io = require('socket.io').listen(server);
 io.on('connection',function(socket){
